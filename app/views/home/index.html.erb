@@ -1,1 +1,204 @@
-<div class="ast-universalbar">Asterik Security Toolset</div>
+<div class="ast-universalbar">
+	<div class="ast-ub-title">Asterisk Security Toolset</div>
+	<div class="ast-ub-subtitle">SAMM Self Assessment</div>
+	<ul class="ast-ub-options">
+		<li><a href="#">About</a></li>
+		<li><a href="#">AST</a></li>
+		<li><a href="#">Labs</a></li>
+	</ul>
+</div>
+
+<script>
+	$(function() {
+		$("#tabs").tabs();
+		JTable.Setup();
+	});
+</script>
+
+<div class="ast-main-content">
+	<h1 class="ast-title">Samm Self Assessment</h1>
+<p class="ast-text"><%=t 'ast-text'%></p>
+
+	<div class="ssa-tab-container">
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1"><%=t 'governance'%></a></li>
+				<li><a href="#tabs-2"><%=t 'construction'%></a></li>
+				<li><a href="#tabs-3"><%=t 'verification'%></a></li>
+				<li><a href="#tabs-4"><%=t 'deployment'%></a></li>
+			</ul>
+			<div id="tabs-1">
+				<p><table class="jtable" style="width: 90%;"><caption><%=t 'sm-title'%></caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td><%=t 'sm1'%></td><td>Yo</td></tr>
+						<tr><td><%=t 'sm2'%></td><td></td></tr>
+						<tr><td><%=t 'sm3'%></td><td></td></tr>
+						<tr><td><%=t 'sm4'%></td><td></td></tr>
+						<tr><td><%=t 'sm5'%></td><td></td></tr>
+						<tr><td><%=t 'sm6'%></td><td></td></tr>
+						<tr><td><%=t 'sm7'%></td><td></td></tr>
+						<tr><td><%=t 'sm8'%></td><td></td></tr>
+					</tbody>
+				</table></p>
+				<p><table class="jtable" style="width: 90%;"><caption>Policy &amp; Compliance</caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td>Do most project stakeholders know their project’s compliance status?</td><td>Yo</td></tr>
+						<tr><td>Are compliance requirements specifically considered by project teams?</td><td></td></tr>
+						<tr><td>Does the organization utilize a set of policies and standards to control software development?</td><td></td></tr>
+						<tr><td>Are project teams able to request an audit for compliance with policies and standards?</td><td></td></tr>
+						<tr><td>Are projects periodically audited to ensure a baseline of compliance with policies and standards?</td><td></td></tr>
+						<tr><td>Does the organization systematically use audits to collect and control compliance evidence?</td><td></td></tr>
+					</tbody>
+				</table></p>
+				<p><table class="jtable" style="width: 90%;"><caption>Education &amp; Guidance</caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td>Have most developers been given highlevel security awareness training?</td><td>Yo</td></tr>
+						<tr><td>Does each project team have access to secure development best practices and guidance?</td><td></td></tr>
+						<tr><td>Are most roles in the development process given role-specific training and guidance?</td><td></td></tr>
+						<tr><td>Are most stakeholders able to pull in security coaches for use on projects?</td><td></td></tr>
+						<tr><td>Is security-related guidance centrally controlled and consistently distributed throughout the organization?</td><td></td></tr>
+						<tr><td>Are most people tested to ensure a baseline skillset for secure development practices?</td><td></td></tr>
+					</tbody>
+				</table></p>
+			</div>
+			<div id="tabs-2">
+				<p><table class="jtable" style="width: 90%;"><caption>Threat Assessment</caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td>Do most projects in your organization consider and document likely threats?</td><td>Yo</td></tr>
+						<tr><td>Does your organization understand and document the types of attackers it faces?</td><td></td></tr>
+						<tr><td>Do project teams regularly analyze functional requirements for likely abuses?</td><td></td></tr>
+						<tr><td>Do project teams use a method of rating threats for relative comparison?</td><td></td></tr>
+						<tr><td>Are stakeholders aware of relevant threats and ratings?</td><td></td></tr>
+						<tr><td>Do project teams specifically consider risk from external software?</td><td></td></tr>
+						<tr><td>Are all protection mechanisms and controls captured and mapped back to threats?</td><td></td></tr>
+					</tbody>
+				</table></p>
+				<p><table class="jtable" style="width: 90%;"><caption>Security Requirements</caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td>Do most project teams specify some security requirements during development?</td><td>Yo</td></tr>
+						<tr><td>Do project teams pull requirements from bestpractices and compliance guidance?</td><td></td></tr>
+						<tr><td>Are most stakeholders reviewing access control matrices for relevant projects?</td><td></td></tr>
+						<tr><td>Are project teams specifying requirements based on feedback from other security activities?</td><td></td></tr>
+						<tr><td>Are most stakeholders reviewing vendor agreements for security requirements?</td><td></td></tr>
+						<tr><td>Are the security requirements specified by project teams being audited?</td><td></td></tr>
+					</tbody>
+				</table></p>
+				<p><table class="jtable" style="width: 90%;"><caption>Security Architecture</caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td>Are project teams provided with a list of recommended third-party components?</td><td>Yo</td></tr>
+						<tr><td>Are most project teams aware of secure design principles and applying them?</td><td></td></tr>
+						<tr><td>Do you advertise shared security services with guidance for project teams?</td><td></td></tr>
+						<tr><td>Are project teams provided with prescriptive design patterns based on their application architecture?</td><td></td></tr>
+						<tr><td>Are project teams building software from centrally controlled platforms and frameworks?</td><td></td></tr>
+						<tr><td>Are project teams being audited for usage of secure architecture components?</td><td></td></tr>
+					</tbody>
+				</table></p>
+			</div>
+			<div id="tabs-3">
+				<p><table class="jtable" style="width: 90%;"><caption>Design Review</caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td>Do project teams document the attack perimeter of software designs?</td><td>Yo</td></tr>
+						<tr><td>Do project teams check software designs against known security risks?</td><td></td></tr>
+						<tr><td>Do most project teams specifically analyze design elements for security mechanisms?</td><td></td></tr>
+						<tr><td>Are most project stakeholders aware of how to obtain a formal design review?</td><td></td></tr>
+						<tr><td>Does the design review process incorporate detailed data-level analysis?</td><td></td></tr>
+						<tr><td>Does routine project audit require a baseline for design review results?</td><td></td></tr>
+					</tbody>
+				</table></p>
+				<p><table class="jtable" style="width: 90%;"><caption>Code Review</caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td>Do most project teams have review checklists based on common problems?</td><td>Yo</td></tr>
+						<tr><td>Are project teams generally performing review of selected high-risk code?</td><td></td></tr>
+						<tr><td>Can most project teams access automated code analysis tools to find security problems?</td><td></td></tr>
+						<tr><td>Do most stakeholders consistently require and review results from code reviews?</td><td></td></tr>
+						<tr><td>Do project teams utilize automation to check code against application-specific coding standards?</td><td></td></tr>
+						<tr><td>Does routine project audit require a baseline for code review results prior to release?</td><td></td></tr>
+					</tbody>
+				</table></p>
+				<p><table class="jtable" style="width: 90%;"><caption>Security Testing</caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td>Are projects specifying some security tests based on requirements?</td><td>Yo</td></tr>
+						<tr><td>Do most projects perform penetration tests prior to release?</td><td></td></tr>
+						<tr><td>Are most stakeholders aware of the security test status prior to release?</td><td></td></tr>
+						<tr><td>Are projects using automation to evaluate security test cases?</td><td></td></tr>
+						<tr><td>Do most projects follow a consistent process to evaluate and report on security tests to stakeholders?</td><td></td></tr>
+						<tr><td>Are security test cases comprehensively generated for application-specific logic?</td><td></td></tr>
+						<tr><td>Do routine project audits demand minimum standard results from security testing?</td><td><td></tr>
+					</tbody>
+				</table></p>
+			</div>
+			<div id="tabs-4">
+				<p><table class="jtable" style="width: 90%;"><caption>Vulnerability Management</caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td>Do most projects have a point of contact for security issues?</td><td>Yo</td></tr>
+						<tr><td>Does your organization have an assigned security response team?</td><td></td></tr>
+						<tr><td>Are most project teams aware of their security point(s) of contact and response team(s)?</td><td></td></tr>
+						<tr><td>Does the organization utilize a consistent process for incident reporting and handling?</td><td></td></tr>
+						<tr><td>Are most project stakeholders aware of relevant security disclosures related to their software projects?</td><td></td></tr>
+						<tr><td>Are most incidents inspected for root causes to generate further recommendations?</td><td></td></tr>
+						<tr><td>Do most projects consistently collect and report data and metrics related to incidents?</td><td></td></tr>
+					</tbody>
+				</table></p>
+				<p><table class="jtable" style="width: 90%;"><caption>Environment Hardening</caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td>Do the majority of projects document some requirements for the operational environment?</td><td>Yo</td></tr>
+						<tr><td>Do most projects check for security updates to third-party software components?</td><td></td></tr>
+						<tr><td>Is a consistent process used to apply upgrades and patches to critical dependencies?</td><td></td></tr>
+						<tr><td>Do most project leverage automation to check application and environment health?</td><td></td></tr>
+						<tr><td>Are stakeholders aware of options for additional tools to protect software while running in operations?</td><td></td></tr>
+						<tr><td>Does routine audit check most projects for baseline environment health?</td><td></td></tr>
+					</tbody>
+				</table></p>
+				<p><table class="jtable" style="width: 90%;"><caption>Operational Enablement</caption>
+					<thead>
+						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+					</thead>
+					<tbody>
+						<tr><td>Do you deliver security notes with the majority of software releases?</td><td>Yo</td></tr>
+						<tr><td>Are security-related alerts and error conditions documented for most projects?</td><td></td></tr>
+						<tr><td>Are most project utilizing a change management process that’s well understood?</td><td></td></tr>
+						<tr><td>Do project teams deliver an operational security guide with each product release?</td><td></td></tr>
+						<tr><td>Are most projects being audited to check each release for appropriate operational security information?</td><td></td></tr>
+						<tr><td>Is code signing routinely performed on software components using a consistent process?</td><td></td></tr>
+					</tbody>
+				</table></p>
+			</div>
+		</div>
+</div>
+
+<div class="ast-footer">
+
+</div>	

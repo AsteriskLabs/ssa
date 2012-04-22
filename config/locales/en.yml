@@ -3,3 +3,17 @@
 
 en:
   hello: "Hello world"
+  ast-text: "There is some text that can go here"
+  governance: "Governance"
+  construction: "Construction"
+  verification: "Verification"
+  deployment: "Deployment"
+  sm-title: "Strategy &amp; Metrics"
+  sm1: "Is there a software security assurance program already in place?"
+  sm2: "Do most of the business stakeholders understand your organization’s risk profile?"
+  sm3: "Is most of your development staff aware of future plans for the assurance program?"
+  sm4: "Are most of your applications and resources categorized by risk?"
+  sm5: "Are risk ratings used to tailor the required assurance activities?"
+  sm6: "Does most of the organization know about what’s required based on risk ratings?"
+  sm7: "Is per-project data for cost of assurance activities collected?"
+  sm8: "Does your organization regularly compare your security spend with other organizations?"
