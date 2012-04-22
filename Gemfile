@@ -7,7 +7,7 @@ gem 'rails', '3.2.3'
 
 gem 'pg'
 gem 'thin'
-#gem 'asset_sync'
+gem 'asset_sync'
 
 
 # Gems used only for assets and not required
