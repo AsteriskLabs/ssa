@@ -3,3 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .jtable td {font-weight: bold;}
+body {
+	margin: 0 auto;
+	text-align: center;
+}
+#wrapper {
+	margin: 0 auto;
+	width: 960px;
+	position: relative;
+}
+.ast-universalbar {}
+.ast-ub-title {
+	position: absolute;
+	top: 8px;
+	left: 2px;
+}

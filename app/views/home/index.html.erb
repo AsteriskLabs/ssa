@@ -1,204 +1,206 @@
-<div class="ast-universalbar">
-	<div class="ast-ub-title">Asterisk Security Toolset</div>
-	<div class="ast-ub-subtitle">SAMM Self Assessment</div>
-	<ul class="ast-ub-options">
-		<li><a href="#">About</a></li>
-		<li><a href="#">AST</a></li>
-		<li><a href="#">Labs</a></li>
-	</ul>
+<div id="wrapper">
+	<div class="ast-universalbar">
+		<div class="ast-ub-title">Asterisk Security Toolset</div>
+		<div class="ast-ub-subtitle">SAMM Self Assessment</div>
+		<ul class="ast-ub-options">
+			<li><a href="#">About</a></li>
+			<li><a href="#">AST</a></li>
+			<li><a href="#">Labs</a></li>
+		</ul>
+	</div>
+
+	<script>
+		$(function() {
+			$("#tabs").tabs();
+			JTable.Setup();
+		});
+	</script>
+
+	<div class="ast-main-content">
+		<h1 class="ast-title">Samm Self Assessment</h1>
+	<p class="ast-text"><%=t 'ast-text'%></p>
+
+		<div class="ssa-tab-container">
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1"><%=t 'governance'%></a></li>
+					<li><a href="#tabs-2"><%=t 'construction'%></a></li>
+					<li><a href="#tabs-3"><%=t 'verification'%></a></li>
+					<li><a href="#tabs-4"><%=t 'deployment'%></a></li>
+				</ul>
+				<div id="tabs-1">
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'sm-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'sm1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'sm2'%></td><td></td></tr>
+							<tr><td><%=t 'sm3'%></td><td></td></tr>
+							<tr><td><%=t 'sm4'%></td><td></td></tr>
+							<tr><td><%=t 'sm5'%></td><td></td></tr>
+							<tr><td><%=t 'sm6'%></td><td></td></tr>
+							<tr><td><%=t 'sm7'%></td><td></td></tr>
+							<tr><td><%=t 'sm8'%></td><td></td></tr>
+						</tbody>
+					</table></p>
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'pc-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'pc1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'pc2'%></td><td></td></tr>
+							<tr><td><%=t 'pc3'%></td><td></td></tr>
+							<tr><td><%=t 'pc4'%></td><td></td></tr>
+							<tr><td><%=t 'pc5'%></td><td></td></tr>
+							<tr><td><%=t 'pc6'%></td><td></td></tr>
+						</tbody>
+					</table></p>
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'eg-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'eg1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'eg2'%></td><td></td></tr>
+							<tr><td><%=t 'eg3'%></td><td></td></tr>
+							<tr><td><%=t 'eg4'%></td><td></td></tr>
+							<tr><td><%=t 'eg5'%></td><td></td></tr>
+							<tr><td><%=t 'eg6'%></td><td></td></tr>
+						</tbody>
+					</table></p>
+				</div>
+				<div id="tabs-2">
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'ta-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'ta1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'ta2'%></td><td></td></tr>
+							<tr><td><%=t 'ta3'%></td><td></td></tr>
+							<tr><td><%=t 'ta4'%></td><td></td></tr>
+							<tr><td><%=t 'ta5'%></td><td></td></tr>
+							<tr><td><%=t 'ta6'%></td><td></td></tr>
+							<tr><td><%=t 'ta7'%></td><td></td></tr>
+						</tbody>
+					</table></p>
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'sr-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'sr1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'sr2'%></td><td></td></tr>
+							<tr><td><%=t 'sr3'%></td><td></td></tr>
+							<tr><td><%=t 'sr4'%></td><td></td></tr>
+							<tr><td><%=t 'sr5'%></td><td></td></tr>
+							<tr><td><%=t 'sr6'%></td><td></td></tr>
+						</tbody>
+					</table></p>
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'sa-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'sa1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'sa2'%></td><td></td></tr>
+							<tr><td><%=t 'sa3'%></td><td></td></tr>
+							<tr><td><%=t 'sa4'%></td><td></td></tr>
+							<tr><td><%=t 'sa5'%></td><td></td></tr>
+							<tr><td><%=t 'sa6'%></td><td></td></tr>
+						</tbody>
+					</table></p>
+				</div>
+				<div id="tabs-3">
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'dr-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'dr1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'dr2'%></td><td></td></tr>
+							<tr><td><%=t 'dr3'%></td><td></td></tr>
+							<tr><td><%=t 'dr4'%></td><td></td></tr>
+							<tr><td><%=t 'dr5'%></td><td></td></tr>
+							<tr><td><%=t 'dr6'%></td><td></td></tr>
+						</tbody>
+					</table></p>
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'cr-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'cr1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'cr2'%></td><td></td></tr>
+							<tr><td><%=t 'cr3'%></td><td></td></tr>
+							<tr><td><%=t 'cr4'%></td><td></td></tr>
+							<tr><td><%=t 'cr5'%></td><td></td></tr>
+							<tr><td><%=t 'cr6'%></td><td></td></tr>
+						</tbody>
+					</table></p>
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'st-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'st1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'st2'%></td><td></td></tr>
+							<tr><td><%=t 'st3'%></td><td></td></tr>
+							<tr><td><%=t 'st4'%></td><td></td></tr>
+							<tr><td><%=t 'st5'%></td><td></td></tr>
+							<tr><td><%=t 'st6'%></td><td></td></tr>
+							<tr><td><%=t 'st7'%></td><td><td></tr>
+						</tbody>
+					</table></p>
+				</div>
+				<div id="tabs-4">
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'vm-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'vm1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'vm2'%></td><td></td></tr>
+							<tr><td><%=t 'vm3'%></td><td></td></tr>
+							<tr><td><%=t 'vm4'%></td><td></td></tr>
+							<tr><td><%=t 'vm5'%></td><td></td></tr>
+							<tr><td><%=t 'vm6'%></td><td></td></tr>
+							<tr><td><%=t 'vm7'%></td><td></td></tr>
+						</tbody>
+					</table></p>
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'eh-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'eh1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'eh2'%></td><td></td></tr>
+							<tr><td><%=t 'eh3'%></td><td></td></tr>
+							<tr><td><%=t 'eh4'%></td><td></td></tr>
+							<tr><td><%=t 'eh5'%></td><td></td></tr>
+							<tr><td><%=t 'eh6'%></td><td></td></tr>
+						</tbody>
+					</table></p>
+					<p><table class="jtable" style="width: 90%;"><caption><%=t 'oe-title'%></caption>
+						<thead>
+							<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
+						</thead>
+						<tbody>
+							<tr><td><%=t 'oe1'%></td><td>Yo</td></tr>
+							<tr><td><%=t 'oe2'%></td><td></td></tr>
+							<tr><td><%=t 'oe3'%></td><td></td></tr>
+							<tr><td><%=t 'oe4'%></td><td></td></tr>
+							<tr><td><%=t 'oe5'%></td><td></td></tr>
+							<tr><td><%=t 'oe6'%></td><td></td></tr>
+						</tbody>
+					</table></p>
+				</div>
+			</div>
+	</div>
+
+	<div class="ast-footer">
+
+	</div>	
 </div>
-
-<script>
-	$(function() {
-		$("#tabs").tabs();
-		JTable.Setup();
-	});
-</script>
-
-<div class="ast-main-content">
-	<h1 class="ast-title">Samm Self Assessment</h1>
-<p class="ast-text"><%=t 'ast-text'%></p>
-
-	<div class="ssa-tab-container">
-		<div id="tabs">
-			<ul>
-				<li><a href="#tabs-1"><%=t 'governance'%></a></li>
-				<li><a href="#tabs-2"><%=t 'construction'%></a></li>
-				<li><a href="#tabs-3"><%=t 'verification'%></a></li>
-				<li><a href="#tabs-4"><%=t 'deployment'%></a></li>
-			</ul>
-			<div id="tabs-1">
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'sm-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'sm1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'sm2'%></td><td></td></tr>
-						<tr><td><%=t 'sm3'%></td><td></td></tr>
-						<tr><td><%=t 'sm4'%></td><td></td></tr>
-						<tr><td><%=t 'sm5'%></td><td></td></tr>
-						<tr><td><%=t 'sm6'%></td><td></td></tr>
-						<tr><td><%=t 'sm7'%></td><td></td></tr>
-						<tr><td><%=t 'sm8'%></td><td></td></tr>
-					</tbody>
-				</table></p>
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'pc-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'pc1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'pc2'%></td><td></td></tr>
-						<tr><td><%=t 'pc3'%></td><td></td></tr>
-						<tr><td><%=t 'pc4'%></td><td></td></tr>
-						<tr><td><%=t 'pc5'%></td><td></td></tr>
-						<tr><td><%=t 'pc6'%></td><td></td></tr>
-					</tbody>
-				</table></p>
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'eg-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'eg1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'eg2'%></td><td></td></tr>
-						<tr><td><%=t 'eg3'%></td><td></td></tr>
-						<tr><td><%=t 'eg4'%></td><td></td></tr>
-						<tr><td><%=t 'eg5'%></td><td></td></tr>
-						<tr><td><%=t 'eg6'%></td><td></td></tr>
-					</tbody>
-				</table></p>
-			</div>
-			<div id="tabs-2">
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'ta-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'ta1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'ta2'%></td><td></td></tr>
-						<tr><td><%=t 'ta3'%></td><td></td></tr>
-						<tr><td><%=t 'ta4'%></td><td></td></tr>
-						<tr><td><%=t 'ta5'%></td><td></td></tr>
-						<tr><td><%=t 'ta6'%></td><td></td></tr>
-						<tr><td><%=t 'ta7'%></td><td></td></tr>
-					</tbody>
-				</table></p>
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'sr-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'sr1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'sr2'%></td><td></td></tr>
-						<tr><td><%=t 'sr3'%></td><td></td></tr>
-						<tr><td><%=t 'sr4'%></td><td></td></tr>
-						<tr><td><%=t 'sr5'%></td><td></td></tr>
-						<tr><td><%=t 'sr6'%></td><td></td></tr>
-					</tbody>
-				</table></p>
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'sa-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'sa1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'sa2'%></td><td></td></tr>
-						<tr><td><%=t 'sa3'%></td><td></td></tr>
-						<tr><td><%=t 'sa4'%></td><td></td></tr>
-						<tr><td><%=t 'sa5'%></td><td></td></tr>
-						<tr><td><%=t 'sa6'%></td><td></td></tr>
-					</tbody>
-				</table></p>
-			</div>
-			<div id="tabs-3">
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'dr-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'dr1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'dr2'%></td><td></td></tr>
-						<tr><td><%=t 'dr3'%></td><td></td></tr>
-						<tr><td><%=t 'dr4'%></td><td></td></tr>
-						<tr><td><%=t 'dr5'%></td><td></td></tr>
-						<tr><td><%=t 'dr6'%></td><td></td></tr>
-					</tbody>
-				</table></p>
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'cr-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'cr1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'cr2'%></td><td></td></tr>
-						<tr><td><%=t 'cr3'%></td><td></td></tr>
-						<tr><td><%=t 'cr4'%></td><td></td></tr>
-						<tr><td><%=t 'cr5'%></td><td></td></tr>
-						<tr><td><%=t 'cr6'%></td><td></td></tr>
-					</tbody>
-				</table></p>
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'st-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'st1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'st2'%></td><td></td></tr>
-						<tr><td><%=t 'st3'%></td><td></td></tr>
-						<tr><td><%=t 'st4'%></td><td></td></tr>
-						<tr><td><%=t 'st5'%></td><td></td></tr>
-						<tr><td><%=t 'st6'%></td><td></td></tr>
-						<tr><td><%=t 'st7'%></td><td><td></tr>
-					</tbody>
-				</table></p>
-			</div>
-			<div id="tabs-4">
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'vm-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'vm1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'vm2'%></td><td></td></tr>
-						<tr><td><%=t 'vm3'%></td><td></td></tr>
-						<tr><td><%=t 'vm4'%></td><td></td></tr>
-						<tr><td><%=t 'vm5'%></td><td></td></tr>
-						<tr><td><%=t 'vm6'%></td><td></td></tr>
-						<tr><td><%=t 'vm7'%></td><td></td></tr>
-					</tbody>
-				</table></p>
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'eh-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'eh1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'eh2'%></td><td></td></tr>
-						<tr><td><%=t 'eh3'%></td><td></td></tr>
-						<tr><td><%=t 'eh4'%></td><td></td></tr>
-						<tr><td><%=t 'eh5'%></td><td></td></tr>
-						<tr><td><%=t 'eh6'%></td><td></td></tr>
-					</tbody>
-				</table></p>
-				<p><table class="jtable" style="width: 90%;"><caption><%=t 'oe-title'%></caption>
-					<thead>
-						<tr><th style="width: 80%;">Question</th><th style="width: 20%;"></td></tr>
-					</thead>
-					<tbody>
-						<tr><td><%=t 'oe1'%></td><td>Yo</td></tr>
-						<tr><td><%=t 'oe2'%></td><td></td></tr>
-						<tr><td><%=t 'oe3'%></td><td></td></tr>
-						<tr><td><%=t 'oe4'%></td><td></td></tr>
-						<tr><td><%=t 'oe5'%></td><td></td></tr>
-						<tr><td><%=t 'oe6'%></td><td></td></tr>
-					</tbody>
-				</table></p>
-			</div>
-		</div>
-</div>
-
-<div class="ast-footer">
-
-</div>	
