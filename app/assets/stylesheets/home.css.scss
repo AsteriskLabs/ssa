@@ -3,18 +3,73 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .jtable td {font-weight: bold;}
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	overflow-y: scroll;
+}
 body {
-	margin: 0 auto;
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
 	text-align: center;
 }
 #wrapper {
 	margin: 0 auto;
 	width: 960px;
 	position: relative;
+	padding: 0;
 }
-.ast-universalbar {}
+.ast-universalbar {
+	background: #222;
+	margin: 0 auto;
+	padding: 0;
+	height: 30px;
+}
 .ast-ub-title {
 	position: absolute;
 	top: 8px;
-	left: 2px;
+	left: 10px;
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: bold;
+	color: #cc0000;
+}
+.ast-ub-subtitle {
+	position: absolute;
+	top: 8px;
+	left: 200px;
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: bold;
+	color: #cc0000;
+}
+#ast-ub-options ul {
+	margin-left: 0;
+	padding-left: 0;
+	display: inline;
+	position: absolute;
+	top: 7px;
+	right: 40px;
+}
+#ast-ub-options li {
+	margin-left: 0;
+	padding: 0 12px;
+	/*border-left: 1px solid white;*/
+	list-style: none;
+	display: inline;
+}
+#ast-ub-options a {
+	color: #cc0000;
+	font-family: "Arial";
+	font-size: 12px;
+	font-weight: bold;
+	border-bottom: 1px solid #660000;
+	text-decoration: none;
+}
+#ast-ub-options a:hover {
+	text-decoration: none;
+	border-bottom: 1px solid #cc0000;
 }
