@@ -3,7 +3,8 @@
 
 en:
   hello: "Hello world"
-  ast-text: "There is some text that can go here"
+  ast-text: "Welcome to the *AST Samm Self Assessment, want to read more about OpenSAMM?"
+  ast-text-clickhere: "Click here"
   governance: "Governance"
   construction: "Construction"
   verification: "Verification"
