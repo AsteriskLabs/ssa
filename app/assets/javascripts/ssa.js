@@ -30,7 +30,7 @@ var Crunch = function(selector,start,middle,end) {
     localscore = 0;
     localcount = 0;
     for(var i = 1; i < start; i++) {
-        if ($('input#'+selector+i+'-check').attr('checked')) {
+        if ($('input#'+selector+i+'-check').prop('checked')) {
             localscore++;
         }
         localcount++;
@@ -43,7 +43,7 @@ var Crunch = function(selector,start,middle,end) {
     localscore = 0;
     localcount = 0;
     for (var i = start; i < middle; i++) {
-        if ($('input#'+selector+i+'-check').attr('checked')) {
+        if ($('input#'+selector+i+'-check').prop('checked')) {
             localscore++;
         }
         localcount++;
@@ -56,7 +56,7 @@ var Crunch = function(selector,start,middle,end) {
     localscore = 0;
     localcount = 0;
     for (var i = middle; i <= end; i++) {
-        if ($('input#'+selector+i+'-check').attr('checked')) {
+        if ($('input#'+selector+i+'-check').prop('checked')) {
             localscore++;
         }
         localcount++;
