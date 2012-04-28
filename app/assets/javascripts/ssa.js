@@ -25,9 +25,54 @@ var Crunch = function(selector,start,middle,end) {
     middle = typeof middle !== 'undefined' ? middle: 1;
     end = typeof end !== 'undefined' ? end : 1;
     /* Calculate full sections */
-    fullscore = 0;
-    tmpnotfull = 0;
+    totalfull = 0;
+    totalpartial = 0;
+    localscore = 0;
+    localcount = 0;
     for(var i = 1; i < start; i++) {
-        alert(selector+i+"-check = " + $('input#'+selector+i+'-check').attr('checked'));
+        if ($('input#'+selector+i+'-check').attr('checked')) {
+            localscore++;
+        }
+        localcount++;
     }
+    if (localscore == localcount) {
+        totalfull++;
+    } else if (localscore > 0) {
+        totalpartial++;
+    }
+    localscore = 0;
+    localcount = 0;
+    for (var i = start; i < middle; i++) {
+        if ($('input#'+selector+i+'-check').attr('checked')) {
+            localscore++;
+        }
+        localcount++;
+    }
+    if (localscore == localcount) {
+        totalfull++;
+    } else if (localscore > 0) {
+        totalpartial++;
+    }
+    localscore = 0;
+    localcount = 0;
+    for (var i = middle; i <= end; i++) {
+        if ($('input#'+selector+i+'-check').attr('checked')) {
+            localscore++;
+        }
+        localcount++;
+    }
+    if (localscore == localcount) {
+        totalfull++;
+    } else if (localscore > 0) {
+        totalpartial++;
+    }
+
+    output = "";
+    if (totalpartial > 0) {
+        output = totalfull + "+";
+    } else {
+        output = totalfull;
+    }
+
+    $('#'+selector+'-rating').text(output);
 };
