@@ -19,3 +19,15 @@ JTable.Setup = function() {
 JTable.SetupNewRows = function(rows) {
     $(rows).find('td').addClass('ui-widget-content');
 };
+
+var Crunch = function(selector,start,middle,end) {
+    start = typeof start !== 'undefined' ? start : 1;
+    middle = typeof middle !== 'undefined' ? middle: 1;
+    end = typeof end !== 'undefined' ? end : 1;
+    /* Calculate full sections */
+    fullscore = 0;
+    tmpnotfull = 0;
+    for(var i = 1; i < start; i++) {
+        alert(selector+i+"-check = " + $('input#'+selector+i+'-check').attr('checked'));
+    }
+};
