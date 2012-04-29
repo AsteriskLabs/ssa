@@ -20,6 +20,13 @@ JTable.SetupNewRows = function(rows) {
     $(rows).find('td').addClass('ui-widget-content');
 };
 
+var InsertPrettiness = function() {
+    /*This is to prettify up the tabs etc */
+    //$('a[href="#tabs-1"]').parent().css('background','black');
+    //$('#tabs').children('ul.ui-widget-header').css('background','blue');
+    //$('input#sm1-check').parent().parent().css('border-bottom','solid thin blue');
+};
+
 var Crunch = function(selector,start,middle,end) {
     start = typeof start !== 'undefined' ? start : 1;
     middle = typeof middle !== 'undefined' ? middle: 1;

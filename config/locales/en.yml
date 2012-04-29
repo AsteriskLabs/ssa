@@ -9,6 +9,7 @@ en:
   construction: "Construction"
   verification: "Verification"
   deployment: "Deployment"
+  scorecard: "Scorecard"
   sm-title: "Strategy & Metrics"
   sm1: "Is there a software security assurance program already in place?"
   sm2: "Do most of the business stakeholders understand your organization’s risk profile?"

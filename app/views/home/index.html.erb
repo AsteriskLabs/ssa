@@ -1,4 +1,7 @@
 <script>
+
+	var chart1;
+
 	$(document).ready(function() {
 		$("#tabs").tabs();
 		JTable.Setup();
@@ -7,6 +10,8 @@
 			event.preventDefault();
 			$('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
 		});
+
+		InsertPrettiness();
 
 		$('input[id^="sm"]').change(function() {
 			Crunch("sm",4,7,8);
@@ -44,6 +49,34 @@
 		$('input[id^="oe"]').change(function() {
 			Crunch("oe",3,5,6);
 		});
+
+		/* Chart */
+		chart1 = new Highcharts.Chart({
+			chart: {
+				renderTo: 'graphycontainer',
+				type: 'bar'
+			},
+			title: {
+				text: "Blah"
+			},
+			xAxis: {
+				categories: ['One','Two','Three']
+			},
+			yAxis: {
+				title: {
+					text: "Something"
+				}
+			},
+			series: [{
+				name: 'Jane',
+				data: [0,2,4]
+			}, {
+				name: 'john',
+				data: [1,2,3]
+			}]
+		});
+
+
 	});
 </script>
 
@@ -72,6 +105,7 @@
 					<li><a href="#tabs-2"><%=t 'construction'%></a></li>
 					<li><a href="#tabs-3"><%=t 'verification'%></a></li>
 					<li><a href="#tabs-4"><%=t 'deployment'%></a></li>
+					<li><a href="#tabs-5"><%=t 'scorecard'%></a></li>
 				</ul>
 				<div id="tabs-1">
 					<p><table class="jtable"><caption><%=t 'sm-title'%></caption>
@@ -79,12 +113,14 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'sm1'%></td><td class="checker"><input type="checkbox" id="sm1-check" /><label class="checker" for="sm1-check">Yes</label></td><td rowspan='8' class="rating" id="sm-rating">0</td></tr>
+							<tr><td><%=t 'sm1'%></td><td class="checker"><input type="checkbox" id="sm1-check" /><label class="checker" for="sm1-check">Yes</label></td><td rowspan='10' class="rating" id="sm-rating">0</td></tr>
 							<tr><td><%=t 'sm2'%></td><td class="checker"><input type="checkbox" id="sm2-check" /><label class="checker" for="sm2-check">Yes</label></td></tr>
 							<tr><td><%=t 'sm3'%></td><td class="checker"><input type="checkbox" id="sm3-check" /><label class="checker" for="sm3-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'sm4'%></td><td class="checker"><input type="checkbox" id="sm4-check" /><label class="checker" for="sm4-check">Yes</label></td></tr>
 							<tr><td><%=t 'sm5'%></td><td class="checker"><input type="checkbox" id="sm5-check" /><label class="checker" for="sm5-check">Yes</label></td></tr>
 							<tr><td><%=t 'sm6'%></td><td class="checker"><input type="checkbox" id="sm6-check" /><label class="checker" for="sm6-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'sm7'%></td><td class="checker"><input type="checkbox" id="sm7-check" /><label class="checker" for="sm7-check">Yes</label></td></tr>
 							<tr><td><%=t 'sm8'%></td><td class="checker"><input type="checkbox" id="sm8-check" /><label class="checker" for="sm8-check">Yes</label></td></tr>
 						</tbody>
@@ -94,10 +130,12 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'pc1'%></td><td class="checker"><input type="checkbox" id="pc1-check" /><label class="checker" for="pc1-check">Yes</label></td><td rowspan='6' class="rating" id="pc-rating">0</td></tr>
+							<tr><td><%=t 'pc1'%></td><td class="checker"><input type="checkbox" id="pc1-check" /><label class="checker" for="pc1-check">Yes</label></td><td rowspan='8' class="rating" id="pc-rating">0</td></tr>
 							<tr><td><%=t 'pc2'%></td><td class="checker"><input type="checkbox" id="pc2-check" /><label class="checker" for="pc2-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'pc3'%></td><td class="checker"><input type="checkbox" id="pc3-check" /><label class="checker" for="pc3-check">Yes</label></td></tr>
 							<tr><td><%=t 'pc4'%></td><td class="checker"><input type="checkbox" id="pc4-check" /><label class="checker" for="pc4-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'pc5'%></td><td class="checker"><input type="checkbox" id="pc5-check" /><label class="checker" for="pc5-check">Yes</label></td></tr>
 							<tr><td><%=t 'pc6'%></td><td class="checker"><input type="checkbox" id="pc6-check" /><label class="checker" for="pc6-check">Yes</label></td></tr>
 						</tbody>
@@ -107,10 +145,12 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'eg1'%></td><td class="checker"><input type="checkbox" id="eg1-check" /><label class="checker" for="eg1-check">Yes</label></td><td rowspan='6' class="rating" id="eg-rating">0</td></tr>
+							<tr><td><%=t 'eg1'%></td><td class="checker"><input type="checkbox" id="eg1-check" /><label class="checker" for="eg1-check">Yes</label></td><td rowspan='8' class="rating" id="eg-rating">0</td></tr>
 							<tr><td><%=t 'eg2'%></td><td class="checker"><input type="checkbox" id="eg2-check" /><label class="checker" for="eg2-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'eg3'%></td><td class="checker"><input type="checkbox" id="eg3-check" /><label class="checker" for="eg3-check">Yes</label></td></tr>
 							<tr><td><%=t 'eg4'%></td><td class="checker"><input type="checkbox" id="eg4-check" /><label class="checker" for="eg4-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'eg5'%></td><td class="checker"><input type="checkbox" id="eg5-check" /><label class="checker" for="eg5-check">Yes</label></td></tr>
 							<tr><td><%=t 'eg6'%></td><td class="checker"><input type="checkbox" id="eg6-check" /><label class="checker" for="eg6-check">Yes</label></td></tr>
 						</tbody>
@@ -122,11 +162,13 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'ta1'%></td><td class="checker"><input type="checkbox" id="ta1-check" /><label class="checker" for="ta1-check">Yes</label></td><td rowspan='7' class="rating" id="ta-rating">0</td></tr>
+							<tr><td><%=t 'ta1'%></td><td class="checker"><input type="checkbox" id="ta1-check" /><label class="checker" for="ta1-check">Yes</label></td><td rowspan='9' class="rating" id="ta-rating">0</td></tr>
 							<tr><td><%=t 'ta2'%></td><td class="checker"><input type="checkbox" id="ta2-check" /><label class="checker" for="ta2-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'ta3'%></td><td class="checker"><input type="checkbox" id="ta3-check" /><label class="checker" for="ta3-check">Yes</label></td></tr>
 							<tr><td><%=t 'ta4'%></td><td class="checker"><input type="checkbox" id="ta4-check" /><label class="checker" for="ta4-check">Yes</label></td></tr>
 							<tr><td><%=t 'ta5'%></td><td class="checker"><input type="checkbox" id="ta5-check" /><label class="checker" for="ta5-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'ta6'%></td><td class="checker"><input type="checkbox" id="ta6-check" /><label class="checker" for="ta6-check">Yes</label></td></tr>
 							<tr><td><%=t 'ta7'%></td><td class="checker"><input type="checkbox" id="ta7-check" /><label class="checker" for="ta7-check">Yes</label></td></tr>
 						</tbody>
@@ -136,10 +178,12 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'sr1'%></td><td class="checker"><input type="checkbox" id="sr1-check" /><label class="checker" for="sr1-check">Yes</label></td><td rowspan='6' class="rating" id="sr-rating">0</td></tr>
+							<tr><td><%=t 'sr1'%></td><td class="checker"><input type="checkbox" id="sr1-check" /><label class="checker" for="sr1-check">Yes</label></td><td rowspan='8' class="rating" id="sr-rating">0</td></tr>
 							<tr><td><%=t 'sr2'%></td><td class="checker"><input type="checkbox" id="sr2-check" /><label class="checker" for="sr2-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'sr3'%></td><td class="checker"><input type="checkbox" id="sr3-check" /><label class="checker" for="sr3-check">Yes</label></td></tr>
 							<tr><td><%=t 'sr4'%></td><td class="checker"><input type="checkbox" id="sr4-check" /><label class="checker" for="sr4-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'sr5'%></td><td class="checker"><input type="checkbox" id="sr5-check" /><label class="checker" for="sr5-check">Yes</label></td></tr>
 							<tr><td><%=t 'sr6'%></td><td class="checker"><input type="checkbox" id="sr6-check" /><label class="checker" for="sr6-check">Yes</label></td></tr>
 						</tbody>
@@ -149,10 +193,12 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'sa1'%></td><td class="checker"><input type="checkbox" id="sa1-check" /><label class="checker" for="sa1-check">Yes</label></td><td rowspan='6' class="rating" id="sa-rating">0</td></tr>
+							<tr><td><%=t 'sa1'%></td><td class="checker"><input type="checkbox" id="sa1-check" /><label class="checker" for="sa1-check">Yes</label></td><td rowspan='8' class="rating" id="sa-rating">0</td></tr>
 							<tr><td><%=t 'sa2'%></td><td class="checker"><input type="checkbox" id="sa2-check" /><label class="checker" for="sa2-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'sa3'%></td><td class="checker"><input type="checkbox" id="sa3-check" /><label class="checker" for="sa3-check">Yes</label></td></tr>
 							<tr><td><%=t 'sa4'%></td><td class="checker"><input type="checkbox" id="sa4-check" /><label class="checker" for="sa4-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'sa5'%></td><td class="checker"><input type="checkbox" id="sa5-check" /><label class="checker" for="sa5-check">Yes</label></td></tr>
 							<tr><td><%=t 'sa6'%></td><td class="checker"><input type="checkbox" id="sa6-check" /><label class="checker" for="sa6-check">Yes</label></td></tr>
 						</tbody>
@@ -164,10 +210,12 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'dr1'%></td><td class="checker"><input type="checkbox" id="dr1-check" /><label class="checker" for="dr1-check">Yes</label></td><td rowspan='6' class="rating" id="dr-rating">0</td></tr>
+							<tr><td><%=t 'dr1'%></td><td class="checker"><input type="checkbox" id="dr1-check" /><label class="checker" for="dr1-check">Yes</label></td><td rowspan='8' class="rating" id="dr-rating">0</td></tr>
 							<tr><td><%=t 'dr2'%></td><td class="checker"><input type="checkbox" id="dr2-check" /><label class="checker" for="dr2-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'dr3'%></td><td class="checker"><input type="checkbox" id="dr3-check" /><label class="checker" for="dr3-check">Yes</label></td></tr>
 							<tr><td><%=t 'dr4'%></td><td class="checker"><input type="checkbox" id="dr4-check" /><label class="checker" for="dr4-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'dr5'%></td><td class="checker"><input type="checkbox" id="dr5-check" /><label class="checker" for="dr5-check">Yes</label></td></tr>
 							<tr><td><%=t 'dr6'%></td><td class="checker"><input type="checkbox" id="dr6-check" /><label class="checker" for="dr6-check">Yes</label></td></tr>
 						</tbody>
@@ -177,10 +225,12 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'cr1'%></td><td class="checker"><input type="checkbox" id="cr1-check" /><label class="checker" for="cr1-check">Yes</label></td><td rowspan='6' class="rating" id="cr-rating">0</td></tr>
+							<tr><td><%=t 'cr1'%></td><td class="checker"><input type="checkbox" id="cr1-check" /><label class="checker" for="cr1-check">Yes</label></td><td rowspan='8' class="rating" id="cr-rating">0</td></tr>
 							<tr><td><%=t 'cr2'%></td><td class="checker"><input type="checkbox" id="cr2-check" /><label class="checker" for="cr2-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'cr3'%></td><td class="checker"><input type="checkbox" id="cr3-check" /><label class="checker" for="cr3-check">Yes</label></td></tr>
 							<tr><td><%=t 'cr4'%></td><td class="checker"><input type="checkbox" id="cr4-check" /><label class="checker" for="cr4-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'cr5'%></td><td class="checker"><input type="checkbox" id="cr5-check" /><label class="checker" for="cr5-check">Yes</label></td></tr>
 							<tr><td><%=t 'cr6'%></td><td class="checker"><input type="checkbox" id="cr6-check" /><label class="checker" for="cr6-check">Yes</label></td></tr>
 						</tbody>
@@ -190,11 +240,13 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'st1'%></td><td class="checker"><input type="checkbox" id="st1-check" /><label class="checker" for="st1-check">Yes</label></td><td rowspan='7' class="rating" id="st-rating">0</td></tr>
+							<tr><td><%=t 'st1'%></td><td class="checker"><input type="checkbox" id="st1-check" /><label class="checker" for="st1-check">Yes</label></td><td rowspan='9' class="rating" id="st-rating">0</td></tr>
 							<tr><td><%=t 'st2'%></td><td class="checker"><input type="checkbox" id="st2-check" /><label class="checker" for="st2-check">Yes</label></td></tr>
 							<tr><td><%=t 'st3'%></td><td class="checker"><input type="checkbox" id="st3-check" /><label class="checker" for="st3-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'st4'%></td><td class="checker"><input type="checkbox" id="st4-check" /><label class="checker" for="st4-check">Yes</label></td></tr>
 							<tr><td><%=t 'st5'%></td><td class="checker"><input type="checkbox" id="st5-check" /><label class="checker" for="st5-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'st6'%></td><td class="checker"><input type="checkbox" id="st6-check" /><label class="checker" for="st6-check">Yes</label></td></tr>
 							<tr><td><%=t 'st7'%></td><td class="checker"><input type="checkbox" id="st7-check" /><label class="checker" for="st7-check">Yes</label><td></tr>
 						</tbody>
@@ -206,11 +258,13 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'vm1'%></td><td class="checker"><input type="checkbox" id="vm1-check" /><label class="checker" for="vm1-check">Yes</label></td><td rowspan='7' class="rating" id="vm-rating">0</td></tr>
+							<tr><td><%=t 'vm1'%></td><td class="checker"><input type="checkbox" id="vm1-check" /><label class="checker" for="vm1-check">Yes</label></td><td rowspan='9' class="rating" id="vm-rating">0</td></tr>
 							<tr><td><%=t 'vm2'%></td><td class="checker"><input type="checkbox" id="vm2-check" /><label class="checker" for="vm2-check">Yes</label></td></tr>
 							<tr><td><%=t 'vm3'%></td><td class="checker"><input type="checkbox" id="vm3-check" /><label class="checker" for="vm3-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'vm4'%></td><td class="checker"><input type="checkbox" id="vm4-check" /><label class="checker" for="vm4-check">Yes</label></td></tr>
 							<tr><td><%=t 'vm5'%></td><td class="checker"><input type="checkbox" id="vm5-check" /><label class="checker" for="vm5-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'vm6'%></td><td class="checker"><input type="checkbox" id="vm6-check" /><label class="checker" for="vm6-check">Yes</label></td></tr>
 							<tr><td><%=t 'vm7'%></td><td class="checker"><input type="checkbox" id="vm7-check" /><label class="checker" for="vm7-check">Yes</label></td></tr>
 						</tbody>
@@ -220,10 +274,12 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'eh1'%></td><td class="checker"><input type="checkbox" id="eh1-check" /><label class="checker" for="eh1-check">Yes</label></td><td rowspan='6' class="rating" id="eh-rating">0</td></tr>
+							<tr><td><%=t 'eh1'%></td><td class="checker"><input type="checkbox" id="eh1-check" /><label class="checker" for="eh1-check">Yes</label></td><td rowspan='8' class="rating" id="eh-rating">0</td></tr>
 							<tr><td><%=t 'eh2'%></td><td class="checker"><input type="checkbox" id="eh2-check" /><label class="checker" for="eh2-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'eh3'%></td><td class="checker"><input type="checkbox" id="eh3-check" /><label class="checker" for="eh3-check">Yes</label></td></tr>
 							<tr><td><%=t 'eh4'%></td><td class="checker"><input type="checkbox" id="eh4-check" /><label class="checker" for="eh4-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'eh5'%></td><td class="checker"><input type="checkbox" id="eh5-check" /><label class="checker" for="eh5-check">Yes</label></td></tr>
 							<tr><td><%=t 'eh6'%></td><td class="checker"><input type="checkbox" id="eh6-check" /><label class="checker" for="eh6-check">Yes</label></td></tr>
 						</tbody>
@@ -233,14 +289,19 @@
 							<tr><th style="width: 80%;">Question</th><th class="checker">Response</th><th class="rating">Rating</th></tr>
 						</thead>
 						<tbody>
-							<tr><td><%=t 'oe1'%></td><td class="checker"><input type="checkbox" id="oe1-check" /><label class="checker" for="oe1-check">Yes</label></td><td rowspan='6' class="rating" id="oe-rating">0</td></tr>
+							<tr><td><%=t 'oe1'%></td><td class="checker"><input type="checkbox" id="oe1-check" /><label class="checker" for="oe1-check">Yes</label></td><td rowspan='8' class="rating" id="oe-rating">0</td></tr>
 							<tr><td><%=t 'oe2'%></td><td class="checker"><input type="checkbox" id="oe2-check" /><label class="checker" for="oe2-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'oe3'%></td><td class="checker"><input type="checkbox" id="oe3-check" /><label class="checker" for="oe3-check">Yes</label></td></tr>
 							<tr><td><%=t 'oe4'%></td><td class="checker"><input type="checkbox" id="oe4-check" /><label class="checker" for="oe4-check">Yes</label></td></tr>
+							<tr class="thinlizzy"><td colspan="2"></td></tr>
 							<tr><td><%=t 'oe5'%></td><td class="checker"><input type="checkbox" id="oe5-check" /><label class="checker" for="oe5-check">Yes</label></td></tr>
 							<tr><td><%=t 'oe6'%></td><td class="checker"><input type="checkbox" id="oe6-check" /><label class="checker" for="oe6-check">Yes</label></td></tr>
 						</tbody>
 					</table></p>
+				</div>
+				<div id="tabs-5">
+					<div id="graphycontainer" style="width: 400px; height: 400px"></div>
 				</div>
 			</div>
 		</div>
