@@ -1,6 +1,34 @@
 <script>
 
 	var chart1;
+	var chartvals = {
+		smc: "0",
+		smt: "3",
+		pcc: "0",
+		pct: "3",
+		egc: "0",
+		egt: "3",
+		tac: "0",
+		tat: "3",
+		src: "0",
+		srt: "3",
+		sac: "0",
+		sat: "3",
+		drc: "0",
+		drt: "3",
+		crc: "0",
+		crt: "3",
+		stc: "0",
+		stt: "3",
+		vmc: "0",
+		vmt: "3",
+		ehc: "0",
+		eht: "3",
+		oec: "0",
+		oet: "3"
+	}
+
+
 
 	$(document).ready(function() {
 		$("#tabs").tabs();
@@ -11,71 +39,35 @@
 			$('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
 		});
 
-		InsertPrettiness();
+		MakeCheckboxesAwes();
 
-		$('input[id^="sm"]').change(function() {
-			Crunch("sm",4,7,8);
-		});
-		$('input[id^="pc"]').change(function() {
-			Crunch("pc",3,5,6);
-		});
-		$('input[id^="eg"]').change(function() {
-			Crunch("eg",3,5,6);
-		});
-		$('input[id^="ta"]').change(function() {
-			Crunch("ta",3,6,7);
-		});
-		$('input[id^="sr"]').change(function() {
-			Crunch("sr",3,5,6);
-		});
-		$('input[id^="sa"]').change(function() {
-			Crunch("sa",3,5,6);
-		});
-		$('input[id^="dr"]').change(function() {
-			Crunch("dr",3,5,6);
-		});
-		$('input[id^="cr"]').change(function() {
-			Crunch("cr",3,5,6);
-		});
-		$('input[id^="st"]').change(function() {
-			Crunch("st",4,6,7);
-		});
-		$('input[id^="vm"]').change(function() {
-			Crunch("vm",4,6,7);
-		});
-		$('input[id^="eh"]').change(function() {
-			Crunch("eh",3,5,6);
-		});
-		$('input[id^="oe"]').change(function() {
-			Crunch("oe",3,5,6);
-		});
+		charttitles = {
+			scorecard: '<%= raw t('scorecard') %>',
+			smtitle: '<%= raw t('sm-title') %>',
+			pctitle: '<%= raw t('pc-title') %>',
+			egtitle: '<%= raw t('eg-title') %>',
+			tatitle: '<%= raw t('ta-title') %>',
+			srtitle: '<%= raw t('sr-title') %>',
+			satitle: '<%= raw t('sa-title') %>',
+			drtitle: '<%= raw t('dr-title') %>',
+			crtitle: '<%= raw t('cr-title') %>',
+			sttitle: '<%= raw t('st-title') %>',
+			vmtitle: '<%= raw t('vm-title') %>',
+			ehtitle: '<%= raw t('eh-title') %>',
+			oetitle: '<%= raw t('oe-title') %>',
+			current: '<%= raw t('current') %>',
+			target: '<%= raw t('target') %>'
+		}
 
-		/* Chart */
-		chart1 = new Highcharts.Chart({
-			chart: {
-				renderTo: 'graphycontainer',
-				type: 'bar'
-			},
-			title: {
-				text: "Blah"
-			},
-			xAxis: {
-				categories: ['One','Two','Three']
-			},
-			yAxis: {
-				title: {
-					text: "Something"
-				}
-			},
-			series: [{
-				name: 'Jane',
-				data: [0,2,4]
-			}, {
-				name: 'john',
-				data: [1,2,3]
-			}]
-		});
 
+		
+		GoChartGo(chart1,charttitles,chartvals);
+
+		$('#tabs').bind("tabsshow", function(event, ui) {
+			if (ui.index == 4) {
+				GoChartGo(chart1,charttitles,chartvals);
+			}
+		});
 
 	});
 </script>
@@ -301,7 +293,7 @@
 					</table></p>
 				</div>
 				<div id="tabs-5">
-					<div id="graphycontainer" style="width: 400px; height: 400px"></div>
+					<div id="graphycontainer"></div>
 				</div>
 			</div>
 		</div>
