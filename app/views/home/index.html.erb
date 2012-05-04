@@ -28,7 +28,23 @@
 		oet: "3"
 	}
 
-
+	var charttitles = {
+		scorecard: '<%= raw t('scorecard') %>',
+		smtitle: '<%= raw t('sm-title') %>',
+		pctitle: '<%= raw t('pc-title') %>',
+		egtitle: '<%= raw t('eg-title') %>',
+		tatitle: '<%= raw t('ta-title') %>',
+		srtitle: '<%= raw t('sr-title') %>',
+		satitle: '<%= raw t('sa-title') %>',
+		drtitle: '<%= raw t('dr-title') %>',
+		crtitle: '<%= raw t('cr-title') %>',
+		sttitle: '<%= raw t('st-title') %>',
+		vmtitle: '<%= raw t('vm-title') %>',
+		ehtitle: '<%= raw t('eh-title') %>',
+		oetitle: '<%= raw t('oe-title') %>',
+		current: '<%= raw t('current') %>',
+		target: '<%= raw t('target') %>'
+	}
 
 	$(document).ready(function() {
 		$("#tabs").tabs();
@@ -41,26 +57,6 @@
 
 		MakeCheckboxesAwes();
 
-		charttitles = {
-			scorecard: '<%= raw t('scorecard') %>',
-			smtitle: '<%= raw t('sm-title') %>',
-			pctitle: '<%= raw t('pc-title') %>',
-			egtitle: '<%= raw t('eg-title') %>',
-			tatitle: '<%= raw t('ta-title') %>',
-			srtitle: '<%= raw t('sr-title') %>',
-			satitle: '<%= raw t('sa-title') %>',
-			drtitle: '<%= raw t('dr-title') %>',
-			crtitle: '<%= raw t('cr-title') %>',
-			sttitle: '<%= raw t('st-title') %>',
-			vmtitle: '<%= raw t('vm-title') %>',
-			ehtitle: '<%= raw t('eh-title') %>',
-			oetitle: '<%= raw t('oe-title') %>',
-			current: '<%= raw t('current') %>',
-			target: '<%= raw t('target') %>'
-		}
-
-
-		
 		GoChartGo(chart1,charttitles,chartvals);
 
 		$('#tabs').bind("tabsshow", function(event, ui) {
@@ -69,13 +65,17 @@
 			}
 		});
 
+		$('#targetselectah').on('change',function() {
+			SelectTarget($(this).attr('value'));
+		});
+
 	});
 </script>
 
 <div id="ast-universalbar">
 	<div class="limiter">
 		<div id="ast-ub-title"><span class="star">*</span> Asterisk Security Toolset</div>
-		<div id="ast-ub-subtitle">SAMM Self Assessment</div>
+		<div id="ast-ub-subtitle"><a href="/">SAMM Self Assessment</a></div>
 		<div id="ast-ub-options">
 			<ul>
 				<li><a href="#about" class="scroll">About</a></li>
@@ -293,16 +293,23 @@
 					</table></p>
 				</div>
 				<div id="tabs-5">
-					<div id="graphycontainer"></div>
+					<p class="centralise"><select id="targetselectah">
+						<option value="start" selected="selected">Default</option>
+						<option value="independentsoftwarevendor"><%=t 'independentsoftwarevendor' %></option>
+						<option value="onlineserviceprovider"><%=t 'onlineserviceprovider' %></option>
+						<option value="financialservicesorganisation"><%=t 'financialservicesorganisation' %></option>
+						<option value="governmentorganisation"><%=t 'governmentorganisation' %></option>
+					</select></p>
+					<p class="centralise"><div id="graphycontainer"></div></p>
 				</div>
 			</div>
 		</div>
 		<h1 class="ast-title"><div id="about">About</div></h1>
-		<p class="ast-text">This is where the about text will live</p>
+		<p class="ast-text"><%= raw t('abouttext') %></p>
 		<p class="ast-text"><a href="#ast-universalbar" class="scroll">Back to top</a></p>
 
 		<h1 class="ast-title"><div id="ast">Asterisk Security Toolset</div></h1>
-		<p class="ast-text">This is text about the AST</p>
+		<p class="ast-text"><%= raw t('astabouttext') %></p>
 		<p class="ast-text"><a href="#ast-universalbar" class="scroll">Back to top</a></p>
 	</div>		
 </div>
