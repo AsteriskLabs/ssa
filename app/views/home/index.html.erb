@@ -69,13 +69,31 @@
 			SelectTarget($(this).attr('value'));
 		});
 
+		$('#refreshlink').on('click',function() {
+			$('#dialog-confirm').dialog({
+				resizable: false,
+				height: 140,
+				width: 350,
+				modal: true,
+				buttons: {
+					"Refresh the page": function() {
+						$(this).dialog("close");
+						location.reload();
+					},
+					Cancel: function() {
+						$(this).dialog("close");
+					}
+				}
+			});
+		});
+
 	});
 </script>
 
 <div id="ast-universalbar">
 	<div class="limiter">
 		<div id="ast-ub-title"><span class="star">*</span> Asterisk Security Toolset</div>
-		<div id="ast-ub-subtitle"><a href="/">SAMM Self Assessment</a></div>
+		<div id="ast-ub-subtitle"><a href="#" title="Refresh" id="refreshlink">SAMM Self Assessment</a></div>
 		<div id="ast-ub-options">
 			<ul>
 				<li><a href="#about" class="scroll">About</a></li>
@@ -312,6 +330,10 @@
 		<p class="ast-text"><%= raw t('astabouttext') %></p>
 		<p class="ast-text"><a href="#ast-universalbar" class="scroll">Back to top</a></p>
 	</div>		
+</div>
+
+<div id="dialog-confirm" title="<%=t 'dialogtitle' %>">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin: 0 7px 20px 0;"></span><%=t 'dialogbody' %></p>
 </div>
 
 <div class="ast-footer">
