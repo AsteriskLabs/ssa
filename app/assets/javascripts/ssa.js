@@ -1,3 +1,4 @@
+// The following is for prettifying up the tables, after jqueryui makes them butt-crack ugly.
 var JTable = function() {};
 JTable.Setup = function() {
     var table = $('.jtable');
@@ -22,13 +23,15 @@ JTable.SetupNewRows = function(rows) {
 
 var InsertPrettiness = function() {
     /*This is to prettify up the tabs etc */
+    //Looks like I didn't end up using any of this, I should probably remove it huh?
     //$('a[href="#tabs-1"]').parent().css('background','black');
     //$('#tabs').children('ul.ui-widget-header').css('background','blue');
     //$('input#sm1-check').parent().parent().css('border-bottom','solid thin blue');
 };
 
 
-
+//This gets applied as the 'onchange' method to the 'assessment' checkboxes
+//Look at the values for that particular section, and asssign an appropriate rating
 var Crunch = function(selector,start,middle,end) {
     start = typeof start !== 'undefined' ? start : 1;
     middle = typeof middle !== 'undefined' ? middle: 1;
@@ -87,6 +90,9 @@ var Crunch = function(selector,start,middle,end) {
     chartvals[selector+'c'] = output;
 };
 
+//This simply updates all the assessment checkboxes and applies the Crunch method to the onchange events.
+//You can see that Crunch takes the section label, and three values. These are used to determine the split
+//between 0, 0+, 1, 1+, 2, 2+, 3
 var MakeCheckboxesAwes = function() {
     $('input[id^="sm"]').change(function() {
         Crunch("sm",4,7,8);
@@ -126,6 +132,7 @@ var MakeCheckboxesAwes = function() {
     });
 };
 
+//Convert the string rating score into an int
 var ConvertValsToRaw = function(val) {
     switch(val.toString())
     {
@@ -156,6 +163,7 @@ var ConvertValsToRaw = function(val) {
     };
 };
 
+//Convert a raw int into the string rating
 var ConvertRawToVals = function(raw) {
     switch(raw)
     {
@@ -186,6 +194,7 @@ var ConvertRawToVals = function(raw) {
     };
 };
 
+//Update the chart with values and redraw it - zing!
 var GoChartGo = function(somechart,sometitles,somevals) {
     rawvals = {
         smc: ConvertValsToRaw(somevals['smc']),
@@ -379,6 +388,7 @@ var GoChartGo = function(somechart,sometitles,somevals) {
     }); 
 }; 
 
+//This is the method which stores the pre-canned target templates
 var SelectTarget = function(businesstype) {
     targetoptions = {
         start: {
@@ -467,4 +477,143 @@ var SelectTarget = function(businesstype) {
     chartvals['oet'] = targetoptions[businesstype]['oet'];
 
     GoChartGo(chart1,charttitles,chartvals);
+};
+
+//Pop up the response dialog, with a simple message
+var ShowResponseDialog = function(msg) {
+    if ($('#user-dialog').dialog("isOpen")) {
+        $('#user-dialog').dialog("close");
+        $('#user-dialog').dialog("destroy");
+    }
+    $('#user-dialog').attr("title","Notice");
+    $('#user-dialog').dialog({
+        resizable: false,
+        height: 300,
+        width: 400,
+        modal: true,
+        open: function(event,ui) {
+            $('#user-dialog > p').text(msg);
+        },
+        buttons: {
+            "Ok": function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+};
+
+//Pop up the Sign Up dialog
+var ShowSignUpDialog = function(url) {
+    if ($('#user-dialog').dialog("isOpen")) {
+        $('#user-dialog').dialog("close");
+        $('#user-dialog').dialog("destroy");
+    }
+    $('#user-dialog').attr("title","Sign Up");
+    $('#user-dialog').dialog({
+        resizable: false,
+        height: 300,
+        width: 400,
+        modal: true,
+        open: function(event,ui) {
+            $('#user-dialog > p').load(url);
+        },
+        buttons: {
+            "Sign Up": function() {
+                $.post($('#new_user').attr('action'),
+                    {
+                        utf8: $('#new_user > div > input[name=utf8]').val(),
+                        authenticity_token: $('#new_user > div > input[name=authenticity_token]').val(),
+                        user: {
+                            email: $('#new_user > div > input#user_email').val(),
+                            password: $('#new_user > div > input#user_password').val(),
+                            password_confirmation: $('#new_user > div > input#user_password_confirmation').val()
+                        }
+                    },
+                    function(data) {
+                        if ((data['error'] == "Success") && (data['message'] == "Not logged in")) {
+                            ShowResponseDialog("Check your email to verify your account");
+                        } else if (data['error'] == "Failed") {
+                            ShowResponseDialog("Looks like something went wrong");
+                        };
+                    },
+                    'json'
+                );
+            },
+            Cancel: function() {
+                $(this).dialog("close");
+            }
+        },
+        close: function() {
+            //alert('hi');
+        }
+    });
+};
+
+//Pop up the Login dialog
+var ShowLoginDialog = function(url) {
+    if ($('#user-dialog').dialog("isOpen")) {
+        $('#user-dialog').dialog("close");
+        $('#user-dialog').dialog("destroy");
+    }
+    $('#user-dialog').attr("title","Login");
+    $('#user-dialog').dialog({
+        resizable: false,
+        height: 300,
+        width: 400,
+        modal: true,
+        open: function(event,ui) {
+            $('#user-dialog > p').load(url);
+        },
+        buttons: {
+            "Login": function() {
+                var jxhr = $.post($('#new_user').attr('action'),
+                    {
+                        utf8: $('#new_user > div > input[name=utf8]').val(),
+                        authenticity_token: $('#new_user > div > input[name=authenticity_token]').val(),
+                        user: {
+                            email: $('#new_user > div > input#user_email').val(),
+                            password: $('#new_user > div > input#user_password').val(),
+                            remember_me: $('#new_user > div > input#remember_me').val()
+                        }
+                    },
+                    function(data) {
+                        if (data['error'] == "Success") {
+                            location.reload();
+                        };
+                    },
+                    'json'
+                )
+                .error(function() {
+                    ShowResponseDialog("Looks like something went wrong");
+                });
+            },
+            Cancel: function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+};
+
+//This logic takes in userstate (propogated from the controller) and updates
+//the top bar, login, or logout or whatever
+var UserDialogSetup = function(userstate) {
+    userstate = typeof userstate !== 'undefined' ? userstate : { 'status': 0, 'signupurl': '/sign_up', 'loginurl': '/login' }; 
+
+    if (userstate['status'] == 0) {    
+        // Therefore the clickable link will pop the "Sign In" page
+
+        $('#ast-ub-options > ul').prepend('<li><a href="#" id="signuplink">Sign Up</a></li>');
+        $('#ast-ub-options > ul').prepend('<li><a href="#" id="loginlink">Login</a></li>');
+        
+        $('#signuplink').on("click",function() {
+            ShowSignUpDialog(userstate['signupurl']);
+        });
+
+        $('#loginlink').on("click",function() {
+            ShowLoginDialog(userstate['loginurl']);
+        });
+    } else if (userstate['status'] == 1) {
+        $('#ast-ub-options > ul').prepend('<li><a href="' + userstate['logouturl'] + '" data-method="delete" rel="nofollow">Logout</a></li>');
+        $('#ast-ub-options > ul').prepend('<li>Hi ' + userstate['email'] + '</li>');
+    }
 };

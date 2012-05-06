@@ -1,4 +1,29 @@
 Ssa::Application.routes.draw do
+  # I honestly don't know why I need this next line, considering I'm skipping the rest?
+  devise_for :users, :skip => [:sessions,:registrations,:passwords,:confirmations]
+  
+  devise_scope :user do
+    get '/login' => 'devise/sessions#new', :as => :new_user_session
+    post '/login' => 'jsonsession#create', :as => :user_session
+    delete '/logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+
+    get '/sign_up' => 'devise/registrations#new', :as => :new_user_registration
+    post '/sign_up' => 'jsonuser#create', :as => :user_registration
+    put '/sign_up' => 'devise/registrations#update'
+    get '/sign_up/edit' => 'devise/registrations#edit', :as => :edit_user_registration
+    get '/sign_up/cancel' => 'devise/registrations#cancel', :as => :cancel_user_registration
+    delete '/sign_up' => 'devise/registrations#destroy'
+
+    get '/password/new' => 'devise/passwords#new', :as => :new_user_password
+    post '/password' => 'devise/passwords#create', :as => :user_password
+    get '/password/edit' => 'devise/passwords#edit', :as => :edit_user_password
+    put '/password' => 'devise/passwords#update'
+
+    get '/confirm/new' => 'devise/confirmations#new', :as => :new_user_confirmation
+    post '/confirm' => 'devise/confirmations#create', :as => :user_confirmation
+    get '/confirm' => 'devise/confirmations#show'
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
