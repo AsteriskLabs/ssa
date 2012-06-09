@@ -1,4 +1,6 @@
 Ssa::Application.routes.draw do
+  #devise_for :users
+
   # I honestly don't know why I need this next line, considering I'm skipping the rest?
   devise_for :users, :skip => [:sessions,:registrations,:passwords,:confirmations]
   
@@ -15,12 +17,12 @@ Ssa::Application.routes.draw do
     delete '/sign_up' => 'devise/registrations#destroy'
 
     get '/password/new' => 'devise/passwords#new', :as => :new_user_password
-    post '/password' => 'devise/passwords#create', :as => :user_password
+    post '/password' => 'jsonpassword#create', :as => :user_password
     get '/password/edit' => 'devise/passwords#edit', :as => :edit_user_password
-    put '/password' => 'devise/passwords#update'
+    post '/password/edit' => 'devise/passwords#update', :as => :edit_user_password_submit
 
     get '/confirm/new' => 'devise/confirmations#new', :as => :new_user_confirmation
-    post '/confirm' => 'devise/confirmations#create', :as => :user_confirmation
+    post '/confirm' => 'jsonconfirmation#create', :as => :user_confirmation
     get '/confirm' => 'devise/confirmations#show'
   end
 

@@ -594,6 +594,95 @@ var ShowLoginDialog = function(url) {
     });
 };
 
+//Show the reconfirm dialog (if they didn't get the email from their signup)
+var ShowConfirmationDialog = function(url) {
+    if ($('#user-dialog').dialog("isOpen")) {
+        $('#user-dialog').dialog("close");
+        $('#user-dialog').dialog("destroy");
+    }
+    $('#user-dialog').attr("title","Confirmation");
+    $('#user-dialog').dialog({
+        resizable: false,
+        height: 300,
+        width: 400,
+        modal: true,
+        open: function(event,ui) {
+            $('#user-dialog > p').load(url);
+        },
+        buttons: {
+            "Resend Confirmation Instructions": function() {
+                var jxhr = $.post($('#new_user').attr('action'),
+                    {
+                        utf8: $('#new_user > div > input[name=utf8]').val(),
+                        authenticity_token: $('#new_user > div > input[name=authenticity_token]').val(),
+                        user: {
+                            email: $('#new_user > div > input#user_email').val()
+                        }
+                    },
+                    function(data) {
+                        if (data['error'] == "Success") {
+                            ShowResponseDialog("Check your email to verify your account");
+                        } else {
+                            ShowResponseDialog("Something went ba-bow");
+                        };
+                    },
+                    'json'
+                )
+                .error(function() {
+                    ShowResponseDialog("Looks like something went wrong");
+                });
+            },
+            Cancel: function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+};
+
+var ShowPasswordResetDialog = function(url) {
+    if ($('#user-dialog').dialog("isOpen")) {
+        $('#user-dialog').dialog("close");
+        $('#user-dialog').dialog("destroy");
+    }
+    $('#user-dialog').attr("title","Forgotten Password")
+    $('#user-dialog').dialog({
+        resizable: false,
+        height: 300,
+        width: 400,
+        modal: true,
+        open: function(event,ui) {
+            $('#user-dialog > p').load(url);
+        },
+        buttons: {
+            "Send Password Reset Instructions": function() {
+                var jxhr = $.post($('#new_user').attr('action'),
+                    {
+                        utf8: $('#new_user > div > input[name=utf8]').val(),
+                        authenticity_token: $('#new_user > div > input[name=authenticity_token]').val(),
+                        user: {
+                            email: $('#new_user > div > input#user_email').val()
+                        }
+                    },
+                    function(data) {
+                        if (data['error'] == "Success") {
+                            ShowResponseDialog("Check your email for password reset instructions");
+                        } else {
+                            ShowResponseDialog("Wa waaaaa");
+                        };
+                    },
+                    'json'
+                )
+                .error(function() {
+                    ShowResponseDialog("Looks like something went wrong");
+                });
+            },
+            Cancel: function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+};
+
 //This logic takes in userstate (propogated from the controller) and updates
 //the top bar, login, or logout or whatever
 var UserDialogSetup = function(userstate) {

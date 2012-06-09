@@ -18,11 +18,21 @@
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+  <a href="#" id="linkspasswordlink">Forgot your password?</a><br />
+  <script>
+    $('#linkspasswordlink').on("click", function() {
+      ShowPasswordResetDialog('<%= new_user_password_path %>');
+    });
+  </script>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <a href="#" id="linksunlocklink">Didn't receive confirmation instructions?</a><br />
+  <script>
+    $('#linksunlocklink').on("click", function() {
+      ShowConfirmationDialog('<%= new_user_confirmation_path %>')
+    });
+   </script>
 <% end -%>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
