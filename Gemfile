@@ -5,11 +5,11 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#gem 'pg'
+gem 'pg'
 gem 'thin'
 gem 'asset_sync'
-gem 'mongoid', '~> 2.4'
-gem 'bson_ext', '~> 1.5'
+#gem 'mongoid', '~> 2.4'
+#gem 'bson_ext', '~> 1.5'
 gem 'devise'
 
 
