@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Ssa::Application.config.secret_token = 'f78ebc7a6cd2d05baed5013db92ed81d1c3a997ca619d6f19f28c4893be708136f6cb9545230674f47da52219c115aa334a76b86eb80e119820da5e6e77b36b6'
+Ssa::Application.config.secret_token = '0eb74320cc7fc119db1ddec1822aa5d2edc5be134826261577624b59ce8e53d586d9507a415984c62ebdc21db0f388832a49a2d2c602721db927deb8f1b13a67'

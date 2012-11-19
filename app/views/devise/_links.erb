@@ -12,6 +12,14 @@
 	<a href="#" id="linkssignuplink">Sign Up instead?</a><br />
 	<script>
 		$('#linkssignuplink').on("click", function() {
+      $('.ui-dialog-content').each(function(i) {
+      if (i.is(':data(dialog)')) {
+          i.dialog('close');
+          i.dialog('destroy');
+        }
+      });
+      // $('.ui-dialog-content').dialog('close');
+      // $('.ui-dialog-content').dialog('destroy');
 			ShowSignUpDialog('<%= new_user_registration_path %>');
 		});
 	</script>
@@ -35,9 +43,7 @@
    </script>
 <% end -%>
 
-<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
-<% end -%>
+<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %> <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br /> <% end -%>
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>

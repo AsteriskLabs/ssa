@@ -101,7 +101,10 @@
 			});
 		}
 
-		UserDialogSetup(<%= raw @user_status %>);
+		var userDialogObj = $( "#user-dialog" ).dialog({ autoOpen: false });
+		$('#signup-dialog').dialog({autoOpen: false});
+
+		UserDialogSetup(<%= raw @user_status %>,userDialogObj);
 
 	});
 </script>
@@ -353,6 +356,10 @@
 </div>
 
 <div id="user-dialog" style="display: none;">
+	<p></p>
+</div>
+
+<div id="signup-dialog" style="display: none;">
 	<p></p>
 </div>
 

@@ -1,11 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-#require 'action_controller/railtie'
-#require 'action_mailer/railtie'
-#require 'active_resource/railtie'
-#require 'rails/test_unit/railtie'
-#require 'sprockets/railtie'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -28,7 +23,7 @@ module Ssa
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
     # Activate observers that should always be running.
-    #config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+    # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
@@ -43,6 +38,9 @@ module Ssa
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Enable escaping HTML in JSON.
+    config.active_support.escape_html_entities_in_json = true
 
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
@@ -60,16 +58,5 @@ module Ssa
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-
-    # As per devise installer intstructions
-    config.assets.initialize_on_precompile = false
-
-    config.to_prepare do
-        Devise::SessionsController.layout false
-        Devise::RegistrationsController.layout false
-        Devise::ConfirmationsController.layout false
-        Devise::PasswordsController.layout false
-    end
-
   end
 end

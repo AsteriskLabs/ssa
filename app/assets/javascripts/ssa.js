@@ -481,41 +481,55 @@ var SelectTarget = function(businesstype) {
 
 //Pop up the response dialog, with a simple message
 var ShowResponseDialog = function(msg) {
-    if ($('#user-dialog').dialog("isOpen")) {
-        $('#user-dialog').dialog("close");
-        $('#user-dialog').dialog("destroy");
+    var divObj = $('#user-dialog');
+    if (divObj.is(':data(dialog)')) {
+        divObj.dialog('close');
+        divObj.dialog('destroy');
     }
-    $('#user-dialog').attr("title","Notice");
-    $('#user-dialog').dialog({
+
+    divObj.dialog({
         resizable: false,
         height: 300,
         width: 400,
         modal: true,
+        autoOpen: false,
+        title: "Notice",
         open: function(event,ui) {
             $('#user-dialog > p').text(msg);
         },
+        close: function(event,ui) {
+            $('#user-dialog > p').empty();
+        },
         buttons: {
             "Ok": function() {
-                $(this).dialog("close");
+                divObj.dialog("close");
             }
         }
     });
+
+    divObj.dialog('open');
 };
 
 //Pop up the Sign Up dialog
 var ShowSignUpDialog = function(url) {
-    if ($('#user-dialog').dialog("isOpen")) {
-        $('#user-dialog').dialog("close");
-        $('#user-dialog').dialog("destroy");
+    var divObj = $('#user-dialog');
+    if (divObj.is(':data(dialog)')) {
+        divObj.dialog('close');
+        divObj.dialog('destroy');
     }
-    $('#user-dialog').attr("title","Sign Up");
-    $('#user-dialog').dialog({
+
+    divObj.dialog({
         resizable: false,
         height: 300,
         width: 400,
         modal: true,
+        autoOpen: false,
+        title: "Sign Up",
         open: function(event,ui) {
             $('#user-dialog > p').load(url);
+        },
+        close: function(event,ui) {
+            $('#user-dialog > p').empty();
         },
         buttons: {
             "Sign Up": function() {
@@ -540,30 +554,42 @@ var ShowSignUpDialog = function(url) {
                 );
             },
             Cancel: function() {
-                $(this).dialog("close");
+                divObj.dialog("close");
             }
-        },
-        close: function() {
-            //alert('hi');
         }
     });
+    divObj.dialog('open');
 };
 
 //Pop up the Login dialog
-var ShowLoginDialog = function(url) {
-    if ($('#user-dialog').dialog("isOpen")) {
-        $('#user-dialog').dialog("close");
-        $('#user-dialog').dialog("destroy");
+var ShowLoginDialog = function(url,diaObj) {
+
+    // var divObj = $('#user-dialog');
+    // if (divObj.is(':data(dialog)')) {
+    //     divObj.dialog('close');
+    //     divObj.dialog('destroy');
+    // }
+    if (diaObj.is(':data(dialog)')) {
+        diaObj.dialog('close');
+        diaObj.dialog('destroy');
     }
-    $('#user-dialog').attr("title","Login");
-    $('#user-dialog').dialog({
+    diaObj.dialog({
         resizable: false,
         height: 300,
         width: 400,
         modal: true,
+        autoOpen: false,
+        title: "Login",
         open: function(event,ui) {
             $('#user-dialog > p').load(url);
         },
+        close: function(event,ui) {
+            $('#user-dialog > p').empty();
+        },
+        // close: function(event,ui) {
+        //     //Re initialise the dialog, because it will be re-used
+        //     //$( '#login-dialog' ).dialog({ autoOpen: false });
+        // },
         buttons: {
             "Login": function() {
                 var jxhr = $.post($('#new_user').attr('action'),
@@ -579,19 +605,21 @@ var ShowLoginDialog = function(url) {
                     function(data) {
                         if (data['error'] == "Success") {
                             location.reload();
-                        };
+                        }
                     },
                     'json'
                 )
                 .error(function() {
+                    diaObj.dialog('close');
                     ShowResponseDialog("Looks like something went wrong");
                 });
             },
-            Cancel: function() {
-                $(this).dialog("close");
+            "Cancel": function() {
+                diaObj.dialog('close');
             }
         }
     });
+   diaObj.dialog('open');
 };
 
 //Show the reconfirm dialog (if they didn't get the email from their signup)
@@ -685,7 +713,7 @@ var ShowPasswordResetDialog = function(url) {
 
 //This logic takes in userstate (propogated from the controller) and updates
 //the top bar, login, or logout or whatever
-var UserDialogSetup = function(userstate) {
+var UserDialogSetup = function(userstate,diaObj) {
     userstate = typeof userstate !== 'undefined' ? userstate : { 'status': 0, 'signupurl': '/sign_up', 'loginurl': '/login' }; 
 
     if (userstate['status'] == 0) {    
@@ -699,10 +727,11 @@ var UserDialogSetup = function(userstate) {
         });
 
         $('#loginlink').on("click",function() {
-            ShowLoginDialog(userstate['loginurl']);
+            ShowLoginDialog(userstate['loginurl'],diaObj);
         });
     } else if (userstate['status'] == 1) {
         $('#ast-ub-options > ul').prepend('<li><a href="' + userstate['logouturl'] + '" data-method="delete" rel="nofollow">Logout</a></li>');
         $('#ast-ub-options > ul').prepend('<li>Hi ' + userstate['email'] + '</li>');
     }
+
 };
