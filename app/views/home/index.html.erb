@@ -626,18 +626,37 @@
 <script>
 
 $(document).ready(function() {
+
+	//Enable the tabs
 	$('#myTabs a').click(function (e) {
 		e.preventDefault();
 		$(this).tab('show');
 	});
 
-	function goToByScroll(element) {
-		$("html,body").animate({scrollTop: $(element).offset().top},"slow");
-	}
-
+	//Smooth Scroller
 	$(".scroll").click(function(event){		
 		event.preventDefault();
 		$('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+	});
+
+	//Draw the chart on page render
+	GoChartGo(chart1,charttitles,chartvals);
+
+	//Lets give the checkboxes some LIFE!
+	MakeCheckboxesAwes();
+
+	//When the scorecard tab is shown..
+	$('#myTabs a[href="#scorecard"]').on('shown', function (e) {
+	  // e.target // activated tab <- we might want to use this in the future?
+	  // e.relatedTarget // previous tab <- but probably not .. 
+
+	  //Refresh chart
+	  GoChartGo(chart1,charttitles,chartvals);
+	});
+
+	//This is the logic for the target selector on the scorecard tab
+	$('#targetselectah').on('change',function() {
+		SelectTarget($(this).attr('value'));
 	});
 
 });
