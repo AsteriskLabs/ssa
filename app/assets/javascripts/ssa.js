@@ -1,35 +1,3 @@
-// The following is for prettifying up the tables, after jqueryui makes them butt-crack ugly.
-var JTable = function() {};
-JTable.Setup = function() {
-    var table = $('.jtable');
-    $('caption', table).addClass('ui-state-default');
-    $('caption', table).css('font-size','20px');
-    $('caption', table).css('padding','10px 0 10px');
-    $('th', table).addClass('ui-state-default');
-    $('th', table).css('padding','5px 0 5px 5px');
-    $('td', table).addClass('ui-widget-content');
-    $('td', table).css('padding','5px 0 5px 8px');
-    /*$(table).delegate('tr', 'hover', function() {
-        $('td', $(this)).toggleClass('ui-state-hover');
-    });*/
-    /*$(table).delegate('tr', 'click', function() {
-        $('td', $(this)).toggleClass('ui-state-highlight');
-    });*/
-};
-
-JTable.SetupNewRows = function(rows) {
-    $(rows).find('td').addClass('ui-widget-content');
-};
-
-var InsertPrettiness = function() {
-    /*This is to prettify up the tabs etc */
-    //Looks like I didn't end up using any of this, I should probably remove it huh?
-    //$('a[href="#tabs-1"]').parent().css('background','black');
-    //$('#tabs').children('ul.ui-widget-header').css('background','blue');
-    //$('input#sm1-check').parent().parent().css('border-bottom','solid thin blue');
-};
-
-
 //This gets applied as the 'onchange' method to the 'assessment' checkboxes
 //Look at the values for that particular section, and asssign an appropriate rating
 var Crunch = function(selector,start,middle,end) {
