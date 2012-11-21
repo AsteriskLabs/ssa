@@ -240,13 +240,13 @@
 
 <h1><div id="about">About</div></h1>
 <p><%= raw t('abouttext') %></p>
-<p><a href="#" class="backtotop">Back to top</a></p>
+<p><a href="#topderp" class="scroll">Back to top</a></p>
 
 <p></p>
 
 <h1><div id="ast">Asterisk Security Toolset</div></h1>
 <p><%= raw t('astabouttext') %></p>
-<p><a href="#" class="backtotop">Back to top</a></p>
+<p><a href="#topderp" class="scroll">Back to top</a></p>
 
 <!-- <div id="ast-universalbar">
 	<div class="limiter">
@@ -620,6 +620,7 @@
 
 <%= javascript_include_tag "jquery" %>
 <%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "highcharts" %>
 
 <script>
 
@@ -633,19 +634,9 @@ $(document).ready(function() {
 		$("html,body").animate({scrollTop: $(element).offset().top},"slow");
 	}
 
-	$('#aboutclick').on("click",function(e) {
-		e.preventDefault();
-		goToByScroll('#about');
-	});
-
-	$('#astclick').on("click",function(e) {
-		e.preventDefault();
-		goToByScroll('#ast');
-	});
-
-	$('.backtotop').on("click",function(e) {
-		e.preventDefault();
-		goToByScroll('#topderp');
+	$(".scroll").click(function(event){		
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
 	});
 
 });
