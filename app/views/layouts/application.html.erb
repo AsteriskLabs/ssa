@@ -1,24 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" >
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <title>Asterisk Security Toolset - SAMM Self Assessment</title>
-  <meta http-equiv="Content-Type" content='text/html; charset=utf-8' />
   <link href='https://fonts.googleapis.com/css?family=Lato:900italic' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'fav.png', :rel => 'icon'%>
 </head>
 <body>
 
-<div id="dialog-notice" style="display: none;" title="Notice">
+<!-- <div id="dialog-notice" style="display: none;" title="Notice">
 	<p class="notice"><%= notice %></p>
 </div>
 <div id="dialog-alert" style="display: none;" title="Alert">
 	<p class="alert"><%= alert %></p>
-</div>
+</div> -->
+
+<div class="container">
+
+	<div id="topderp" class="navbar navbar-inverse">
+		<div class="navbar-inner">
+			<a href="#" class="brand">SAMM Self Assessment</a>
+			<ul class="nav">
+				<li><a href="#about" id="aboutclick">About</a></li>
+				<li><a href="#ast" id="astclick">AST</a></li>
+				<li><a href="http://labs.asteriskinfosec.com.au">Labs</a></li>
+			</ul>
+			<ul class="nav pull-right">
+				<li><a href="#">Login</a></li>
+				<li><a href="#">Sign Up</a></li>
+			</ul>
+		</div>
+	</div>
+
+	
 
 <%= yield %>
+
+</div>
+
+
+
 
 </body>
 </html>
