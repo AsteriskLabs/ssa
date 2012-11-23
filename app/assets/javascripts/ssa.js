@@ -448,12 +448,16 @@ var SelectTarget = function(businesstype) {
     chartvals['oet'] = targetoptions[businesstype]['oet'];
 
     GoChartGo(chart1,charttitles,chartvals);
+
+    //Save cookie
+    SaveTargetCookie();
 };
 
 //
 var LoadCookies = function() { 
     //Lets check for previously set values via cookies and then update all the checks etc
 
+    //Firstly lets get all the checks
     if ($.cookie('alltheoptions') != null) {
 
         //Therefore we have a previously set cookie! Lets update some shizzzzen
@@ -477,11 +481,20 @@ var LoadCookies = function() {
         });
     };
 
+    //Okay, lets check if we can update the target too
+    if ($.cookie('targetoption') != null) {
+        //Therefore we have a previously set cookie, lets update the graph target
+
+        $('#targetselectah').val($.cookie('targetoption'));
+        $('#targetselectah').trigger('change');
+    };
+
 };
 
 // Call me to convert all the individual select boxes into some abortion of a hash
 var SaveCookies = function() {
 
+    //Logic to manage the checker options
     alltheoptions = {};
     smoption = {};
 
@@ -502,6 +515,13 @@ var SaveCookies = function() {
     $.cookie('alltheoptions',alltheoptions);
 
 };
+
+// Call to save the target selectah id - I've split this, because otherwise I was having weird race conditions
+var SaveTargetCookie = function() {
+
+    //Logic to save the target selector state
+    $.cookie('targetoption',$('#targetselectah').attr('value'));
+}
 
 
 //Pop up the response dialog, with a simple message
