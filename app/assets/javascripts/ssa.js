@@ -56,6 +56,9 @@ var Crunch = function(selector,start,middle,end) {
 
     $('#'+selector+'-rating').text(output);
     chartvals[selector+'c'] = output;
+
+    //Lets re-save this variable into the cookie
+    SaveCookies();
 };
 
 //This simply updates all the assessment checkboxes and applies the Crunch method to the onchange events.
@@ -446,6 +449,60 @@ var SelectTarget = function(businesstype) {
 
     GoChartGo(chart1,charttitles,chartvals);
 };
+
+//
+var LoadCookies = function() { 
+    //Lets check for previously set values via cookies and then update all the checks etc
+
+    if ($.cookie('alltheoptions') != null) {
+
+        //Therefore we have a previously set cookie! Lets update some shizzzzen
+
+        //Iterate through the hash of options from the cookie
+        $.each($.cookie('alltheoptions'), function(section,values) {
+
+            //Each hash entry contains another hash of the checker id and value
+            $.each(values, function(checker,value) {
+                if (value == 1) {
+                    $('#'+checker).prop('checked',true);
+                } else {
+                    $('#'+checker).prop('checked',false);
+                };
+
+                //Trigger the change event to update the rating
+                $('#'+checker).trigger('change');
+
+            });
+
+        });
+    };
+
+};
+
+// Call me to convert all the individual select boxes into some abortion of a hash
+var SaveCookies = function() {
+
+    alltheoptions = {};
+    smoption = {};
+
+    $.each(['sm','pc','eg','ta','sr','sa','dr','cr','st','vm','eh','oe'], function(index,value) {
+        tmpoption = {};
+        $('input[id^="'+value+'"]').each(function(idx) {
+            if ($(this).attr('checked') == 'checked') {
+                tmpoption[$(this).attr('id')] = 1;
+            } else {
+                tmpoption[$(this).attr('id')] = 0;
+            };
+        });
+
+        alltheoptions[value] = tmpoption;
+
+    });
+
+    $.cookie('alltheoptions',alltheoptions);
+
+};
+
 
 //Pop up the response dialog, with a simple message
 var ShowResponseDialog = function(msg) {

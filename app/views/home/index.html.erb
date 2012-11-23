@@ -660,6 +660,11 @@ $(document).ready(function() {
 		SelectTarget($(this).attr('value'));
 	});
 
+	//Enable json cookies
+	$.cookie.json = true;
+
+	//Nom those cookies
+	LoadCookies();
 });
 
 </script>
