@@ -23,7 +23,8 @@
   <a href="#" id="linkspasswordlink">Forgot your password?</a><br />
   <script>
     $('#linkspasswordlink').on("click", function() {
-      ShowPasswordResetDialog('<%= new_user_password_path %>');
+      $(this).closest('.modal').modal('hide');
+      $('#forgottenPasswordModal').modal('show');
     });
   </script>
 <% end -%>

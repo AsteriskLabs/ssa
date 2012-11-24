@@ -16,7 +16,7 @@ Ssa::Application.routes.draw do
     get '/sign_up/cancel' => 'devise/registrations#cancel', :as => :cancel_user_registration
     delete '/sign_up' => 'devise/registrations#destroy'
 
-    get '/password/new' => 'devise/passwords#new', :as => :new_user_password
+    get '/password/new' => 'passwords#new', :as => :new_user_password
     post '/password' => 'jsonpassword#create', :as => :user_password
     get '/password/edit' => 'devise/passwords#edit', :as => :edit_user_password
     post '/password/edit' => 'devise/passwords#update', :as => :edit_user_password_submit

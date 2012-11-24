@@ -32,7 +32,7 @@
 				<div class="btn-group">
 					<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.email %><span class="caret"></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Blah</a></li>
+						<li><a href="#" id="logout-link">Sign Out</a></li>
 					</ul>
 				</div>
 				<% else %>
@@ -59,6 +59,14 @@
 		</div>
 	</div>
 
+	<div id="forgottenPasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Derp" aria-hidden="true" data-remote="<%= new_user_password_path %>">
+		<div class="modal-header">
+			<h3>Forgot your password huh?</h3>
+		</div>
+		<div class="modal-body">
+		</div>
+	</div>
+
 	<div id="messageModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Herp" aria-hidden="true">
 		<div class="modal-header">
 		</div>
@@ -76,6 +84,15 @@
 
 
 
+<% if user_signed_in? %>
+<%= form_tag(:destroy_user_session, :method => :delete, :id => 'logout-form')%></form>
+<script>
+$('#logout-link').on('click',function(e) {
+	e.preventDefault();
+	$('#logout-form').submit();
 
+});
+</script>
+<% end %>
 </body>
 </html>

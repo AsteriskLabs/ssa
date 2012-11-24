@@ -10,7 +10,10 @@ class JsonpasswordController < Devise::PasswordsController
 			      render :status => 200, :json => { :error => "Success" }
 			    else
 			      #respond_with(resource)
-			      render :status => 200, :json => { :error => "Fail" }
+			      #render :status => 200, :json => { :error => "Fail" }
+
+			      #Lets be a jerk, and always submit success, so you can't mine emails?
+			      render :status => 200, :json => { :error => "Success" }
 			    end
 			}
 		end
