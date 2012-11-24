@@ -28,9 +28,25 @@
 				<li><a href="http://labs.asteriskinfosec.com.au">Labs</a></li>
 			</ul>
 			<ul class="nav pull-right">
-				<li><a href="#">Login</a></li>
-				<li><a href="#">Sign Up</a></li>
+				<li><a href="#loginModal" id="login-link" data-toggle="modal">Login</a></li>
+				<li><a href="#registerModal" id="signup-link" data-toggle="modal">Sign Up</a></li>
 			</ul>
+		</div>
+	</div>
+
+	<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Something" aria-hidden="true" data-remote="<%= new_user_session_path %>">
+		<div class="modal-header">
+			<h3>Sign In</h3>
+		</div>
+		<div class="modal-body">
+		</div>
+	</div>
+
+	<div id="registerModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Somethingelse" aria-hidden="true" data-remote="<%= new_user_registration_path %>">
+		<div class="modal-header">
+			<h3>Register</h3>
+		</div>
+		<div class="modal-body">
 		</div>
 	</div>
 

@@ -3,7 +3,8 @@
   <a href="#" id="linksloginlink">Login instead?</a><br />
   <script>
   	$('#linksloginlink').on("click", function() {
-  		ShowLoginDialog('<%= new_user_session_path %>');
+      $(this).closest('.modal').modal('hide');
+      $('#loginModal').modal('show');
   	});
   </script>
 <% end -%>
@@ -11,17 +12,10 @@
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
 	<a href="#" id="linkssignuplink">Sign Up instead?</a><br />
 	<script>
-		$('#linkssignuplink').on("click", function() {
-      $('.ui-dialog-content').each(function(i) {
-      if (i.is(':data(dialog)')) {
-          i.dialog('close');
-          i.dialog('destroy');
-        }
-      });
-      // $('.ui-dialog-content').dialog('close');
-      // $('.ui-dialog-content').dialog('destroy');
-			ShowSignUpDialog('<%= new_user_registration_path %>');
-		});
+	 $('#linkssignuplink').on("click", function() {
+    $(this).closest('.modal').modal('hide');
+    $('#registerModal').modal('show');
+   })	
 	</script>
 <% end -%>
 

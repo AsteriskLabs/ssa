@@ -523,6 +523,15 @@ var SaveTargetCookie = function() {
     $.cookie('targetoption',$('#targetselectah').attr('value'));
 }
 
+//Function to tidy up some of the forms etc
+var ImSoPretty = function() {
+
+    $('#loginModal').on('shown',function() {
+        $('#user_email').focus();
+    });
+
+}
+
 
 //Pop up the response dialog, with a simple message
 var ShowResponseDialog = function(msg) {

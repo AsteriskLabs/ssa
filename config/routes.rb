@@ -5,11 +5,11 @@ Ssa::Application.routes.draw do
   devise_for :users, :skip => [:sessions,:registrations,:passwords,:confirmations]
   
   devise_scope :user do
-    get '/login' => 'devise/sessions#new', :as => :new_user_session
+    get '/login' => 'sessions#new', :as => :new_user_session
     post '/login' => 'jsonsession#create', :as => :user_session
     delete '/logout' => 'devise/sessions#destroy', :as => :destroy_user_session
 
-    get '/sign_up' => 'devise/registrations#new', :as => :new_user_registration
+    get '/sign_up' => 'registrations#new', :as => :new_user_registration
     post '/sign_up' => 'jsonuser#create', :as => :user_registration
     put '/sign_up' => 'devise/registrations#update'
     get '/sign_up/edit' => 'devise/registrations#edit', :as => :edit_user_registration
