@@ -28,8 +28,17 @@
 				<li><a href="http://labs.asteriskinfosec.com.au">Labs</a></li>
 			</ul>
 			<ul class="nav pull-right">
+				<% if user_signed_in? %>
+				<div class="btn-group">
+					<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.email %><span class="caret"></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Blah</a></li>
+					</ul>
+				</div>
+				<% else %>
 				<li><a href="#loginModal" id="login-link" data-toggle="modal">Login</a></li>
 				<li><a href="#registerModal" id="signup-link" data-toggle="modal">Sign Up</a></li>
+				<% end %>
 			</ul>
 		</div>
 	</div>
