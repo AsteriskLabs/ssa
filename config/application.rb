@@ -58,5 +58,8 @@ module Ssa
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Trying to get the CDN working - as per http://stackoverflow.com/questions/9907512/why-heroku-dont-use-the-good-manifest-yml
+    config.assets.initialize_on_precompile = false
   end
 end
