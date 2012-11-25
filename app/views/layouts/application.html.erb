@@ -21,7 +21,7 @@
 
 	<div id="topderp" class="navbar navbar-inverse">
 		<div class="navbar-inner">
-			<a href="#" class="brand">SAMM Self Assessment</a>
+			<a href="/" class="brand">SAMM Self Assessment</a>
 			<ul class="nav">
 				<li><a href="#about" class="scroll">About</a></li>
 				<li><a href="#ast" class="scroll">AST</a></li>
@@ -36,8 +36,25 @@
 					</ul>
 				</div>
 				<% else %>
-				<li><a href="#loginModal" id="login-link" data-toggle="modal">Login</a></li>
-				<li><a href="#registerModal" id="signup-link" data-toggle="modal">Sign Up</a></li>
+				<!-- <li><a href="#loginModal" id="login-link" data-toggle="modal">Login</a></li>
+				<li><a href="#registerModal" id="signup-link" data-toggle="modal">Sign Up</a></li> -->
+				<li>
+					<button class="btn btn-small btn-inverse" href="#loginModal" data-toggle="modal">Login</button>
+				</li>
+				<li class="divider-vertical"></li>
+				<li>
+					<div class="btn-group">
+						<button class="btn btn-small btn-inverse" href="#registerModal" data-toggle="modal">Sign Up</button>
+						<button class="btn btn-inverse btn-small dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="#forgottenPasswordModal" data-toggle="modal">Forgot your password?</a></li>
+							<li><a href="#resendConfirmationModal" data-toggle="modal">Resend password confirmation?</a></li>
+						</ul>
+
+					</div>
+				</li>
 				<% end %>
 			</ul>
 		</div>
@@ -62,6 +79,14 @@
 	<div id="forgottenPasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Derp" aria-hidden="true" data-remote="<%= new_user_password_path %>">
 		<div class="modal-header">
 			<h3>Forgot your password huh?</h3>
+		</div>
+		<div class="modal-body">
+		</div>
+	</div>
+
+	<div id="resendConfirmationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="huh" aria-hidden="true" data-remote="<%= new_user_confirmation_path %>">
+		<div class="modal-header">
+			<h3>Resend password confirmation</h3>
 		</div>
 		<div class="modal-body">
 		</div>

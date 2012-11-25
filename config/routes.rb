@@ -21,7 +21,7 @@ Ssa::Application.routes.draw do
     get '/password/edit' => 'devise/passwords#edit', :as => :edit_user_password
     post '/password/edit' => 'devise/passwords#update', :as => :edit_user_password_submit
 
-    get '/confirm/new' => 'devise/confirmations#new', :as => :new_user_confirmation
+    get '/confirm/new' => 'confirmations#new', :as => :new_user_confirmation
     post '/confirm' => 'jsonconfirmation#create', :as => :user_confirmation
     get '/confirm' => 'devise/confirmations#show'
   end

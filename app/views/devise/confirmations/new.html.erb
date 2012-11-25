@@ -1,7 +1,52 @@
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => {:class => "form-horizontal", :id => "confirmation-resend-form"}) do |f| %>
+
+<div class="control-group">
+
+	<%= f.label :email, :class => "control-label" %>
+	<div class="controls">
+		<%= f.email_field :email %>
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary btn-inverse" id="confirmation-resend-button">Resend password confirmation</button>
+	<button class="btn btn-inverse" data-dismiss="modal" aria-hidden="true">Cancel</button>
+</div>
+
+<script>
+$('#confirmation-resend-button').on('click',function(e) {
+  e.preventDefault();
+  var jxhr = $.post($('#confirmation-resend-form').attr('action'),
+      {
+          utf8: $('#confirmation-resend-form > div > input[name=utf8]').val(),
+          authenticity_token: $('#confirmation-resend-form > div > input[name=authenticity_token]').val(),
+          user: {
+              email: $('#confirmation-resend-form input#user_email').val()
+          }
+      },
+      function(data) {
+          if (data['error'] == "Success")  {
+	      	  $('#messageModal > .modal-header').html('<h3>Success</h3>');
+	          $('#messageModal > .modal-body').html('<p>Please check your email for confirmation instructions ..</p>');
+	          $('#messageModal > .modal-footer').html('<button class="btn btn-inverse btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>');
+	          $('#resendConfirmationModal').modal('hide');
+	          $('#resendConfirmationModal input#user_email').val('');
+	          $('#messageModal').modal('show');
+          }
+      },
+      'json'
+  )
+  .error(function() {
+    $('#messageModal > .modal-header').html('<h3>Error</h3>');
+    $('#messageModal > .modal-body').html('<p>Herp</p>');
+    $('#messageModal > .modal-footer').html('<button class="btn btn-inverse btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>');
+    $('#resendConfirmationModal').modal('hide');
+    $('#resendConfirmationModal input#user_email').val('');
+    $('#messageModal').modal('show');
+  });
+});
+</script>
+
 
 <% end %>
 
-<%= render "links" %>

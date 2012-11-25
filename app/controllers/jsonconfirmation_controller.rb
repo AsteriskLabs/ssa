@@ -9,7 +9,9 @@ class JsonconfirmationController < Devise::RegistrationsController
       				#respond_with({}, :location => after_resending_confirmation_instructions_path_for(resource_name))
       				render :status => 200, :json => { :error => "Success" }
     			else
-    				render :status => 200, :json => { :error => "Failllled" }
+
+    				#Lets just return success anyway ..
+    				render :status => 200, :json => { :error => "Success" }
     			end
 			}
 		end

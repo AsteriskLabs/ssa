@@ -530,6 +530,18 @@ var ImSoPretty = function() {
         $('#user_email').focus();
     });
 
+    $('#forgottenPasswordModal').on('shown',function() {
+        $('#user_email').focus();
+    });
+
+    $('#registerModal').on('shown',function() {
+        $('#user_email').focus();
+    });
+
+    $('#resendConfirmationModal').on('shown',function() {
+        $('#user_email').focus();
+    });
+
 }
 
 
