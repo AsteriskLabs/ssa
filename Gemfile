@@ -5,7 +5,6 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
 gem 'thin'
 gem 'asset_sync'
 #gem 'mongoid', '~> 2.4'
@@ -26,6 +25,16 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+# Gems just for development, currently this is just used to split the DB requirements
+group :development, :test do
+	gem 'sqlite3'
+end
+
+# For Prod, we're recommending Postgresql
+group :production do
+	gem 'pg'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
