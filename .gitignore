@@ -13,3 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore prod files
+/config/database.yml
+/config/environments/production.rb
