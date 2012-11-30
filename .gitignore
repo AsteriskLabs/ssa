@@ -17,3 +17,4 @@
 # Ignore prod files
 /config/database.yml
 /config/environments/production.rb
+/.elasticbeanstalk
