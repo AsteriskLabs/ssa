@@ -33,6 +33,7 @@
 <script>
 $('#signup-button').on('click',function(e) {
   e.preventDefault();
+  $(this).addClass('loading disabled');
   var jxhr = $.post($('#new-registration-form').attr('action'),
       {
           utf8: $('#new-registration-form > div > input[name=utf8]').val(),

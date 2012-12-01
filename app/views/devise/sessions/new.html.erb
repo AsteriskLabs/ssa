@@ -33,6 +33,7 @@
 <script>
 $('#signin-button').on('click',function(e) {
         e.preventDefault();
+        $(this).addClass('loading disabled');
 
         var jxhr = $.post($('#new_user').attr('action'),
           {

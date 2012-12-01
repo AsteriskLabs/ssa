@@ -15,6 +15,7 @@
 <script>
 $('#forgotten-password-button').on('click',function(e) {
   e.preventDefault();
+  $(this).addClass('loading disabled');
   var jxhr = $.post($('#forgotten-password-form').attr('action'),
       {
           utf8: $('#forgotten-password-form > div > input[name=utf8]').val(),

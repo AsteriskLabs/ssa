@@ -16,6 +16,7 @@
 <script>
 $('#confirmation-resend-button').on('click',function(e) {
   e.preventDefault();
+  $(this).addClass('loading disabled');
   var jxhr = $.post($('#confirmation-resend-form').attr('action'),
       {
           utf8: $('#confirmation-resend-form > div > input[name=utf8]').val(),
