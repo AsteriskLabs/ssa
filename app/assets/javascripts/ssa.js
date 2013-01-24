@@ -501,7 +501,7 @@ var SaveCookies = function() {
     $.each(['sm','pc','eg','ta','sr','sa','dr','cr','st','vm','eh','oe'], function(index,value) {
         tmpoption = {};
         $('input[id^="'+value+'"]').each(function(idx) {
-            if ($(this).attr('checked') == 'checked') {
+            if ($(this).prop('checked') == true) {
                 tmpoption[$(this).attr('id')] = 1;
             } else {
                 tmpoption[$(this).attr('id')] = 0;
@@ -520,7 +520,7 @@ var SaveCookies = function() {
 var SaveTargetCookie = function() {
 
     //Logic to save the target selector state
-    $.cookie('targetoption',$('#targetselectah').attr('value'));
+    $.cookie('targetoption',$('#targetselectah').val());
 }
 
 //Function to tidy up some of the forms etc
