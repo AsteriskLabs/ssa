@@ -57,8 +57,15 @@ var Crunch = function(selector,start,middle,end) {
     $('#'+selector+'-rating').text(output);
     chartvals[selector+'c'] = output;
 
-    //Lets re-save this variable into the cookie
-    SaveCookies();
+    //Now that the DOM is updated, lets look at maintaining state
+
+    if (StateChecker() == null) {
+        //They've never configured how they maintain state, lets ask them!
+        StateSetter();
+    } else if (StateChecker() == 'cookies') {
+        //Lets re-save this variable into the cookie
+        SaveCookies();       
+    }
 };
 
 //This simply updates all the assessment checkboxes and applies the Crunch method to the onchange events.
@@ -449,8 +456,14 @@ var SelectTarget = function(businesstype) {
 
     GoChartGo(chart1,charttitles,chartvals);
 
-    //Save cookie
-    SaveTargetCookie();
+    //Lets check how we're saving state yeah?
+    if (StateChecker() == null) {
+        //Nothing set yet, lets set it?
+        StateSetter();
+    } else if (StateChecker() == 'cookies') {
+        //Save cookie
+        SaveTargetCookie();
+    }
 };
 
 //
@@ -524,6 +537,7 @@ var SaveTargetCookie = function() {
 }
 
 //Function to tidy up some of the forms etc
+// And sure, I'm similar to MakeCheckboxesAwes, but, whatever, this is my hacked together code
 var ImSoPretty = function() {
 
     $('#loginModal').on('shown',function() {
@@ -542,4 +556,28 @@ var ImSoPretty = function() {
         $('#user_email').focus();
     });
 
+    $('#state-nothing').on('click',function() {
+        $.cookie('statemethod','pleasedont');
+        $('#stateModal').modal('hide');
+    });
+
+    $('#state-cookies').on('click',function() {
+        $.cookie('statemethod','cookies');
+        SaveCookies();
+        SaveTargetCookie();
+        $('#stateModal').modal('hide');
+    });
+
+}
+
+// Function to check how the user is maintaining state
+var StateChecker = function() {
+
+    return $.cookie('statemethod');
+
+}
+
+// Function to pop a dialog so we can figure out how they want to maintain state
+var StateSetter = function() {
+    $('#stateModal').modal('show');
 }

@@ -342,8 +342,19 @@ $(document).ready(function() {
 
 	ImSoPretty();
 
-	//Nom those cookies
-	LoadCookies();
+	if (StateChecker() == null) {
+		//Okay, we dont' know how to maintain state, lets do nothing
+
+	} else if (StateChecker() == "pleasedont") {
+		//They've explicitly asked to not store the state at all
+
+		//Do Nufink
+	} else if (StateChecker() == "cookies") {
+		//Okay, looks like they're in cookies
+
+		//Nom them
+		LoadCookies();
+	}
 });
 
 </script>
