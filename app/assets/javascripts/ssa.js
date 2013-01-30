@@ -558,6 +558,9 @@ var ImSoPretty = function() {
 
     $('#state-nothing').on('click',function() {
         $.cookie('statemethod','pleasedont');
+        $.removeCookie('alltheoptions');
+        $.removeCookie('targetoption');
+        SetFooterContent("pleasedont");
         $('#stateModal').modal('hide');
     });
 
@@ -565,7 +568,12 @@ var ImSoPretty = function() {
         $.cookie('statemethod','cookies');
         SaveCookies();
         SaveTargetCookie();
+        SetFooterContent("cookies");
         $('#stateModal').modal('hide');
+    });
+
+    $('#bottomderp').on('click',function() {
+        $('#stateModal').modal('show');
     });
 
 }
@@ -580,4 +588,15 @@ var StateChecker = function() {
 // Function to pop a dialog so we can figure out how they want to maintain state
 var StateSetter = function() {
     $('#stateModal').modal('show');
+}
+
+// Function to set the footer
+var SetFooterContent = function(state) {
+    if (state == null) {
+        $('#bottomderp').html('No data is being saved in cookies OR online .. but you can change that by <a href="#">clicking me</a>');
+    } else if (state == "pleasedont") {
+        $('#bottomderp').html('You have elected to not save your data in cookies OR online .. if you change your mind <a href="#">click me</a>');
+    } else if (state == "cookies") {
+       $('#bottomderp').html('You are currently saving your data to cookies .. if you want to change this, <a href="#">click here</a>');
+    }
 }
