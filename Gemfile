@@ -28,7 +28,7 @@ gem 'jquery-rails'
 
 # Gems just for development, currently this is just used to split the DB requirements
 group :development, :test do
-	gem 'sqlite3'
+	gem 'pg'
 end
 
 # For Prod, we're recommending Postgresql
