@@ -504,7 +504,7 @@ var LoadCookies = function() {
 
 };
 
-// Call me to convert all the individual select boxes into some abortion of a hash
+// Call me to convert all the individual select boxes into some form of a hash
 var SaveCookies = function() {
 
     //Logic to manage the checker options
