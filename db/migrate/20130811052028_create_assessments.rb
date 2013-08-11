@@ -1,85 +1,85 @@
 class CreateAssessments < ActiveRecord::Migration
   def change
     create_table :assessments do |t|
-      t.string :title
-      t.boolean :sm1
-      t.boolean :sm2
-      t.boolean :sm3
-      t.boolean :sm4
-      t.boolean :sm5
-      t.boolean :sm6
-      t.boolean :sm7
-      t.boolean :sm8
-      t.boolean :pc1
-      t.boolean :pc2
-      t.boolean :pc3
-      t.boolean :pc4
-      t.boolean :pc5
-      t.boolean :pc6
-      t.boolean :eg1
-      t.boolean :eg2
-      t.boolean :eg3
-      t.boolean :eg4
-      t.boolean :eg5
-      t.boolean :eg6
-      t.boolean :ta1
-      t.boolean :ta2
-      t.boolean :ta3
-      t.boolean :ta4
-      t.boolean :ta5
-      t.boolean :ta6
-      t.boolean :ta7
-      t.boolean :sr1
-      t.boolean :sr2
-      t.boolean :sr3
-      t.boolean :sr4
-      t.boolean :sr5
-      t.boolean :sr6
-      t.boolean :sa1
-      t.boolean :sa2
-      t.boolean :sa3
-      t.boolean :sa4
-      t.boolean :sa5
-      t.boolean :sa6
-      t.boolean :dr1
-      t.boolean :dr2
-      t.boolean :dr3
-      t.boolean :dr4
-      t.boolean :dr5
-      t.boolean :dr6
-      t.boolean :cr1
-      t.boolean :cr2
-      t.boolean :cr3
-      t.boolean :cr4
-      t.boolean :cr5
-      t.boolean :cr6
-      t.boolean :st1
-      t.boolean :st2
-      t.boolean :st3
-      t.boolean :st4
-      t.boolean :st5
-      t.boolean :st6
-      t.boolean :st7
-      t.boolean :vm1
-      t.boolean :vm2
-      t.boolean :vm3
-      t.boolean :vm4
-      t.boolean :vm5
-      t.boolean :vm6
-      t.boolean :vm7
-      t.boolean :eh1
-      t.boolean :eh2
-      t.boolean :eh3
-      t.boolean :eh4
-      t.boolean :eh5
-      t.boolean :eh6
-      t.boolean :oe1
-      t.boolean :oe2
-      t.boolean :oe3
-      t.boolean :oe4
-      t.boolean :oe5
-      t.boolean :oe6
-      t.string :target
+      t.string :title,  :null => false, :default => ""
+      t.boolean :sm1,   :null => false, :default => false
+      t.boolean :sm2,   :null => false, :default => false
+      t.boolean :sm3,   :null => false, :default => false
+      t.boolean :sm4,   :null => false, :default => false
+      t.boolean :sm5,   :null => false, :default => false
+      t.boolean :sm6,   :null => false, :default => false
+      t.boolean :sm7,   :null => false, :default => false
+      t.boolean :sm8,   :null => false, :default => false
+      t.boolean :pc1,   :null => false, :default => false
+      t.boolean :pc2,   :null => false, :default => false
+      t.boolean :pc3,   :null => false, :default => false
+      t.boolean :pc4,   :null => false, :default => false
+      t.boolean :pc5,   :null => false, :default => false
+      t.boolean :pc6,   :null => false, :default => false
+      t.boolean :eg1,   :null => false, :default => false
+      t.boolean :eg2,   :null => false, :default => false
+      t.boolean :eg3,   :null => false, :default => false
+      t.boolean :eg4,   :null => false, :default => false
+      t.boolean :eg5,   :null => false, :default => false
+      t.boolean :eg6,   :null => false, :default => false
+      t.boolean :ta1,   :null => false, :default => false
+      t.boolean :ta2,   :null => false, :default => false
+      t.boolean :ta3,   :null => false, :default => false
+      t.boolean :ta4,   :null => false, :default => false
+      t.boolean :ta5,   :null => false, :default => false
+      t.boolean :ta6,   :null => false, :default => false
+      t.boolean :ta7,   :null => false, :default => false
+      t.boolean :sr1,   :null => false, :default => false
+      t.boolean :sr2,   :null => false, :default => false
+      t.boolean :sr3,   :null => false, :default => false
+      t.boolean :sr4,   :null => false, :default => false
+      t.boolean :sr5,   :null => false, :default => false
+      t.boolean :sr6,   :null => false, :default => false
+      t.boolean :sa1,   :null => false, :default => false
+      t.boolean :sa2,   :null => false, :default => false
+      t.boolean :sa3,   :null => false, :default => false
+      t.boolean :sa4,   :null => false, :default => false
+      t.boolean :sa5,   :null => false, :default => false
+      t.boolean :sa6,   :null => false, :default => false
+      t.boolean :dr1,   :null => false, :default => false
+      t.boolean :dr2,   :null => false, :default => false
+      t.boolean :dr3,   :null => false, :default => false
+      t.boolean :dr4,   :null => false, :default => false
+      t.boolean :dr5,   :null => false, :default => false
+      t.boolean :dr6,   :null => false, :default => false
+      t.boolean :cr1,   :null => false, :default => false
+      t.boolean :cr2,   :null => false, :default => false
+      t.boolean :cr3,   :null => false, :default => false
+      t.boolean :cr4,   :null => false, :default => false
+      t.boolean :cr5,   :null => false, :default => false
+      t.boolean :cr6,   :null => false, :default => false
+      t.boolean :st1,   :null => false, :default => false
+      t.boolean :st2,   :null => false, :default => false
+      t.boolean :st3,   :null => false, :default => false
+      t.boolean :st4,   :null => false, :default => false
+      t.boolean :st5,   :null => false, :default => false
+      t.boolean :st6,   :null => false, :default => false
+      t.boolean :st7,   :null => false, :default => false
+      t.boolean :vm1,   :null => false, :default => false
+      t.boolean :vm2,   :null => false, :default => false
+      t.boolean :vm3,   :null => false, :default => false
+      t.boolean :vm4,   :null => false, :default => false
+      t.boolean :vm5,   :null => false, :default => false
+      t.boolean :vm6,   :null => false, :default => false
+      t.boolean :vm7,   :null => false, :default => false
+      t.boolean :eh1,   :null => false, :default => false
+      t.boolean :eh2,   :null => false, :default => false
+      t.boolean :eh3,   :null => false, :default => false
+      t.boolean :eh4,   :null => false, :default => false
+      t.boolean :eh5,   :null => false, :default => false
+      t.boolean :eh6,   :null => false, :default => false
+      t.boolean :oe1,   :null => false, :default => false
+      t.boolean :oe2,   :null => false, :default => false
+      t.boolean :oe3,   :null => false, :default => false
+      t.boolean :oe4,   :null => false, :default => false
+      t.boolean :oe5,   :null => false, :default => false
+      t.boolean :oe6,   :null => false, :default => false
+      t.string :target, :null => false, :default => "start"
 
       t.belongs_to :user
 

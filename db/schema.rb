@@ -14,88 +14,88 @@
 ActiveRecord::Schema.define(:version => 20130811052028) do
 
   create_table "assessments", :force => true do |t|
-    t.string   "title"
-    t.boolean  "sm1"
-    t.boolean  "sm2"
-    t.boolean  "sm3"
-    t.boolean  "sm4"
-    t.boolean  "sm5"
-    t.boolean  "sm6"
-    t.boolean  "sm7"
-    t.boolean  "sm8"
-    t.boolean  "pc1"
-    t.boolean  "pc2"
-    t.boolean  "pc3"
-    t.boolean  "pc4"
-    t.boolean  "pc5"
-    t.boolean  "pc6"
-    t.boolean  "eg1"
-    t.boolean  "eg2"
-    t.boolean  "eg3"
-    t.boolean  "eg4"
-    t.boolean  "eg5"
-    t.boolean  "eg6"
-    t.boolean  "ta1"
-    t.boolean  "ta2"
-    t.boolean  "ta3"
-    t.boolean  "ta4"
-    t.boolean  "ta5"
-    t.boolean  "ta6"
-    t.boolean  "ta7"
-    t.boolean  "sr1"
-    t.boolean  "sr2"
-    t.boolean  "sr3"
-    t.boolean  "sr4"
-    t.boolean  "sr5"
-    t.boolean  "sr6"
-    t.boolean  "sa1"
-    t.boolean  "sa2"
-    t.boolean  "sa3"
-    t.boolean  "sa4"
-    t.boolean  "sa5"
-    t.boolean  "sa6"
-    t.boolean  "dr1"
-    t.boolean  "dr2"
-    t.boolean  "dr3"
-    t.boolean  "dr4"
-    t.boolean  "dr5"
-    t.boolean  "dr6"
-    t.boolean  "cr1"
-    t.boolean  "cr2"
-    t.boolean  "cr3"
-    t.boolean  "cr4"
-    t.boolean  "cr5"
-    t.boolean  "cr6"
-    t.boolean  "st1"
-    t.boolean  "st2"
-    t.boolean  "st3"
-    t.boolean  "st4"
-    t.boolean  "st5"
-    t.boolean  "st6"
-    t.boolean  "st7"
-    t.boolean  "vm1"
-    t.boolean  "vm2"
-    t.boolean  "vm3"
-    t.boolean  "vm4"
-    t.boolean  "vm5"
-    t.boolean  "vm6"
-    t.boolean  "vm7"
-    t.boolean  "eh1"
-    t.boolean  "eh2"
-    t.boolean  "eh3"
-    t.boolean  "eh4"
-    t.boolean  "eh5"
-    t.boolean  "eh6"
-    t.boolean  "oe1"
-    t.boolean  "oe2"
-    t.boolean  "oe3"
-    t.boolean  "oe4"
-    t.boolean  "oe5"
-    t.boolean  "oe6"
-    t.string   "target"
+    t.string   "title",      :default => "",      :null => false
+    t.boolean  "sm1",        :default => false,   :null => false
+    t.boolean  "sm2",        :default => false,   :null => false
+    t.boolean  "sm3",        :default => false,   :null => false
+    t.boolean  "sm4",        :default => false,   :null => false
+    t.boolean  "sm5",        :default => false,   :null => false
+    t.boolean  "sm6",        :default => false,   :null => false
+    t.boolean  "sm7",        :default => false,   :null => false
+    t.boolean  "sm8",        :default => false,   :null => false
+    t.boolean  "pc1",        :default => false,   :null => false
+    t.boolean  "pc2",        :default => false,   :null => false
+    t.boolean  "pc3",        :default => false,   :null => false
+    t.boolean  "pc4",        :default => false,   :null => false
+    t.boolean  "pc5",        :default => false,   :null => false
+    t.boolean  "pc6",        :default => false,   :null => false
+    t.boolean  "eg1",        :default => false,   :null => false
+    t.boolean  "eg2",        :default => false,   :null => false
+    t.boolean  "eg3",        :default => false,   :null => false
+    t.boolean  "eg4",        :default => false,   :null => false
+    t.boolean  "eg5",        :default => false,   :null => false
+    t.boolean  "eg6",        :default => false,   :null => false
+    t.boolean  "ta1",        :default => false,   :null => false
+    t.boolean  "ta2",        :default => false,   :null => false
+    t.boolean  "ta3",        :default => false,   :null => false
+    t.boolean  "ta4",        :default => false,   :null => false
+    t.boolean  "ta5",        :default => false,   :null => false
+    t.boolean  "ta6",        :default => false,   :null => false
+    t.boolean  "ta7",        :default => false,   :null => false
+    t.boolean  "sr1",        :default => false,   :null => false
+    t.boolean  "sr2",        :default => false,   :null => false
+    t.boolean  "sr3",        :default => false,   :null => false
+    t.boolean  "sr4",        :default => false,   :null => false
+    t.boolean  "sr5",        :default => false,   :null => false
+    t.boolean  "sr6",        :default => false,   :null => false
+    t.boolean  "sa1",        :default => false,   :null => false
+    t.boolean  "sa2",        :default => false,   :null => false
+    t.boolean  "sa3",        :default => false,   :null => false
+    t.boolean  "sa4",        :default => false,   :null => false
+    t.boolean  "sa5",        :default => false,   :null => false
+    t.boolean  "sa6",        :default => false,   :null => false
+    t.boolean  "dr1",        :default => false,   :null => false
+    t.boolean  "dr2",        :default => false,   :null => false
+    t.boolean  "dr3",        :default => false,   :null => false
+    t.boolean  "dr4",        :default => false,   :null => false
+    t.boolean  "dr5",        :default => false,   :null => false
+    t.boolean  "dr6",        :default => false,   :null => false
+    t.boolean  "cr1",        :default => false,   :null => false
+    t.boolean  "cr2",        :default => false,   :null => false
+    t.boolean  "cr3",        :default => false,   :null => false
+    t.boolean  "cr4",        :default => false,   :null => false
+    t.boolean  "cr5",        :default => false,   :null => false
+    t.boolean  "cr6",        :default => false,   :null => false
+    t.boolean  "st1",        :default => false,   :null => false
+    t.boolean  "st2",        :default => false,   :null => false
+    t.boolean  "st3",        :default => false,   :null => false
+    t.boolean  "st4",        :default => false,   :null => false
+    t.boolean  "st5",        :default => false,   :null => false
+    t.boolean  "st6",        :default => false,   :null => false
+    t.boolean  "st7",        :default => false,   :null => false
+    t.boolean  "vm1",        :default => false,   :null => false
+    t.boolean  "vm2",        :default => false,   :null => false
+    t.boolean  "vm3",        :default => false,   :null => false
+    t.boolean  "vm4",        :default => false,   :null => false
+    t.boolean  "vm5",        :default => false,   :null => false
+    t.boolean  "vm6",        :default => false,   :null => false
+    t.boolean  "vm7",        :default => false,   :null => false
+    t.boolean  "eh1",        :default => false,   :null => false
+    t.boolean  "eh2",        :default => false,   :null => false
+    t.boolean  "eh3",        :default => false,   :null => false
+    t.boolean  "eh4",        :default => false,   :null => false
+    t.boolean  "eh5",        :default => false,   :null => false
+    t.boolean  "eh6",        :default => false,   :null => false
+    t.boolean  "oe1",        :default => false,   :null => false
+    t.boolean  "oe2",        :default => false,   :null => false
+    t.boolean  "oe3",        :default => false,   :null => false
+    t.boolean  "oe4",        :default => false,   :null => false
+    t.boolean  "oe5",        :default => false,   :null => false
+    t.boolean  "oe6",        :default => false,   :null => false
+    t.string   "target",     :default => "start", :null => false
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "users", :force => true do |t|
