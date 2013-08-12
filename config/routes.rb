@@ -26,6 +26,9 @@ Ssa::Application.routes.draw do
     get '/confirm' => 'devise/confirmations#show'
   end
 
+  get '/assessments' => 'assessments#fetch', :as => :fetch_assessments
+  post '/assessments' => 'assessments#create', :as => :create_assessment
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
