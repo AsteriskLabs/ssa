@@ -1,7 +1,7 @@
 class AssessmentsController < ApplicationController
 	def fetch
 		if user_signed_in?
-			render :status => 200, :json => current_user.assessments.where("title = ?","default").order("id DESC").limit(1).to_json
+			render :status => 200, :json => current_user.assessments.select("title, target, updated_at, created_at, sm1, sm2, sm3, sm4, sm5, sm6, sm7, sm8, pc1, pc2, pc3, pc4, pc5, pc6, eg1, eg2, eg3, eg4, eg5, eg6, ta1, ta2, ta3, ta4, ta5, ta6, ta7, sr1, sr2, sr3, sr4, sr5, sr6, sa1, sa2, sa3, sa4, sa5, sa6, dr1, dr2, dr3, dr4, dr5, dr6, cr1, cr2, cr3, cr4, cr5, cr6, st1, st2, st3, st4, st5, st6, st7, vm1, vm2, vm3, vm4, vm5, vm6, vm7, eh1, eh2, eh3, eh4, eh5, eh6, oe1, oe2, oe3, oe4, oe5, oe6").where("title = ?","default").order("id DESC").limit(1).to_json
 		else
 			render :status => 200, :json => { :error => "error" }
 		end
@@ -9,7 +9,86 @@ class AssessmentsController < ApplicationController
 
 	def create
 		if user_signed_in?
-
+			current_user.assessments.create(:title => params[:assessment][:title],
+				 :sm1 => params[:assessment][:sm1],
+				 :sm2 => params[:assessment][:sm2],
+				 :sm3 => params[:assessment][:sm3],
+				 :sm4 => params[:assessment][:sm4],
+				 :sm5 => params[:assessment][:sm5],
+				 :sm6 => params[:assessment][:sm6],
+				 :sm7 => params[:assessment][:sm7],
+				 :sm8 => params[:assessment][:sm8],
+				 :pc1 => params[:assessment][:pc1],
+				 :pc2 => params[:assessment][:pc2],
+				 :pc3 => params[:assessment][:pc3],
+				 :pc4 => params[:assessment][:pc4],
+				 :pc5 => params[:assessment][:pc5],
+				 :pc6 => params[:assessment][:pc6],
+				 :eg1 => params[:assessment][:eg1],
+				 :eg2 => params[:assessment][:eg2],
+				 :eg3 => params[:assessment][:eg3],
+				 :eg4 => params[:assessment][:eg4],
+				 :eg5 => params[:assessment][:eg5],
+				 :eg6 => params[:assessment][:eg6],
+				 :ta1 => params[:assessment][:ta1],
+				 :ta2 => params[:assessment][:ta2],
+				 :ta3 => params[:assessment][:ta3],
+				 :ta4 => params[:assessment][:ta4],
+				 :ta5 => params[:assessment][:ta5],
+				 :ta6 => params[:assessment][:ta6],
+				 :ta7 => params[:assessment][:ta7],
+				 :sr1 => params[:assessment][:sr1],
+				 :sr2 => params[:assessment][:sr2],
+				 :sr3 => params[:assessment][:sr3],
+				 :sr4 => params[:assessment][:sr4],
+				 :sr5 => params[:assessment][:sr5],
+				 :sr6 => params[:assessment][:sr6],
+				 :sa1 => params[:assessment][:sa1],
+				 :sa2 => params[:assessment][:sa2],
+				 :sa3 => params[:assessment][:sa3],
+				 :sa4 => params[:assessment][:sa4],
+				 :sa5 => params[:assessment][:sa5],
+				 :sa6 => params[:assessment][:sa6],
+				 :dr1 => params[:assessment][:dr1],
+				 :dr2 => params[:assessment][:dr2],
+				 :dr3 => params[:assessment][:dr3],
+				 :dr4 => params[:assessment][:dr4],
+				 :dr5 => params[:assessment][:dr5],
+				 :dr6 => params[:assessment][:dr6],
+				 :cr1 => params[:assessment][:cr1],
+				 :cr2 => params[:assessment][:cr2],
+				 :cr3 => params[:assessment][:cr3],
+				 :cr4 => params[:assessment][:cr4],
+				 :cr5 => params[:assessment][:cr5],
+				 :cr6 => params[:assessment][:cr6],
+				 :st1 => params[:assessment][:st1],
+				 :st2 => params[:assessment][:st2],
+				 :st3 => params[:assessment][:st3],
+				 :st4 => params[:assessment][:st4],
+				 :st5 => params[:assessment][:st5],
+				 :st6 => params[:assessment][:st6],
+				 :st7 => params[:assessment][:st7],
+				 :vm1 => params[:assessment][:vm1],
+				 :vm2 => params[:assessment][:vm2],
+				 :vm3 => params[:assessment][:vm3],
+				 :vm4 => params[:assessment][:vm4],
+				 :vm5 => params[:assessment][:vm5],
+				 :vm6 => params[:assessment][:vm6],
+				 :vm7 => params[:assessment][:vm7],
+				 :eh1 => params[:assessment][:eh1],
+				 :eh2 => params[:assessment][:eh2],
+				 :eh3 => params[:assessment][:eh3],
+				 :eh4 => params[:assessment][:eh4],
+				 :eh5 => params[:assessment][:eh5],
+				 :eh6 => params[:assessment][:eh6],
+				 :oe1 => params[:assessment][:oe1],
+				 :oe2 => params[:assessment][:oe2],
+				 :oe3 => params[:assessment][:oe3],
+				 :oe4 => params[:assessment][:oe4],
+				 :oe5 => params[:assessment][:oe5],
+				 :oe6 => params[:assessment][:oe6],
+				 :target => params[:assessment][:target] )
+			render :status => 200, :json => { :error => "success" }
 		else
 			render :status => 200, :json => { :error => "error" }
 		end
