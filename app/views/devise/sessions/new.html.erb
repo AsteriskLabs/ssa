@@ -60,6 +60,7 @@ $('#signin-button').on('click',function(e) {
         $('#loginModal input#user_email').val('');
         $('#loginModal input#user_password').val('');
         $('#loginModal input#user_remember_me').prop('checked',false);
+        $('#signin-button').removeClass('loading disabled');
         $('#messageModal').modal('show');
       });
 });
