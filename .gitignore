@@ -18,3 +18,4 @@
 /config/database.yml
 /config/environments/production.rb
 /.elasticbeanstalk
+/config/initializers/secret_token.rb
