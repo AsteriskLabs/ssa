@@ -466,6 +466,42 @@ var SelectTarget = function(businesstype) {
     }
 };
 
+var LoadLatestAssessment = function(url,filter) {
+    filter = typeof filter !== 'undefined' ? filter : "default";
+
+    var jxhr = $.get(url,
+        //     {
+        //     authenticity_token: $('meta[name=csrf-token]').attr("content"),
+        //     user: {
+        //         email: $('#new_user input#user_email').val(),
+        //         password: $('#new_user input#user_password').val(),
+        //         remember_me: $('#new_user input#user_remember_me').val()
+        //     }
+        // },
+        function(data) {
+            if (data['error'] == "error") {
+                console.log({'error':'error'});
+            } else {
+                console.log({'error':'success','assessment':data[0]});
+            }
+        },
+        'json'
+    );
+
+    // .error(function() {
+    //     $('#messageModal > .modal-header').html('<h3>Fail</h3>');
+    //     $('#messageModal > .modal-body').html('<p>Authentication failed ..</p>');
+    //     $('#messageModal > .modal-footer').html('<button class="btn btn-inverse btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>');
+    //     $('#loginModal').modal('hide');
+    //     $('#loginModal input#user_email').val('');
+    //     $('#loginModal input#user_password').val('');
+    //     $('#loginModal input#user_remember_me').prop('checked', false);
+    //     $('#signin-button').removeClass('loading disabled');
+    //     $('#messageModal').modal('show');
+    // });
+
+};
+
 //
 var LoadCookies = function() { 
     //Lets check for previously set values via cookies and then update all the checks etc
