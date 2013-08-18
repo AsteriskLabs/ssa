@@ -468,6 +468,87 @@ var SelectTarget = function(businesstype) {
     }
 };
 
+var DefaultAssessmentState = {
+    'cr1':false,
+    'cr2':false,
+    'cr3':false,
+    'cr4':false,
+    'cr5':false,
+    'cr6':false,
+    'dr1':false,
+    'dr2':false,
+    'dr3':false,
+    'dr4':false,
+    'dr5':false,
+    'dr6':false,
+    'eg1':false,
+    'eg2':false,
+    'eg3':false,
+    'eg4':false,
+    'eg5':false,
+    'eg6':false,
+    'eh1':false,
+    'eh2':false,
+    'eh3':false,
+    'eh4':false,
+    'eh5':false,
+    'eh6':false,
+    'oe1':false,
+    'oe2':false,
+    'oe3':false,
+    'oe4':false,
+    'oe5':false,
+    'oe6':false,
+    'pc1':false,
+    'pc2':false,
+    'pc3':false,
+    'pc4':false,
+    'pc5':false,
+    'pc6':false,
+    'sa1':false,
+    'sa2':false,
+    'sa3':false,
+    'sa4':false,
+    'sa5':false,
+    'sa6':false,
+    'sm1':false,
+    'sm2':false,
+    'sm3':false,
+    'sm4':false,
+    'sm5':false,
+    'sm6':false,
+    'sm7':false,
+    'sm8':false,
+    'sr1':false,
+    'sr2':false,
+    'sr3':false,
+    'sr4':false,
+    'sr5':false,
+    'sr6':false,
+    'st1':false,
+    'st2':false,
+    'st3':false,
+    'st4':false,
+    'st5':false,
+    'st6':false,
+    'st7':false,
+    'ta1':false,
+    'ta2':false,
+    'ta3':false,
+    'ta4':false,
+    'ta5':false,
+    'ta6':false,
+    'ta7':false,
+    'vm1':false,
+    'vm2':false,
+    'vm3':false,
+    'vm4':false,
+    'vm5':false,
+    'vm6':false,
+    'vm7':false,
+    'target':"start"
+};
+
 var LoadLatestAssessment = function(url,filter) {
     filter = typeof filter !== 'undefined' ? filter : "default";
 
@@ -475,10 +556,14 @@ var LoadLatestAssessment = function(url,filter) {
         function(data) {
             if (data['error'] == "error") {
                 console.log({'error':'error'});
+                syncedAssessment = DefaultAssessmentState; // This is in global scope
+            } else if (typeof data[0] == "undefined") {
+                syncedAssessment = DefaultAssessmentState; // This is in global scope
             } else {
-                $.cookie('statemethod','online'); // because we're storing it online
-                //Lets load up all this data huh?
+                //Update the output - if defined
+                syncedAssessment = data[0];
 
+                //Lets load up all this data huh?
                 $.each(data[0], function(field,value) {
                     switch(field) {
                         case 'cr1': $('#cr1-check').prop('checked',value); $('#cr1-check').trigger('change'); break;

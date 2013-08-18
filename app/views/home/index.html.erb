@@ -369,21 +369,26 @@ $(document).ready(function() {
 
 		SetFooterContent("cookies");
 	} else if (StateChecker() == "online") {
+		$.removeCookie('alltheoptions');
+		$.removeCookie('targetoption');
 		//They're apparently online .. 
-		<% if user_signed_in? %>
-		$.removeCookie('alltheoptions');
-		$.removeCookie('targetoption');
-		<% else %>
+		<% if !user_signed_in? %>
 		$.removeCookie('statemethod');
-		$.removeCookie('alltheoptions');
-		$.removeCookie('targetoption');
 		SetFooterContent(null);
 		<% end %>
 	}
 
 	<% if user_signed_in? %>
+	//Object to store what the database representation of assessments looks like
+	//Global
+	syncedAssessment = {};
+
+    $.cookie('statemethod','online'); // because we're storing data online now
+
 	//Load up the latest assessments
-	LoadLatestAssessment('<%= fetch_assessments_path %>');
+	LoadLatestAssessment('<%= fetch_assessments_path %>',syncedAssessment);
+
+	//Update the footer
 	SetFooterContent("online");
 	<% end %>
 });
