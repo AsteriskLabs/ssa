@@ -368,9 +368,23 @@ $(document).ready(function() {
 		LoadCookies();
 
 		SetFooterContent("cookies");
+	} else if (StateChecker() == "online") {
+		//They're apparently online .. 
+		<% if user_signed_in? %>
+		$.removeCookie('alltheoptions');
+		$.removeCookie('targetoption');
+		<% else %>
+		$.removeCookie('statemethod');
+		$.removeCookie('alltheoptions');
+		$.removeCookie('targetoption');
+		SetFooterContent(null);
+		<% end %>
 	}
 
 	<% if user_signed_in? %>
+	//Load up the latest assessments
+	LoadLatestAssessment('<%= fetch_assessments_path %>');
+	SetFooterContent("online");
 	<% end %>
 });
 

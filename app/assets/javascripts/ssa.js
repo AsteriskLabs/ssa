@@ -65,6 +65,8 @@ var Crunch = function(selector,start,middle,end) {
     } else if (StateChecker() == 'cookies') {
         //Lets re-save this variable into the cookie
         SaveCookies();       
+    } else if (StateChecker() == 'online') {
+        //User is signed in - different logic a go go!
     }
 };
 
@@ -470,36 +472,99 @@ var LoadLatestAssessment = function(url,filter) {
     filter = typeof filter !== 'undefined' ? filter : "default";
 
     var jxhr = $.get(url,
-        //     {
-        //     authenticity_token: $('meta[name=csrf-token]').attr("content"),
-        //     user: {
-        //         email: $('#new_user input#user_email').val(),
-        //         password: $('#new_user input#user_password').val(),
-        //         remember_me: $('#new_user input#user_remember_me').val()
-        //     }
-        // },
         function(data) {
             if (data['error'] == "error") {
                 console.log({'error':'error'});
             } else {
-                console.log({'error':'success','assessment':data[0]});
+                $.cookie('statemethod','online'); // because we're storing it online
+                //Lets load up all this data huh?
+
+                $.each(data[0], function(field,value) {
+                    switch(field) {
+                        case 'cr1': $('#cr1-check').prop('checked',value); $('#cr1-check').trigger('change'); break;
+                        case 'cr2': $('#cr2-check').prop('checked',value); $('#cr2-check').trigger('change'); break;
+                        case 'cr3': $('#cr3-check').prop('checked',value); $('#cr3-check').trigger('change'); break;
+                        case 'cr4': $('#cr4-check').prop('checked',value); $('#cr4-check').trigger('change'); break;
+                        case 'cr5': $('#cr5-check').prop('checked',value); $('#cr5-check').trigger('change'); break;
+                        case 'cr6': $('#cr6-check').prop('checked',value); $('#cr6-check').trigger('change'); break;
+                        case 'dr1': $('#dr1-check').prop('checked',value); $('#dr1-check').trigger('change'); break;
+                        case 'dr2': $('#dr2-check').prop('checked',value); $('#dr2-check').trigger('change'); break;
+                        case 'dr3': $('#dr3-check').prop('checked',value); $('#dr3-check').trigger('change'); break;
+                        case 'dr4': $('#dr4-check').prop('checked',value); $('#dr4-check').trigger('change'); break;
+                        case 'dr5': $('#dr5-check').prop('checked',value); $('#dr5-check').trigger('change'); break;
+                        case 'dr6': $('#dr6-check').prop('checked',value); $('#dr6-check').trigger('change'); break;
+                        case 'eg1': $('#eg1-check').prop('checked',value); $('#eg1-check').trigger('change'); break;
+                        case 'eg2': $('#eg2-check').prop('checked',value); $('#eg2-check').trigger('change'); break;
+                        case 'eg3': $('#eg3-check').prop('checked',value); $('#eg3-check').trigger('change'); break;
+                        case 'eg4': $('#eg4-check').prop('checked',value); $('#eg4-check').trigger('change'); break;
+                        case 'eg5': $('#eg5-check').prop('checked',value); $('#eg5-check').trigger('change'); break;
+                        case 'eg6': $('#eg6-check').prop('checked',value); $('#eg6-check').trigger('change'); break;
+                        case 'eh1': $('#eh1-check').prop('checked',value); $('#eh1-check').trigger('change'); break;
+                        case 'eh2': $('#eh2-check').prop('checked',value); $('#eh2-check').trigger('change'); break;
+                        case 'eh3': $('#eh3-check').prop('checked',value); $('#eh3-check').trigger('change'); break;
+                        case 'eh4': $('#eh4-check').prop('checked',value); $('#eh4-check').trigger('change'); break;
+                        case 'eh5': $('#eh5-check').prop('checked',value); $('#eh5-check').trigger('change'); break;
+                        case 'eh6': $('#eh6-check').prop('checked',value); $('#eh6-check').trigger('change'); break;
+                        case 'oe1': $('#oe1-check').prop('checked',value); $('#oe1-check').trigger('change'); break;
+                        case 'oe2': $('#oe2-check').prop('checked',value); $('#oe2-check').trigger('change'); break;
+                        case 'oe3': $('#oe3-check').prop('checked',value); $('#oe3-check').trigger('change'); break;
+                        case 'oe4': $('#oe4-check').prop('checked',value); $('#oe4-check').trigger('change'); break;
+                        case 'oe5': $('#oe5-check').prop('checked',value); $('#oe5-check').trigger('change'); break;
+                        case 'oe6': $('#oe6-check').prop('checked',value); $('#oe6-check').trigger('change'); break;
+                        case 'pc1': $('#pc1-check').prop('checked',value); $('#pc1-check').trigger('change'); break;
+                        case 'pc2': $('#pc2-check').prop('checked',value); $('#pc2-check').trigger('change'); break;
+                        case 'pc3': $('#pc3-check').prop('checked',value); $('#pc3-check').trigger('change'); break;
+                        case 'pc4': $('#pc4-check').prop('checked',value); $('#pc4-check').trigger('change'); break;
+                        case 'pc5': $('#pc5-check').prop('checked',value); $('#pc5-check').trigger('change'); break;
+                        case 'pc6': $('#pc6-check').prop('checked',value); $('#pc6-check').trigger('change'); break;
+                        case 'sa1': $('#sa1-check').prop('checked',value); $('#sa1-check').trigger('change'); break;
+                        case 'sa2': $('#sa2-check').prop('checked',value); $('#sa2-check').trigger('change'); break;
+                        case 'sa3': $('#sa3-check').prop('checked',value); $('#sa3-check').trigger('change'); break;
+                        case 'sa4': $('#sa4-check').prop('checked',value); $('#sa4-check').trigger('change'); break;
+                        case 'sa5': $('#sa5-check').prop('checked',value); $('#sa5-check').trigger('change'); break;
+                        case 'sa6': $('#sa6-check').prop('checked',value); $('#sa6-check').trigger('change'); break;
+                        case 'sm1': $('#sm1-check').prop('checked',value); $('#sm1-check').trigger('change'); break;
+                        case 'sm2': $('#sm2-check').prop('checked',value); $('#sm2-check').trigger('change'); break;
+                        case 'sm3': $('#sm3-check').prop('checked',value); $('#sm3-check').trigger('change'); break;
+                        case 'sm4': $('#sm4-check').prop('checked',value); $('#sm4-check').trigger('change'); break;
+                        case 'sm5': $('#sm5-check').prop('checked',value); $('#sm5-check').trigger('change'); break;
+                        case 'sm6': $('#sm6-check').prop('checked',value); $('#sm6-check').trigger('change'); break;
+                        case 'sm7': $('#sm7-check').prop('checked',value); $('#sm7-check').trigger('change'); break;
+                        case 'sm8': $('#sm8-check').prop('checked',value); $('#sm8-check').trigger('change'); break;
+                        case 'sr1': $('#sr1-check').prop('checked',value); $('#sr1-check').trigger('change'); break;
+                        case 'sr2': $('#sr2-check').prop('checked',value); $('#sr2-check').trigger('change'); break;
+                        case 'sr3': $('#sr3-check').prop('checked',value); $('#sr3-check').trigger('change'); break;
+                        case 'sr4': $('#sr4-check').prop('checked',value); $('#sr4-check').trigger('change'); break;
+                        case 'sr5': $('#sr5-check').prop('checked',value); $('#sr5-check').trigger('change'); break;
+                        case 'sr6': $('#sr6-check').prop('checked',value); $('#sr6-check').trigger('change'); break;
+                        case 'st1': $('#st1-check').prop('checked',value); $('#st1-check').trigger('change'); break;
+                        case 'st2': $('#st2-check').prop('checked',value); $('#st2-check').trigger('change'); break;
+                        case 'st3': $('#st3-check').prop('checked',value); $('#st3-check').trigger('change'); break;
+                        case 'st4': $('#st4-check').prop('checked',value); $('#st4-check').trigger('change'); break;
+                        case 'st5': $('#st5-check').prop('checked',value); $('#st5-check').trigger('change'); break;
+                        case 'st6': $('#st6-check').prop('checked',value); $('#st6-check').trigger('change'); break;
+                        case 'st7': $('#st7-check').prop('checked',value); $('#st7-check').trigger('change'); break;
+                        case 'ta1': $('#ta1-check').prop('checked',value); $('#ta1-check').trigger('change'); break;
+                        case 'ta2': $('#ta2-check').prop('checked',value); $('#ta2-check').trigger('change'); break;
+                        case 'ta3': $('#ta3-check').prop('checked',value); $('#ta3-check').trigger('change'); break;
+                        case 'ta4': $('#ta4-check').prop('checked',value); $('#ta4-check').trigger('change'); break;
+                        case 'ta5': $('#ta5-check').prop('checked',value); $('#ta5-check').trigger('change'); break;
+                        case 'ta6': $('#ta6-check').prop('checked',value); $('#ta6-check').trigger('change'); break;
+                        case 'ta7': $('#ta7-check').prop('checked',value); $('#ta7-check').trigger('change'); break;
+                        case 'vm1': $('#vm1-check').prop('checked',value); $('#vm1-check').trigger('change'); break;
+                        case 'vm2': $('#vm2-check').prop('checked',value); $('#vm2-check').trigger('change'); break;
+                        case 'vm3': $('#vm3-check').prop('checked',value); $('#vm3-check').trigger('change'); break;
+                        case 'vm4': $('#vm4-check').prop('checked',value); $('#vm4-check').trigger('change'); break;
+                        case 'vm5': $('#vm5-check').prop('checked',value); $('#vm5-check').trigger('change'); break;
+                        case 'vm6': $('#vm6-check').prop('checked',value); $('#vm6-check').trigger('change'); break;
+                        case 'vm7': $('#vm7-check').prop('checked',value); $('#vm7-check').trigger('change'); break;
+                        case 'target': $('#targetselectah').val(value); $('#targetselectah').trigger('change'); break;
+                    }
+                });
             }
         },
         'json'
     );
-
-    // .error(function() {
-    //     $('#messageModal > .modal-header').html('<h3>Fail</h3>');
-    //     $('#messageModal > .modal-body').html('<p>Authentication failed ..</p>');
-    //     $('#messageModal > .modal-footer').html('<button class="btn btn-inverse btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>');
-    //     $('#loginModal').modal('hide');
-    //     $('#loginModal input#user_email').val('');
-    //     $('#loginModal input#user_password').val('');
-    //     $('#loginModal input#user_remember_me').prop('checked', false);
-    //     $('#signin-button').removeClass('loading disabled');
-    //     $('#messageModal').modal('show');
-    // });
-
 };
 
 //
@@ -634,5 +699,7 @@ var SetFooterContent = function(state) {
         $('#bottomderp').html('You have elected to not save your data in cookies OR online .. if you change your mind <a href="#">click me</a>');
     } else if (state == "cookies") {
        $('#bottomderp').html('You are currently saving your data to cookies .. if you want to change this, <a href="#">click here</a>');
+    } else if (state == "online") {
+        $('#bottomderp').html('You\'re signed in - so your data will be saved online until you sign out');
     }
 }
