@@ -549,6 +549,61 @@ var DefaultAssessmentState = {
     'target':"start"
 };
 
+var CompareSyncedAssessment = function() {
+    var output = false;
+    $.each(['sm','pc','eg','ta','sr','sa','dr','cr','st','vm','eh','oe'], function(index,value) {
+        $('input[id^="'+value+'"]').each(function(idx) {
+            if ($(this).prop('checked') !== syncedAssessment[$(this)[0].id.replace("-check",'')]) {
+                console.log($(this)[0].id.replace("-check",''));
+                output = true;
+            }
+
+        });
+
+    });
+
+    if ($('#targetselectah').val() != syncedAssessment['target']) {
+        console.log($('#targetselectah').val());
+        output = true;
+    }
+
+    return output;
+};
+
+var timerFunction = function() {
+    if (CompareSyncedAssessment()) {
+        console.log("TRUE");
+    }
+
+    ssa_timer = window.setTimeout(timerFunction,5000); // go again will ya?
+};
+
+var PushAssessment = function() {
+    var new_assessment = {}
+    new_assessment['title'] = "default";
+    new_assessment['target'] = $('#targetselectah').val();
+    $.each(['sm','pc','eg','ta','sr','sa','dr','cr','st','vm','eh','oe'], function(index,value) {
+        $('input[id^="'+value+'"]').each(function(idx) {
+            new_assessment[$(this)[0].id.replace("-check",'')] = $(this).prop('checked');
+        });
+    });
+
+    var jxhr = $.post(pushURL,
+        {
+            authenticity_token: $('meta[name="csrf-token"]').attr('content'),
+            assessment: new_assessment
+        },
+        function(data) {
+            console.log(data);
+        },
+        'json'
+    )
+    .error(function() {
+
+    });
+
+};
+
 var LoadLatestAssessment = function(url,filter) {
     filter = typeof filter !== 'undefined' ? filter : "default";
 
