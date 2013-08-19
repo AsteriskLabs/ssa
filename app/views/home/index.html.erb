@@ -390,6 +390,13 @@ $(document).ready(function() {
 
 	//Update the footer
 	SetFooterContent("online");
+
+	//Bind a beforeunload event to check that the database and local dom is in sync first, and warn if not
+	$(window).bind('beforeunload', function() {
+		//if something return 'warning'
+
+	});
+	
 	<% end %>
 });
 
