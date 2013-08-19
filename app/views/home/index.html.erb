@@ -309,6 +309,10 @@
 
 $(document).ready(function() {
 
+	<% if user_signed_in? %>
+	$('#loadingModal').modal('show'); //Show the loading dialog whilst we ping the DB
+	<% end %>
+
 	//Enable the tabs
 	$('#myTabs a').click(function (e) {
 		e.preventDefault();
@@ -344,9 +348,10 @@ $(document).ready(function() {
 	//Enable json cookies
 	$.cookie.json = true;
 
-
+	//Prettifies some stuff, adding event handling etc
 	ImSoPretty();
 
+	//Check the state - mainly to update the footer
 	if (StateChecker() == null) {
 		//Okay, we dont' know how to maintain state, lets do nothing
 
@@ -369,12 +374,15 @@ $(document).ready(function() {
 
 		SetFooterContent("cookies");
 	} else if (StateChecker() == "online") {
-		$.removeCookie('alltheoptions');
-		$.removeCookie('targetoption');
+		//They're online - so we save online
+
+		$.removeCookie('alltheoptions'); // tidy up
+		$.removeCookie('targetoption'); // tidy up
+
 		//They're apparently online .. 
 		<% if !user_signed_in? %>
-		$.removeCookie('statemethod');
-		SetFooterContent(null);
+		$.removeCookie('statemethod'); // tidy up
+		SetFooterContent(null); // clear the footer
 		<% end %>
 	}
 
@@ -397,11 +405,18 @@ $(document).ready(function() {
 
 	//Bind a beforeunload event to check that the database and local dom is in sync first, and warn if not
 	$(window).bind('beforeunload', function() {
-		//if something return 'warning'
+		//Hey don't close the window while we haven't synced!
+		if (CompareSyncedAssessment() == true) {
+			return "We haven't saved online yet .. are you sure you want to quit?";
+		}
 
 	});
+
+	$('#loadingModal').modal('hide'); //Hide that modal now
 	
 	<% end %>
+
+
 });
 
 </script>

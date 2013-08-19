@@ -554,7 +554,6 @@ var CompareSyncedAssessment = function() {
     $.each(['sm','pc','eg','ta','sr','sa','dr','cr','st','vm','eh','oe'], function(index,value) {
         $('input[id^="'+value+'"]').each(function(idx) {
             if ($(this).prop('checked') !== syncedAssessment[$(this)[0].id.replace("-check",'')]) {
-                console.log($(this)[0].id.replace("-check",''));
                 output = true;
             }
 
@@ -563,7 +562,6 @@ var CompareSyncedAssessment = function() {
     });
 
     if ($('#targetselectah').val() != syncedAssessment['target']) {
-        console.log($('#targetselectah').val());
         output = true;
     }
 
@@ -572,13 +570,19 @@ var CompareSyncedAssessment = function() {
 
 var timerFunction = function() {
     if (CompareSyncedAssessment()) {
-        console.log("TRUE");
+        PushAssessment();
+    } else {
+        ssa_timer = window.setTimeout(timerFunction,5000); // go again will ya?
     }
+};
 
-    ssa_timer = window.setTimeout(timerFunction,5000); // go again will ya?
+//We use this so we can time it out - let the spinner go for half a second
+var hideSpinner = function() {
+    $('#spinnner').hide();
 };
 
 var PushAssessment = function() {
+    $('#spinnner').show();
     var new_assessment = {}
     new_assessment['title'] = "default";
     new_assessment['target'] = $('#targetselectah').val();
@@ -594,12 +598,16 @@ var PushAssessment = function() {
             assessment: new_assessment
         },
         function(data) {
-            console.log(data);
+            window.setTimeout(hideSpinner,500);
+            //Lets update syncedAssessment shall we?
+            syncedAssessment = new_assessment;
+            ssa_timer = window.setTimeout(timerFunction,5000); // Go again yarh
         },
         'json'
     )
     .error(function() {
-
+        window.setTimeout(hideSpinner,500);
+        ssa_timer = window.setTimeout(timerFunction,5000); // Go again yarh
     });
 
 };

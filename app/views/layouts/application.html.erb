@@ -30,7 +30,7 @@
 			<ul class="nav pull-right">
 				<% if user_signed_in? %>
 				<div class="btn-group">
-					<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.email %><span class="caret"></a>
+					<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"><span id="spinnner"><%= image_tag "spin.gif" %></span> <%= current_user.email %><span class="caret"></a>
 					<ul class="dropdown-menu">
 						<li><a href="#" id="logout-link">Sign Out</a></li>
 					</ul>
@@ -118,6 +118,15 @@
 			</div>
 		</div>
 		<div class="modal-footer">
+		</div>
+	</div>
+
+	<div id="loadingModal" class="modal hide" tabindex="-1" role="dialog" area-labelledby="Something" aria-hidden="true">
+		<div class="modal-header">
+			<h3>Loading</h3>
+		</div>
+		<div class="modal-body">
+			<div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div>
 		</div>
 	</div>
 
