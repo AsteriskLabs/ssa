@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130811052028) do
+ActiveRecord::Schema.define(:version => 20130820021511) do
 
   create_table "assessments", :force => true do |t|
     t.string   "title",      :default => "",      :null => false
@@ -97,6 +97,28 @@ ActiveRecord::Schema.define(:version => 20130811052028) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
+
+  create_table "targets", :force => true do |t|
+    t.string   "title",      :default => "", :null => false
+    t.string   "shorttitle", :default => "", :null => false
+    t.integer  "smt",                        :null => false
+    t.integer  "pct",                        :null => false
+    t.integer  "egt",                        :null => false
+    t.integer  "tat",                        :null => false
+    t.integer  "srt",                        :null => false
+    t.integer  "sat",                        :null => false
+    t.integer  "drt",                        :null => false
+    t.integer  "crt",                        :null => false
+    t.integer  "stt",                        :null => false
+    t.integer  "vmt",                        :null => false
+    t.integer  "eht",                        :null => false
+    t.integer  "oet",                        :null => false
+    t.integer  "user_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "targets", ["title", "shorttitle"], :name => "index_targets_on_title_and_shorttitle", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
