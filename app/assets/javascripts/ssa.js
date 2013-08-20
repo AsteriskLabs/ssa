@@ -368,93 +368,95 @@ var GoChartGo = function(somechart,sometitles,somevals) {
     }); 
 }; 
 
+TargetOptions = {
+    start: {
+        smt: "3",
+        pct: "3",
+        egt: "3",
+        tat: "3",
+        srt: "3",
+        sat: "3",
+        drt: "3",
+        crt: "3",
+        stt: "3",
+        vmt: "3",
+        eht: "3",
+        oet: "3"
+    },
+    independentsoftwarevendor: {
+        smt: "3",
+        pct: "2",
+        egt: "3",
+        tat: "2",
+        srt: "3",
+        sat: "1",
+        drt: "2",
+        crt: "3",
+        stt: "2",
+        vmt: "3",
+        eht: "0",
+        oet: "3"
+    },
+    onlineserviceprovider: {
+        smt: "3",
+        pct: "2",
+        egt: "3",
+        tat: "2",
+        srt: "2",
+        sat: "1",
+        drt: "3",
+        crt: "2",
+        stt: "3",
+        vmt: "2",
+        eht: "3",
+        oet: "2"
+    },
+    financialservicesorganisation: {
+        smt: "3",
+        pct: "3",
+        egt: "3",
+        tat: "3",
+        srt: "3",
+        sat: "3",
+        drt: "2",
+        crt: "3",
+        stt: "2",
+        vmt: "3",
+        eht: "3",
+        oet: "2"
+    },
+    governmentorganisation: {
+        smt: "2",
+        pct: "3",
+        egt: "3",
+        tat: "3",
+        srt: "3",
+        sat: "3",
+        drt: "2",
+        crt: "2",
+        stt: "3",
+        vmt: "3",
+        eht: "3",
+        oet: "3"
+    }
+};
+
+
 //This is the method which stores the pre-canned target templates
 var SelectTarget = function(businesstype) {
-    targetoptions = {
-        start: {
-            smt: "3",
-            pct: "3",
-            egt: "3",
-            tat: "3",
-            srt: "3",
-            sat: "3",
-            drt: "3",
-            crt: "3",
-            stt: "3",
-            vmt: "3",
-            eht: "3",
-            oet: "3"
-        },
-        independentsoftwarevendor: {
-            smt: "3",
-            pct: "2",
-            egt: "3",
-            tat: "2",
-            srt: "3",
-            sat: "1",
-            drt: "2",
-            crt: "3",
-            stt: "2",
-            vmt: "3",
-            eht: "0",
-            oet: "3"
-        },
-        onlineserviceprovider: {
-            smt: "3",
-            pct: "2",
-            egt: "3",
-            tat: "2",
-            srt: "2",
-            sat: "1",
-            drt: "3",
-            crt: "2",
-            stt: "3",
-            vmt: "2",
-            eht: "3",
-            oet: "2"
-        },
-        financialservicesorganisation: {
-            smt: "3",
-            pct: "3",
-            egt: "3",
-            tat: "3",
-            srt: "3",
-            sat: "3",
-            drt: "2",
-            crt: "3",
-            stt: "2",
-            vmt: "3",
-            eht: "3",
-            oet: "2"
-        },
-        governmentorganisation: {
-            smt: "2",
-            pct: "3",
-            egt: "3",
-            tat: "3",
-            srt: "3",
-            sat: "3",
-            drt: "2",
-            crt: "2",
-            stt: "3",
-            vmt: "3",
-            eht: "3",
-            oet: "3"
-        }
-    };
-
-    chartvals['smt'] = targetoptions[businesstype]['smt'];
-    chartvals['pct'] = targetoptions[businesstype]['pct'];
-    chartvals['egt'] = targetoptions[businesstype]['egt'];
-    chartvals['tat'] = targetoptions[businesstype]['tat'];
-    chartvals['srt'] = targetoptions[businesstype]['srt'];
-    chartvals['sat'] = targetoptions[businesstype]['sat'];
-    chartvals['drt'] = targetoptions[businesstype]['drt'];
-    chartvals['crt'] = targetoptions[businesstype]['crt'];
-    chartvals['stt'] = targetoptions[businesstype]['stt'];
-    chartvals['vmt'] = targetoptions[businesstype]['vmt'];
-    chartvals['eht'] = targetoptions[businesstype]['eht'];
-    chartvals['oet'] = targetoptions[businesstype]['oet'];
+    
+    chartvals['smt'] = TargetOptions[businesstype]['smt'];
+    chartvals['pct'] = TargetOptions[businesstype]['pct'];
+    chartvals['egt'] = TargetOptions[businesstype]['egt'];
+    chartvals['tat'] = TargetOptions[businesstype]['tat'];
+    chartvals['srt'] = TargetOptions[businesstype]['srt'];
+    chartvals['sat'] = TargetOptions[businesstype]['sat'];
+    chartvals['drt'] = TargetOptions[businesstype]['drt'];
+    chartvals['crt'] = TargetOptions[businesstype]['crt'];
+    chartvals['stt'] = TargetOptions[businesstype]['stt'];
+    chartvals['vmt'] = TargetOptions[businesstype]['vmt'];
+    chartvals['eht'] = TargetOptions[businesstype]['eht'];
+    chartvals['oet'] = TargetOptions[businesstype]['oet'];
 
     GoChartGo(chart1,charttitles,chartvals);
 
