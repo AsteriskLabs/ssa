@@ -67,6 +67,7 @@ var Crunch = function(selector,start,middle,end) {
         SaveCookies();       
     } else if (StateChecker() == 'online') {
         //User is signed in - different logic a go go!
+        //Which turns out to be nothing because this is all asynchronous black majik
     }
 };
 
