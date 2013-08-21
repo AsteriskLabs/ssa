@@ -225,7 +225,6 @@
 	</div>
 
 	<div class="tab-pane fade in" id="scorecard">
-
 		<p class="centralise"><select id="targetselectah">
 			<option value="start" selected="selected">Default</option>
 			<option value="independentsoftwarevendor"><%=t 'independentsoftwarevendor' %></option>
@@ -392,6 +391,9 @@ $(document).ready(function() {
 	syncedAssessment = {};
 
     $.cookie('statemethod','online'); // because we're storing data online now
+
+    //Load up the latest target
+    LoadTargets('<%= fetch_targets_path %>');
 
 	//Load up the latest assessments
 	LoadLatestAssessment('<%= fetch_assessments_path %>',syncedAssessment);

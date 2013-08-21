@@ -29,6 +29,10 @@ Ssa::Application.routes.draw do
   get '/assessments' => 'assessments#fetch', :as => :fetch_assessments
   post '/assessments' => 'assessments#create', :as => :create_assessment
 
+  get '/newtarget' => 'targets#index', :as => :new_target
+  get '/targets' => 'targets#fetch', :as => :fetch_targets
+  post '/newtarget' => 'targets#create', :as => :create_target
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

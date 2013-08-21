@@ -32,6 +32,7 @@
 				<div class="btn-group">
 					<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"><span id="spinnner"><%= image_tag "spin.gif" %></span> <%= current_user.email %><span class="caret"></a>
 					<ul class="dropdown-menu">
+						<li><a href="#newTargetModal" data-toggle="modal">Custom Target</a></li>
 						<li><a href="#" id="logout-link">Sign Out</a></li>
 					</ul>
 				</div>
@@ -108,6 +109,18 @@
 		</div>
 	</div>
 
+	<div id="newTargetModal" class="modal hide fade modal-target" tabindex="-1" role="dialog" aria-labelledby="wtfomgbbq" aria-hidden="true" data-remote="<%= new_target_path %>">
+		<div class="modal-header">
+			<h3>Create a new target state</h3>
+		</div>
+		<div class="modal-body">
+			<h3>Loading</h3>
+			<div class="progress progress-striped active">
+				<div class="bar" style="width: 100%"></div>
+			</div>
+		</div>
+	</div>
+
 	<div id="messageModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Herp" aria-hidden="true">
 		<div class="modal-header">
 		</div>
@@ -121,7 +134,7 @@
 		</div>
 	</div>
 
-	<div id="loadingModal" class="modal hide" tabindex="-1" role="dialog" area-labelledby="Something" aria-hidden="true">
+	<div id="loadingModal" class="modal hide fade" tabindex="-1" role="dialog" area-labelledby="Something" aria-hidden="true">
 		<div class="modal-header">
 			<h3>Loading</h3>
 		</div>

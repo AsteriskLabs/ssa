@@ -369,7 +369,7 @@ var GoChartGo = function(somechart,sometitles,somevals) {
     }); 
 }; 
 
-TargetOptions = {
+TargetOptionsDefault = {
     start: {
         smt: "3",
         pct: "3",
@@ -441,6 +441,8 @@ TargetOptions = {
         oet: "3"
     }
 };
+
+TargetOptions = TargetOptionsDefault;
 
 
 //This is the method which stores the pre-canned target templates
@@ -615,13 +617,59 @@ var PushAssessment = function() {
 
 };
 
+var LoadTargets = function(url) {
+    var jxhr = $.get(url,
+        function(data) {
+            if (data['error'] == "error") {
+                //console.log(data);
+            } else if (typeof data[0] == "undefined") {
+                //console.log('undefined');
+            } else {
+                //console.log(data);
+                $.each(data,function() {
+                    //console.log($(this));
+                    var title = "";
+                    var shorttitle = "";
+                    var new_target = {};
+                    $.each($(this)[0], function(k,v) {
+                        switch(k) {
+                            case 'title': title = v; break;
+                            case 'shorttitle': shorttitle = v; break;
+                            case 'smt': new_target['smt'] = ConvertRawToVals(v); break;
+                            case 'pct': new_target['pct'] = ConvertRawToVals(v); break;
+                            case 'egt': new_target['egt'] = ConvertRawToVals(v); break;
+                            case 'tat': new_target['tat'] = ConvertRawToVals(v); break;
+                            case 'srt': new_target['srt'] = ConvertRawToVals(v); break;
+                            case 'sat': new_target['sat'] = ConvertRawToVals(v); break;
+                            case 'drt': new_target['drt'] = ConvertRawToVals(v); break;
+                            case 'crt': new_target['crt'] = ConvertRawToVals(v); break;
+                            case 'stt': new_target['stt'] = ConvertRawToVals(v); break;
+                            case 'vmt': new_target['vmt'] = ConvertRawToVals(v); break;
+                            case 'eht': new_target['eht'] = ConvertRawToVals(v); break;
+                            case 'oet': new_target['oet'] = ConvertRawToVals(v); break;
+                       }
+                   });
+
+                   TargetOptions[shorttitle] = new_target;
+
+                   if ($('#targetselectah option[value="'+shorttitle+'"]').length == 0) {
+                    $('#targetselectah').append('<option value="'+shorttitle+'">'+title+'</option>');
+                   }
+
+                });
+            }
+        },
+        'json'
+    );
+};
+
 var LoadLatestAssessment = function(url,filter) {
     filter = typeof filter !== 'undefined' ? filter : "default";
 
     var jxhr = $.get(url,
         function(data) {
             if (data['error'] == "error") {
-                console.log({'error':'error'});
+                //console.log({'error':'error'});
                 syncedAssessment = DefaultAssessmentState; // This is in global scope
             } else if (typeof data[0] == "undefined") {
                 syncedAssessment = DefaultAssessmentState; // This is in global scope
@@ -806,6 +854,16 @@ var ImSoPretty = function() {
 
     $('#resendConfirmationModal').on('shown',function() {
         $('#user_email').focus();
+    });
+
+    $('#newTargetModal').on('show',function() {
+        if (typeof($('#new-target-form')[0]) != "undefined") {
+            $('#new-target-form')[0].reset();
+        }
+    });
+
+    $('#newTargetModal').on('shown',function() {
+        $('#target_title').focus();
     });
 
     $('#state-nothing').on('click',function() {
