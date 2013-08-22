@@ -447,29 +447,35 @@ TargetOptions = TargetOptionsDefault;
 
 //This is the method which stores the pre-canned target templates
 var SelectTarget = function(businesstype) {
+
+    if (businesstype === "_new_target_") {
+        $('#newTargetModal').modal('show');
+        $('#targetselectah').val('start');
+    } else {
     
-    chartvals['smt'] = TargetOptions[businesstype]['smt'];
-    chartvals['pct'] = TargetOptions[businesstype]['pct'];
-    chartvals['egt'] = TargetOptions[businesstype]['egt'];
-    chartvals['tat'] = TargetOptions[businesstype]['tat'];
-    chartvals['srt'] = TargetOptions[businesstype]['srt'];
-    chartvals['sat'] = TargetOptions[businesstype]['sat'];
-    chartvals['drt'] = TargetOptions[businesstype]['drt'];
-    chartvals['crt'] = TargetOptions[businesstype]['crt'];
-    chartvals['stt'] = TargetOptions[businesstype]['stt'];
-    chartvals['vmt'] = TargetOptions[businesstype]['vmt'];
-    chartvals['eht'] = TargetOptions[businesstype]['eht'];
-    chartvals['oet'] = TargetOptions[businesstype]['oet'];
+        chartvals['smt'] = TargetOptions[businesstype]['smt'];
+        chartvals['pct'] = TargetOptions[businesstype]['pct'];
+        chartvals['egt'] = TargetOptions[businesstype]['egt'];
+        chartvals['tat'] = TargetOptions[businesstype]['tat'];
+        chartvals['srt'] = TargetOptions[businesstype]['srt'];
+        chartvals['sat'] = TargetOptions[businesstype]['sat'];
+        chartvals['drt'] = TargetOptions[businesstype]['drt'];
+        chartvals['crt'] = TargetOptions[businesstype]['crt'];
+        chartvals['stt'] = TargetOptions[businesstype]['stt'];
+        chartvals['vmt'] = TargetOptions[businesstype]['vmt'];
+        chartvals['eht'] = TargetOptions[businesstype]['eht'];
+        chartvals['oet'] = TargetOptions[businesstype]['oet'];
 
-    GoChartGo(chart1,charttitles,chartvals);
+        GoChartGo(chart1,charttitles,chartvals);
 
-    //Lets check how we're saving state yeah?
-    if (StateChecker() == null) {
-        //Nothing set yet, lets set it?
-        StateSetter();
-    } else if (StateChecker() == 'cookies') {
-        //Save cookie
-        SaveTargetCookie();
+        //Lets check how we're saving state yeah?
+        if (StateChecker() == null) {
+            //Nothing set yet, lets set it?
+            StateSetter();
+        } else if (StateChecker() == 'cookies') {
+            //Save cookie
+            SaveTargetCookie();
+        }
     }
 };
 
@@ -624,6 +630,8 @@ var LoadTargets = function(url) {
                 //console.log(data);
             } else if (typeof data[0] == "undefined") {
                 //console.log('undefined');
+                $('#targetselectah option[value="_new_target_"]').remove();
+                $('#targetselectah').append('<option value="_new_target_">* New Target</option>');
             } else {
                 //console.log(data);
                 $.each(data,function() {
@@ -655,6 +663,9 @@ var LoadTargets = function(url) {
                    if ($('#targetselectah option[value="'+shorttitle+'"]').length == 0) {
                     $('#targetselectah').append('<option value="'+shorttitle+'">'+title+'</option>');
                    }
+
+                   $('#targetselectah option[value="_new_target_"]').remove();
+                   $('#targetselectah').append('<option value="_new_target_">* New Target</option>');
 
                 });
             }
