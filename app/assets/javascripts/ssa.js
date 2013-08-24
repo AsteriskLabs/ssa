@@ -624,14 +624,17 @@ var PushAssessment = function() {
 };
 
 var LoadTargets = function(url) {
+    var deferred = $.Deferred();
     var jxhr = $.get(url,
         function(data) {
             if (data['error'] == "error") {
                 //console.log(data);
+                deferred.reject();
             } else if (typeof data[0] == "undefined") {
                 //console.log('undefined');
                 $('#targetselectah option[value="_new_target_"]').remove();
                 $('#targetselectah').append('<option value="_new_target_">* New Target</option>');
+                deferred.reject();
             } else {
                 //console.log(data);
                 $.each(data,function() {
@@ -667,23 +670,29 @@ var LoadTargets = function(url) {
                    $('#targetselectah option[value="_new_target_"]').remove();
                    $('#targetselectah').append('<option value="_new_target_">* New Target</option>');
 
+                   deferred.resolve();
+
                 });
             }
         },
         'json'
     );
+    return deferred.promise();
 };
 
 var LoadLatestAssessment = function(url,filter) {
     filter = typeof filter !== 'undefined' ? filter : "default";
+    var deferred = $.Deferred();
 
     var jxhr = $.get(url,
         function(data) {
             if (data['error'] == "error") {
                 //console.log({'error':'error'});
                 syncedAssessment = DefaultAssessmentState; // This is in global scope
+                deferred.reject();
             } else if (typeof data[0] == "undefined") {
                 syncedAssessment = DefaultAssessmentState; // This is in global scope
+                deferred.reject();
             } else {
                 //Update the output - if defined
                 syncedAssessment = data[0];
@@ -771,10 +780,13 @@ var LoadLatestAssessment = function(url,filter) {
                         case 'target': $('#targetselectah').val(value); $('#targetselectah').trigger('change'); break;
                     }
                 });
+
+                deferred.resolve();
             }
         },
         'json'
     );
+    return deferred.promise();
 };
 
 //

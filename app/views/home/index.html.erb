@@ -386,11 +386,14 @@ $(document).ready(function() {
 
     $.cookie('statemethod','online'); // because we're storing data online now
 
-    //Load up the latest target
-    LoadTargets('<%= fetch_targets_path %>');
+    //Load up the latest target and assessments
+    //We're using jQuerys Deferred pattern here to ensure that we only unhide the loading modal after both these async calls have completed.
+	var combinedPromise = $.when(LoadTargets('<%= fetch_targets_path %>'),LoadLatestAssessment('<%= fetch_assessments_path %>',syncedAssessment));
 
-	//Load up the latest assessments
-	LoadLatestAssessment('<%= fetch_assessments_path %>',syncedAssessment);
+	//Here is the logic that will happen ALWAYS when both the previous async calls have been complete
+	combinedPromise.always(function() {
+		$('#loadingModal').modal('hide'); //Hide that modal now
+	});
 
 	//Update the footer
 	SetFooterContent("online");
@@ -408,8 +411,6 @@ $(document).ready(function() {
 
 	});
 
-	$('#loadingModal').modal('hide'); //Hide that modal now
-	
 	<% end %>
 
 

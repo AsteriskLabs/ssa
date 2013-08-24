@@ -170,23 +170,28 @@ $('#new-target-button').on('click',function(e) {
           function(data) {
               if (data['error'] == "success") {
               	    //Load up the latest target
-				    LoadTargets('<%= fetch_targets_path %>');
+				    var promise = LoadTargets('<%= fetch_targets_path %>');
 				    
-                  	$('#newTargetModal').modal('hide');
-				    $('#new-target-form input#target_title').val('');
-					$('#new-target-form select#new-target-smt').val(0);
-					$('#new-target-form select#new-target-pct').val(0);
-					$('#new-target-form select#new-target-egt').val(0);
-					$('#new-target-form select#new-target-tat').val(0);
-					$('#new-target-form select#new-target-srt').val(0);
-					$('#new-target-form select#new-target-sat').val(0);
-					$('#new-target-form select#new-target-drt').val(0);
-					$('#new-target-form select#new-target-crt').val(0);
-					$('#new-target-form select#new-target-stt').val(0);
-					$('#new-target-form select#new-target-vmt').val(0);
-					$('#new-target-form select#new-target-eht').val(0);
-					$('#new-target-form select#new-target-oet').val(0);
-				    $('#new-target-button').removeClass('loading disabled');
+				    //Wrap more Deferred here - only hide the modal once we've loaded the new targets
+				    promise.always(function() {
+				    	console.log("promised!");
+				    	$('#newTargetModal').modal('hide');
+					    $('#new-target-form input#target_title').val('');
+						$('#new-target-form select#new-target-smt').val(0);
+						$('#new-target-form select#new-target-pct').val(0);
+						$('#new-target-form select#new-target-egt').val(0);
+						$('#new-target-form select#new-target-tat').val(0);
+						$('#new-target-form select#new-target-srt').val(0);
+						$('#new-target-form select#new-target-sat').val(0);
+						$('#new-target-form select#new-target-drt').val(0);
+						$('#new-target-form select#new-target-crt').val(0);
+						$('#new-target-form select#new-target-stt').val(0);
+						$('#new-target-form select#new-target-vmt').val(0);
+						$('#new-target-form select#new-target-eht').val(0);
+						$('#new-target-form select#new-target-oet').val(0);
+					    $('#new-target-button').removeClass('loading disabled');
+				    });
+                  	
                  
               }
           },
