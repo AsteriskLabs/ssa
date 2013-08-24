@@ -16,31 +16,31 @@ Without this measurement trying to improve the state of security within your sof
 
 (This is a fairly standard Rails app, so, these instructions are somewhat generic)
 
-1. Install Ruby 1.9.3 (I use RVM - https://rvm.io/)
-2. Clone this repo:
+==== 1. Install Ruby 1.9.3 (I use RVM - https://rvm.io/)
+==== 2. Clone this repo:
  $ git clone https://github.com/AsteriskLabs/ssa.git
-3. Change into the ssa directory (RVM may warn if you want to trust the rvmrc file, this sets a new gemset for 'ssa')
+==== 3. Change into the ssa directory (RVM may warn if you want to trust the rvmrc file, this sets a new gemset for 'ssa')
  $ cd ssa
-4. Install dependencies with bundler, if you don't have bundler 'gem install bundler' it
+==== 4. Install dependencies with bundler, if you don't have bundler 'gem install bundler' it
  $ bundle
-5. Change into the config dir to create the database file
+==== 5. Change into the config dir to create the database file
  $ cd config
-6. Copy the example DB config file (and edit it if you wish)
+==== 6. Copy the example DB config file (and edit it if you wish)
  $ cp database.yml.example database.yml
-7. Change back to the root folder
+==== 7. Change back to the root folder
  $ cd ..
-8. Run the database migrations
+==== 8. Run the database migrations
  $ rake db:migrate
-9. Create the secret_token.rb file in 'config/initializers'
+==== 9. Create the secret_token.rb file in 'config/initializers'
  $ vi config/initializers/secret_token.rb
-10. Enter the following into the file
+==== 10. Enter the following into the file
  Ssa::Application.config.secret_token = "<RANDOM TOKEN>"
-11. Rake can be used to generate a random value for you if you wish
+==== 11. Rake can be used to generate a random value for you if you wish
  $ rake secret
-12. By default, registering a new account will require email validation, so update 'config/initializers/mail.rb' with appropriate settings.
-13. Update 'config/initializers/devise.rb' with an appropriate 'from' email address
-14. If you don't want users to have to validate their emails, update 'app/models/user.rb' and remove the ':confirmable' option.
-15. Start up the local server
+==== 12. By default, registering a new account will require email validation, so update 'config/initializers/mail.rb' with appropriate settings.
+==== 13. Update 'config/initializers/devise.rb' with an appropriate 'from' email address
+==== 14. If you don't want users to have to validate their emails, update 'app/models/user.rb' and remove the ':confirmable' option.
+==== 15. Start up the local server
  $ rails s
 
 == Thanks and things we couldn't have built this without
