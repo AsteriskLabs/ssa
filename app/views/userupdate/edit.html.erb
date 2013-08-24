@@ -1,0 +1,28 @@
+<%= form_for(@user, :url => { :action => "update_pwd" }, :html => {:class => "form-horizontal"} ) do |f| %>
+  <div class="control-group">
+    <%= f.label :current_password %>
+    <div class="controls">
+      <%= f.password_field :current_password %><br />
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <i>(we need your current password to confirm your changes)</i>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :password, "Password" %>
+    <div class="controls">
+      <%= f.password_field :password, :autocomplete => "off"  %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :password_confirmation %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation %>
+    </div>
+  </div>
+  <div class="action_container">
+    <%= f.submit %>
+  </div>
+<% end %>
