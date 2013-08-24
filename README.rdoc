@@ -23,24 +23,22 @@ Without this measurement trying to improve the state of security within your sof
  $ cd ssa
 ==== 4. Install dependencies with bundler, if you don't have bundler 'gem install bundler' it
  $ bundle
-==== 5. Change into the config dir to create the database file
- $ cd config
-==== 6. Copy the example DB config file (and edit it if you wish)
- $ cp database.yml.example database.yml
-==== 7. Change back to the root folder
+==== 5. Copy the example DB config file (and edit it if you wish)
+ $ cp config/database.yml.example config/database.yml
+==== 6. Change back to the root folder
  $ cd ..
-==== 8. Run the database migrations
+==== 7. Run the database migrations
  $ rake db:migrate
-==== 9. Create the secret_token.rb file in 'config/initializers'
+==== 8. Create the secret_token.rb file in 'config/initializers'
  $ vi config/initializers/secret_token.rb
-==== 10. Enter the following into the file
+==== 9. Enter the following into the file
  Ssa::Application.config.secret_token = "<RANDOM TOKEN>"
-==== 11. Rake can be used to generate a random value for you if you wish
+==== 10. Rake can be used to generate a random value for you if you wish
  $ rake secret
-==== 12. By default, registering a new account will require email validation, so update 'config/initializers/mail.rb' with appropriate settings.
-==== 13. Update 'config/initializers/devise.rb' with an appropriate 'from' email address
-==== 14. If you don't want users to have to validate their emails, update 'app/models/user.rb' and remove the ':confirmable' option.
-==== 15. Start up the local server
+==== 11. By default, registering a new account will require email validation, so update 'config/initializers/mail.rb' with appropriate settings.
+==== 12. Update 'config/initializers/devise.rb' with an appropriate 'from' email address
+==== 13. If you don't want users to have to validate their emails, update 'app/models/user.rb' and remove the ':confirmable' option.
+==== 14. Start up the local server
  $ rails s
 
 == Thanks and things we couldn't have built this without
