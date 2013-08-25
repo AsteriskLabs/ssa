@@ -905,6 +905,11 @@ var ImSoPretty = function() {
         $('#stateModal').modal('hide');
     });
 
+    $('#state-db').on('click', function() {
+        $('#stateModal').modal('hide');
+        $('#loginModal').modal('show');
+    });
+
     $('#bottomderp').on('click',function() {
         $('#stateModal').modal('show');
     });
@@ -923,15 +928,3 @@ var StateSetter = function() {
     $('#stateModal').modal('show');
 }
 
-// Function to set the footer
-var SetFooterContent = function(state) {
-    if (state == null) {
-        $('#bottomderp').html('No data is being saved in cookies OR online .. but you can change that by <a href="#">clicking me</a>');
-    } else if (state == "pleasedont") {
-        $('#bottomderp').html('You have elected to not save your data in cookies OR online .. if you change your mind <a href="#">click me</a>');
-    } else if (state == "cookies") {
-       $('#bottomderp').html('You are currently saving your data to cookies .. if you want to change this, <a href="#">click here</a>');
-    } else if (state == "online") {
-        $('#bottomderp').html('You\'re signed in - so your data will be saved online until you sign out');
-    }
-}

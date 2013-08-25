@@ -24,34 +24,34 @@
 		<div class="navbar-inner">
 			<a href="/" class="brand">SAMM Self Assessment</a>
 			<ul class="nav">
-				<li><a href="#about" class="scroll">About</a></li>
+				<li><a href="#about" class="scroll"><%=t 'aboutheader' %></a></li>
 			</ul>
 			<ul class="nav pull-right">
 				<% if user_signed_in? %>
 				<div class="btn-group">
 					<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"><span id="spinnner"><%= image_tag "spin.gif" %></span> <%= current_user.email %><span class="caret"></a>
 					<ul class="dropdown-menu">
-						<li><a href="#newTargetModal" data-toggle="modal">Custom Target</a></li>
-						<li><a href="#updatePasswordModal" data-toggle="modal">Update Password</a></li>
-						<li><a href="#" id="logout-link">Sign Out</a></li>
+						<li><a href="#newTargetModal" data-toggle="modal"><%=t 'customtarget' %></a></li>
+						<li><a href="#updatePasswordModal" data-toggle="modal"><%=t 'updatepassword' %></a></li>
+						<li><a href="#" id="logout-link"><%=t 'signout' %></a></li>
 					</ul>
 				</div>
 				<% else %>
 				<!-- <li><a href="#loginModal" id="login-link" data-toggle="modal">Login</a></li>
 				<li><a href="#registerModal" id="signup-link" data-toggle="modal">Sign Up</a></li> -->
 				<li>
-					<button class="btn btn-small btn-inverse" href="#loginModal" data-toggle="modal">Login</button>
+					<button class="btn btn-small btn-inverse" href="#loginModal" data-toggle="modal"><%=t 'login' %></button>
 				</li>
 				<li class="divider-vertical"></li>
 				<li>
 					<div class="btn-group">
-						<button class="btn btn-small btn-inverse" href="#registerModal" data-toggle="modal">Sign Up</button>
+						<button class="btn btn-small btn-inverse" href="#registerModal" data-toggle="modal"><%=t 'signup' %></button>
 						<button class="btn btn-inverse btn-small dropdown-toggle" data-toggle="dropdown">
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu">
-							<li><a href="#forgottenPasswordModal" data-toggle="modal">Forgot your password?</a></li>
-							<li><a href="#resendConfirmationModal" data-toggle="modal">Resend password confirmation?</a></li>
+							<li><a href="#forgottenPasswordModal" data-toggle="modal"><%=t 'forgotpassword' %></a></li>
+							<li><a href="#resendConfirmationModal" data-toggle="modal"><%=t 'resendpassword' %></a></li>
 						</ul>
 
 					</div>
@@ -63,10 +63,10 @@
 
 	<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Something" aria-hidden="true" data-remote="<%= new_user_session_path %>">
 		<div class="modal-header">
-			<h3>Sign In</h3>
+			<h3><%=t 'login' %></h3>
 		</div>
 		<div class="modal-body">
-			<h3>Loading</h3>
+			<h3><%=t 'loading' %></h3>
 			<div class="progress progress-striped active">
 				<div class="bar" style="width: 100%"></div>
 			</div>
@@ -75,10 +75,10 @@
 
 	<div id="registerModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Somethingelse" aria-hidden="true" data-remote="<%= new_user_registration_path %>">
 		<div class="modal-header">
-			<h3>Register</h3>
+			<h3><%=t 'signup' %></h3>
 		</div>
 		<div class="modal-body">
-			<h3>Loading</h3>
+			<h3><%=t 'loading' %></h3>
 			<div class="progress progress-striped active">
 				<div class="bar" style="width: 100%"></div>
 			</div>
@@ -87,10 +87,10 @@
 
 	<div id="forgottenPasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Derp" aria-hidden="true" data-remote="<%= new_user_password_path %>">
 		<div class="modal-header">
-			<h3>Forgot your password huh?</h3>
+			<h3><%=t 'forgotpassword' %></h3>
 		</div>
 		<div class="modal-body">
-			<h3>Loading</h3>
+			<h3><%=t 'loading' %></h3>
 			<div class="progress progress-striped active">
 				<div class="bar" style="width: 100%"></div>
 			</div>
@@ -99,10 +99,10 @@
 
 	<div id="resendConfirmationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="huh" aria-hidden="true" data-remote="<%= new_user_confirmation_path %>">
 		<div class="modal-header">
-			<h3>Resend password confirmation</h3>
+			<h3><%=t 'resendpassword' %></h3>
 		</div>
 		<div class="modal-body">
-			<h3>Loading</h3>
+			<h3><%=t 'loading' %></h3>
 			<div class="progress progress-striped active">
 				<div class="bar" style="width: 100%"></div>
 			</div>
@@ -111,10 +111,10 @@
 
 	<div id="updatePasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="uppwd" aria-hidden="true" data-remote="<%= edit_pwd_path %>">
 		<div class="modal-header">
-			<h3>Update your password</h3>
+			<h3><%=t 'updatepassword' %></h3>
 		</div>
 				<div class="modal-body">
-			<h3>Loading</h3>
+			<h3><%=t 'loading' %></h3>
 			<div class="progress progress-striped active">
 				<div class="bar" style="width: 100%"></div>
 			</div>
@@ -123,10 +123,10 @@
 
 	<div id="newTargetModal" class="modal hide fade modal-target" tabindex="-1" role="dialog" aria-labelledby="wtfomgbbq" aria-hidden="true" data-remote="<%= new_target_path %>">
 		<div class="modal-header">
-			<h3>Create a new target state</h3>
+			<h3><%=t 'createnewtarget' %></h3>
 		</div>
 		<div class="modal-body">
-			<h3>Loading</h3>
+			<h3><%=t 'loading' %></h3>
 			<div class="progress progress-striped active">
 				<div class="bar" style="width: 100%"></div>
 			</div>
@@ -137,7 +137,7 @@
 		<div class="modal-header">
 		</div>
 		<div class="modal-body">
-			<h3>Loading</h3>
+			<h3><%=t 'loading' %></h3>
 			<div class="progress progress-striped active">
 				<div class="bar" style="width: 100%"></div>
 			</div>
@@ -148,7 +148,7 @@
 
 	<div id="loadingModal" class="modal hide" tabindex="-1" role="dialog" area-labelledby="Something" aria-hidden="true">
 		<div class="modal-header">
-			<h3>Loading</h3>
+			<h3><%=t 'loading' %></h3>
 		</div>
 		<div class="modal-body">
 			<div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div>
@@ -157,19 +157,15 @@
 
 	<div id="stateModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="hipstah" aria-hidden="true">
 		<div class="modal-header">
-			<h3>Maintaining your state (of mind)</h3>
+			<h3><%=t 'statetitle' %></h3>
 		</div>	
 		<div class="modal-body">
-			<p>Hi,</p>
-			<p>We're keen to ensure that you don't lose you're data, but, we're also keen to ensure that it remains safe. So we thought we would give you some options</p>
-			<p>1. If you don't want to store your data in cookies or online, sure, choose '<strong>Do Nothing</strong>'. But, if you refresh the page, it'll all be gone!</p>
-			<p>2. If you just want to store it in your cookies, select '<strong>Cookies</strong>'.</p>
-			<!-- <p>3. And finally, if you want to maintain your data online, select '<strong>Online</strong>'. Mind you, you will have to create an account first.</p> -->
+			<%= raw t('statebody') %>	
 		</div>
 		<div class="modal-footer">
-			<button class="btn btn-inverse btn-primary" id="state-nothing">Do Nothing</button>
-			<button class="btn btn-inverse" id="state-cookies">Cookies</button>
-			<!-- <button class="btn btn-inverse" id="state-db">Online</button> -->
+			<button class="btn btn-inverse btn-primary" id="state-nothing"><%=t 'donothing' %></button>
+			<button class="btn btn-inverse" id="state-cookies"><%=t 'cookies' %></button>
+			<button class="btn btn-inverse" id="state-db"><%=t 'login' %></button>
 		</div>
 	</div>
 
