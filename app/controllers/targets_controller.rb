@@ -38,4 +38,14 @@ class TargetsController < ApplicationController
 			render :status => 200, :json => { :error => "error" }
 		end
 	end
+
+	def delete
+		if user_signed_in?
+			current_user.targets.find_by_shorttitle(params[:target]).destroy
+			render :status => 200, :json => { :error => "success" }
+		else
+			# Return success anyway
+			render :status => 200, :json => { :error => "success" }
+		end
+	end
 end

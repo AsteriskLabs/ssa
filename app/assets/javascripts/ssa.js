@@ -442,7 +442,8 @@ TargetOptionsDefault = {
     }
 };
 
-TargetOptions = TargetOptionsDefault;
+//Clone the default options into the global TargetOptions
+TargetOptions = $.extend({},TargetOptionsDefault);
 
 
 //This is the method which stores the pre-canned target templates
@@ -475,6 +476,16 @@ var SelectTarget = function(businesstype) {
         } else if (StateChecker() == 'cookies') {
             //Save cookie
             SaveTargetCookie();
+        }
+
+        //Logic to provide modify/delete buttons
+        if (!(TargetOptionsDefault.hasOwnProperty(businesstype))) {
+            if ($('#target-edit').length == 0) {
+                $('#targetselectah').parent().append('<button class="btn btn-small" id="target-edit" style="margin-bottom:10px;margin-left:5px">Edit</button><button class="btn btn-danger btn-small" id="target-delete" style="margin-bottom:10px;margin-left:5px">Delete</button>');
+            }
+        } else {
+            $('#target-edit').remove();
+            $('#target-delete').remove();
         }
     }
 };
@@ -912,6 +923,26 @@ var ImSoPretty = function() {
 
     $('#bottomderp').on('click',function() {
         $('#stateModal').modal('show');
+    });
+
+    $('#scorecard > p').on('click','#target-delete',function() {
+        var tmpval = $('#targetselectah').val();
+        var jxhr = $.ajax({
+            url: deleteTargetURL,
+            type: 'DELETE',
+            data: {
+                authenticity_token: $('meta[name="csrf-token"]').attr('content'),
+                target: tmpval
+            },
+            dataType: 'json',
+            complete: function() {
+                $('#targetselectah').val('start');
+                $('#targetselectah').trigger('change');
+                $('#targetselectah option[value="'+tmpval+'"]').remove();
+                $('#targetselectah option[value="_new_target_"]').remove();
+                $('#targetselectah').append('<option value="_new_target_">* New Target</option>');
+            }
+        });
     });
 
 }

@@ -35,6 +35,7 @@ Ssa::Application.routes.draw do
   get '/newtarget' => 'targets#index', :as => :new_target
   get '/targets' => 'targets#fetch', :as => :fetch_targets
   post '/newtarget' => 'targets#create', :as => :create_target
+  delete '/targets' => 'targets#delete', :as => :delete_target
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

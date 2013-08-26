@@ -415,6 +415,9 @@ $(document).ready(function() {
 	pushURL = '<%= create_assessment_path %>';
 	ssa_timer = window.setTimeout(timerFunction,5000);
 
+	//For deleting
+	deleteTargetURL = '<%= delete_target_path %>';
+
 	//Bind a beforeunload event to check that the database and local dom is in sync first, and warn if not
 	$(window).bind('beforeunload', function() {
 		//Hey don't close the window while we haven't synced!
