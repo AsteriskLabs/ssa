@@ -7,6 +7,15 @@ class TargetsController < ApplicationController
 		end
 	end
 
+	def edit
+		if user_signed_in?
+			@target = current_user.targets.where(["shorttitle = ?",params[:title]]).select("title, shorttitle, updated_at, created_at, smt, pct, egt, tat, srt, sat, drt, crt, stt, vmt, eht, oet").limit(1).first
+			render :layout => false
+		else
+			render nothing: true
+		end
+	end
+
 	def fetch
 		if user_signed_in?
 			render :status => 200, :json => current_user.targets.select("title, shorttitle, updated_at, created_at, smt, pct, egt, tat, srt, sat, drt, crt, stt, vmt, eht, oet").order("id ASC").to_json
@@ -38,6 +47,30 @@ class TargetsController < ApplicationController
 			render :status => 200, :json => { :error => "error" }
 		end
 	end
+
+	def update
+		if user_signed_in?
+			tgt = current_user.targets.find_by_shorttitle(params[:target][:shorttitle])
+			tgt.smt = params[:target][:smt]
+			tgt.pct = params[:target][:pct]
+			tgt.egt = params[:target][:egt]
+			tgt.tat = params[:target][:tat]
+			tgt.srt = params[:target][:srt]
+			tgt.sat = params[:target][:sat]
+			tgt.drt = params[:target][:drt]
+			tgt.crt = params[:target][:crt]
+			tgt.stt = params[:target][:stt]
+			tgt.vmt = params[:target][:vmt]
+			tgt.eht = params[:target][:eht]
+			tgt.oet = params[:target][:oet]
+			tgt.save
+			render :status => 200, :json => { :error => "success" }
+		else
+			render :status => 200, :json => { :error => "success" }
+		end
+	end
+
+
 
 	def delete
 		if user_signed_in?

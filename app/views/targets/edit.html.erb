@@ -1,0 +1,214 @@
+<%= form_tag(update_target_path, method: :post, class: 'form-horizontal', id: "edit-target-form") do -%>
+<h3><%= @target.title %></h3>
+
+<div class="row">
+	<div class="span8"><h4>Governance</h4></div>
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-smt',t('sm-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-smt", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.smt), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-pct',t('pc-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-pct", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.pct), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-egt',t('eg-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-egt", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.egt), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span8"><h4>Construction</h4></div>
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-tat',t('ta-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-tat", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.tat), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-srt',t('sr-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-srt", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.srt), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-sat',t('sa-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-sat", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.sat), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span8"><h4>Verification</h4></div>
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-drt',t('dr-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-drt", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.drt), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-crt',t('cr-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-crt", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.crt), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-stt',t('st-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-stt", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.stt), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span8"><h4>Deployment</h4></div>
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-vmt',t('vm-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-vmt", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.vmt), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-eht',t('eh-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-eht", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.eht), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span4">
+		<div class="control-group">
+			<%= label_tag 'edit-target-oet',t('oe-title'), :class => "control-label" %>
+			<div class="controls">
+				<%= select_tag "edit-target-oet", options_for_select([["0",0],["0+",1],["1",2],["1+",3],["2",4],["2+",5],["3",6]],@target.oet), class: "input-mini" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal-footer">
+	<%= hidden_field_tag 'edit-target-shorttitle',@target.shorttitle %>
+  <button type="submit" id="edit-target-button" class="btn btn-primary btn-inverse">Update</button>
+  <button class="btn btn-inverse" data-dismiss="modal" aria-hidden="true">Cancel</button>
+</div>
+
+<script>
+$('#edit-target-button').on('click',function(e) {
+        e.preventDefault();
+        $(this).addClass('loading disabled');
+
+        var jxhr = $.post($('#edit-target-form').attr('action'),
+          {
+              utf8: $('#edit-target-form > div > input[name=utf8]').val(),
+              authenticity_token: $('#edit-target-form > div > input[name=authenticity_token]').val(),
+              target: {
+              	shorttitle: $('#edit-target-shorttitle').val(),
+              	smt:   $('#edit-target-form select#edit-target-smt').val(),
+              	pct:   $('#edit-target-form select#edit-target-pct').val(),
+				egt:   $('#edit-target-form select#edit-target-egt').val(),
+				tat:   $('#edit-target-form select#edit-target-tat').val(),
+				srt:   $('#edit-target-form select#edit-target-srt').val(),
+				sat:   $('#edit-target-form select#edit-target-sat').val(),
+				drt:   $('#edit-target-form select#edit-target-drt').val(),
+				crt:   $('#edit-target-form select#edit-target-crt').val(),
+				stt:   $('#edit-target-form select#edit-target-stt').val(),
+				vmt:   $('#edit-target-form select#edit-target-vmt').val(),
+				eht:   $('#edit-target-form select#edit-target-eht').val(),
+				oet:   $('#edit-target-form select#edit-target-oet').val()
+              }
+          },
+          function(data) {
+              if (data['error'] == "success") {
+              	    //Load up the latest target
+				    var promise = LoadTargets('<%= fetch_targets_path %>');
+				    
+				    //Wrap more Deferred here - only hide the modal once we've loaded the new targets
+				    promise.always(function() {
+				    	//console.log("promised!");
+				    	$('#targetselectah').trigger('change');
+				    	$('#editTargetModal').modal('hide');
+						$('#edit-target-form select#edit-target-smt').val(0);
+						$('#edit-target-form select#edit-target-pct').val(0);
+						$('#edit-target-form select#edit-target-egt').val(0);
+						$('#edit-target-form select#edit-target-tat').val(0);
+						$('#edit-target-form select#edit-target-srt').val(0);
+						$('#edit-target-form select#edit-target-sat').val(0);
+						$('#edit-target-form select#edit-target-drt').val(0);
+						$('#edit-target-form select#edit-target-crt').val(0);
+						$('#edit-target-form select#edit-target-stt').val(0);
+						$('#edit-target-form select#edit-target-vmt').val(0);
+						$('#edit-target-form select#edit-target-eht').val(0);
+						$('#edit-target-form select#edit-target-oet').val(0);
+					    $('#edit-target-button').removeClass('loading disabled');
+				    });
+                  	
+                 
+              }
+          },
+          'json'
+      )
+      .error(function() {
+      	$('#messageModal > .modal-header').html('<h3>Fail</h3>');
+	    $('#messageModal > .modal-body').html('<p>Creation of new Target failed ..</p>');
+	    $('#messageModal > .modal-footer').html('<button class="btn btn-inverse btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>');
+	    $('#editTargetModal').modal('hide');
+		$('#edit-target-form select#edit-target-smt').val(0);
+		$('#edit-target-form select#edit-target-pct').val(0);
+		$('#edit-target-form select#edit-target-egt').val(0);
+		$('#edit-target-form select#edit-target-tat').val(0);
+		$('#edit-target-form select#edit-target-srt').val(0);
+		$('#edit-target-form select#edit-target-sat').val(0);
+		$('#edit-target-form select#edit-target-drt').val(0);
+		$('#edit-target-form select#edit-target-crt').val(0);
+		$('#edit-target-form select#edit-target-stt').val(0);
+		$('#edit-target-form select#edit-target-vmt').val(0);
+		$('#edit-target-form select#edit-target-eht').val(0);
+		$('#edit-target-form select#edit-target-oet').val(0);
+	    $('#edit-target-button').removeClass('loading disabled');
+	    $('#messageModal').modal('show');
+      });
+});
+</script>
+<% end -%>

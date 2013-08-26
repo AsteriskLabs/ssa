@@ -174,7 +174,7 @@ $('#new-target-button').on('click',function(e) {
 				    
 				    //Wrap more Deferred here - only hide the modal once we've loaded the new targets
 				    promise.always(function() {
-				    	console.log("promised!");
+				    	// console.log("promised!");
 				    	$('#newTargetModal').modal('hide');
 					    $('#new-target-form input#target_title').val('');
 						$('#new-target-form select#new-target-smt').val(0);

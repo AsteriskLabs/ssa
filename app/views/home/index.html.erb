@@ -418,6 +418,9 @@ $(document).ready(function() {
 	//For deleting
 	deleteTargetURL = '<%= delete_target_path %>';
 
+	//For editing
+	editTargetURLbase = '<%= edit_target_path %>';
+
 	//Bind a beforeunload event to check that the database and local dom is in sync first, and warn if not
 	$(window).bind('beforeunload', function() {
 		//Hey don't close the window while we haven't synced!

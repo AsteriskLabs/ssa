@@ -945,6 +945,15 @@ var ImSoPretty = function() {
         });
     });
 
+    $('#scorecard > p').on('click','#target-edit',function() {
+        $('#editTargetModal').attr('data-remote',editTargetURLbase + "?title=" + $('#targetselectah').val());
+        $('#editTargetModal').modal('show');
+    });
+
+    $('body').on('hidden','#editTargetModal', function() {
+        $(this).removeData('modal');
+    });
+
 }
 
 // Function to check how the user is maintaining state

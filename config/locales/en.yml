@@ -30,6 +30,7 @@ en:
   resendpassword: "Reset password confirmation?"
   saveconfirmation: "We haven't saved online yet .. are you sure you want to quit?"
   createnewtarget: "Create a new target"
+  edittarget: "Edit target"
   statetitle: "Maintaining your state (of mind)"
   statebody: "<p>Hi,</p> <p>We're keen to ensure that you don't lose you're data, but, we're also keen to ensure that it remains safe. So we thought we would give you some options</p> <p>1. If you don't want to store your data in cookies or online, sure, choose '<strong>Do Nothing</strong>'. But, if you refresh the page, it'll all be gone!</p> <p>2. If you just want to store it in your cookies, select '<strong>Cookies</strong>'.</p> <p>3. And finally, if you want to maintain your data online, '<strong>Login</strong>'. Mind you, you will have to create an account first.</p>"
   footernull: "No data is being saved in cookies OR online .. but you can change that by <a href='#'>clicking me</a>"
