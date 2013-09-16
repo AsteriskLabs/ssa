@@ -606,31 +606,52 @@ var hideSpinner = function() {
 var PushAssessment = function() {
     $('#spinnner').show();
     var new_assessment = {}
+    var requireconfirm = true;
     new_assessment['title'] = "default";
     new_assessment['target'] = $('#targetselectah').val();
     $.each(['sm','pc','eg','ta','sr','sa','dr','cr','st','vm','eh','oe'], function(index,value) {
         $('input[id^="'+value+'"]').each(function(idx) {
             new_assessment[$(this)[0].id.replace("-check",'')] = $(this).prop('checked');
+            if ($(this).prop('checked') == true) {
+                requireconfirm = false;
+            }
         });
     });
+    var push = true;    
+    if (requireconfirm == true && new_assessment['target'] == "start") {
+        push = confirm("Are you sure you want to save this assessment? This will save all values to their default.");
+    }
 
-    var jxhr = $.post(pushURL,
-        {
-            authenticity_token: $('meta[name="csrf-token"]').attr('content'),
-            assessment: new_assessment
-        },
-        function(data) {
-            window.setTimeout(hideSpinner,500);
-            //Lets update syncedAssessment shall we?
-            syncedAssessment = new_assessment;
-            ssa_timer = window.setTimeout(timerFunction,5000); // Go again yarh
-        },
-        'json'
-    )
-    .error(function() {
-        window.setTimeout(hideSpinner,500);
-        ssa_timer = window.setTimeout(timerFunction,5000); // Go again yarh
-    });
+    if (push) {
+        var jxhr = $.post(pushURL,
+            {
+                authenticity_token: $('meta[name="csrf-token"]').attr('content'),
+                assessment: new_assessment
+            },
+            function(data) {
+                if (data['error'] == "error") {
+                    //failed to push
+                    syncedAssessment = new_assessment; //force this to NOT get an error when the reload call is executed
+                    location.reload();
+                } else {
+                    window.setTimeout(hideSpinner,500);
+                    //Lets update syncedAssessment shall we?
+                    syncedAssessment = new_assessment;
+                    ssa_timer = window.setTimeout(timerFunction,5000); // Go again yarh
+                }
+            },
+            'json'
+        )
+        .error(function() {
+            // window.setTimeout(hideSpinner,500);
+            // ssa_timer = window.setTimeout(timerFunction,5000); // Go again yarh
+            syncedAssessment = new_assessment; // As above - force this 
+            location.reload();
+        });
+    } else {
+        syncedAssessment = new_assessment; //Forces this to NOT alert on window reload
+        location.reload();
+    }
 
 };
 
@@ -645,7 +666,7 @@ var LoadTargets = function(url) {
                 //console.log('undefined');
                 $('#targetselectah option[value="_new_target_"]').remove();
                 $('#targetselectah').append('<option value="_new_target_">* New Target</option>');
-                deferred.reject();
+                deferred.resolve();
             } else {
                 //console.log(data);
                 $.each(data,function() {
@@ -703,7 +724,7 @@ var LoadLatestAssessment = function(url,filter) {
                 deferred.reject();
             } else if (typeof data[0] == "undefined") {
                 syncedAssessment = DefaultAssessmentState; // This is in global scope
-                deferred.reject();
+                deferred.resolve();
             } else {
                 //Update the output - if defined
                 syncedAssessment = data[0];

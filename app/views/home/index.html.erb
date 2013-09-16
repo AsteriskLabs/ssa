@@ -411,15 +411,20 @@ $(document).ready(function() {
 	//Update the footer
 	SetFooterContent("online");
 
-	//Kick off the timer.. it recursively calls itself
+	//For pushing
 	pushURL = '<%= create_assessment_path %>';
-	ssa_timer = window.setTimeout(timerFunction,5000);
 
 	//For deleting
 	deleteTargetURL = '<%= delete_target_path %>';
 
 	//For editing
 	editTargetURLbase = '<%= edit_target_path %>';
+
+	//Here is logic that will only kick off after the initial load has worked successfully
+	combinedPromise.done(function() {
+		//Kick off the timer.. it recursively calls itself
+		ssa_timer = window.setTimeout(timerFunction,5000);
+	});
 
 	//Bind a beforeunload event to check that the database and local dom is in sync first, and warn if not
 	$(window).bind('beforeunload', function() {
