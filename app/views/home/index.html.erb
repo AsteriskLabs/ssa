@@ -401,11 +401,17 @@ $(document).ready(function() {
 
     //Load up the latest target and assessments
     //We're using jQuerys Deferred pattern here to ensure that we only unhide the loading modal after both these async calls have completed.
-	var combinedPromise = $.when(LoadTargets('<%= fetch_targets_path %>'),LoadLatestAssessment('<%= fetch_assessments_path %>',syncedAssessment));
+    // Load up the targets first..
+	$.when(LoadTargets('<%= fetch_targets_path %>')).done(function() {
+		//When we have loaded the targets, now we load the latest assessment
+		$.when(LoadLatestAssessment('<%= fetch_assessments_path %>')).done(function() {
+			//Now we have loaded the assessments, now we hide the modal
+			$('#loadingModal').modal('hide'); // Hide the modal
 
-	//Here is the logic that will happen ALWAYS when both the previous async calls have been complete
-	combinedPromise.always(function() {
-		$('#loadingModal').modal('hide'); //Hide that modal now
+			// And kick off the timer
+			ssa_timer = window.setTimeout(timerFunction,5000);
+		});
+
 	});
 
 	//Update the footer
@@ -419,12 +425,6 @@ $(document).ready(function() {
 
 	//For editing
 	editTargetURLbase = '<%= edit_target_path %>';
-
-	//Here is logic that will only kick off after the initial load has worked successfully
-	combinedPromise.done(function() {
-		//Kick off the timer.. it recursively calls itself
-		ssa_timer = window.setTimeout(timerFunction,5000);
-	});
 
 	//Bind a beforeunload event to check that the database and local dom is in sync first, and warn if not
 	$(window).bind('beforeunload', function() {
