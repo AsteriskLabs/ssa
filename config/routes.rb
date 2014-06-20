@@ -26,7 +26,7 @@ Ssa::Application.routes.draw do
     get '/confirm' => 'devise/confirmations#show'
 
     get '/pwd' => 'userupdate#edit', :as => :edit_pwd
-    put '/pwd' => 'userupdate#update_pwd', :as => :update_pwd
+    patch '/pwd' => 'userupdate#update_pwd', :as => :update_pwd
   end
 
   get '/assessments' => 'assessments#fetch', :as => :fetch_assessments

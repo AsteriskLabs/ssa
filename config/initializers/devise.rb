@@ -12,6 +12,8 @@ Devise.setup do |config|
   # Automatically apply schema changes in tableless databases
   #config.apply_schema = false
 
+  config.secret_key = '958739a56119676a03ae87335d36a2401ff7e98a7dc9a9985e1f7317f8bbad13f066a3dbfc8bd12434ee03e973528e7068fd8d2f8c80ae0fb9858c0b17152b7e'
+
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
